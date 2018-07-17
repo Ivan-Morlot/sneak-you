@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS indent (
 
 CREATE TABLE IF NOT EXISTS product (
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    ref varchar(10) NOT NULL,
+    ref varchar(10) UNIQUE NOT NULL,
     name varchar(30) NOT NULL,
     description varchar(1000),
     stock int,
