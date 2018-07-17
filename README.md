@@ -1,2 +1,2 @@
 # sneak-you
-E-shop website creation project for our studies.
+E-commerce website project for studies
