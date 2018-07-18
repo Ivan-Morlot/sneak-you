@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS product_quantity (
 
 CREATE TABLE IF NOT EXISTS category (
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    name varchar(30),
+    name varchar(30) NOT NULL,
     description varchar(1000)
 )ENGINE=InnoDB;
 
