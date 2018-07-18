@@ -11,15 +11,15 @@
         <button type="submit">Rechercher</button>
     </form>
    <?php
-        $mc = null;
-    $conn=mysql_connect("localhost","root","") or die(mysql_error());
-           mysql_select_db("db_boutique", $conn);
-      
-        if(isset($_POST['recherche'])) {
-            $mc = trim($_POST['recherche']);
-        }
-        $req = "SELECT * FROM Product WHERE nom LIKE '%$mc%'";
-        $recordset = mysql_query($req) or die(mysql_error());
+    $mc = null;
+    $conn = mysql_connect("localhost", "root", "") or die(mysql_error());
+    mysql_select_db("db_boutique", $conn);
+
+    if (isset($_POST['recherche'])) {
+        $mc = trim($_POST['recherche']);
+    }
+    $req = "SELECT * FROM Product WHERE nom LIKE '%$mc%'";
+    $recordset = mysql_query($req) or die(mysql_error());
 
     ?>
     <table border="1">
@@ -35,7 +35,7 @@
            <td>selection</td>
            
        </tr>
-        <?php while($product = mysql_fetch_assoc($recordset)) { ?>
+        <?php while ($product = mysql_fetch_assoc($recordset)) { ?>
         <tr>
             <td><?php echo $product['code'] ?></td>
             <td><?php echo $product['name'] ?></td>
@@ -48,7 +48,8 @@
             <td><a href="supprimerProduit.php?code=<?php echo $product['code'] ?>">Supprimer</a></td>
             <td><a href="editerProduit.php?code=<?php echo $product['code'] ?>">Editer</a></td>
         </tr>
-        <?php } ?>
+        <?php 
+    } ?>
     </table>
     <a href="index.html">Ajouter un produit</a><br>
     <a href="afficherProduit.php">Afficher les produits</a>

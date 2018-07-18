@@ -1,10 +1,10 @@
-<?php ?>
+<?php  ?>
 
     
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8"">
+    <meta charset="UTF-8">
     <title>mesinfos</title>
 </head>
 <body>

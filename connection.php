@@ -6,9 +6,7 @@ $pass = $_POST['pass'];
 
 
 if (isset($maBase[$login]) && $maBase[$login] == $pass) {
-
-        header("Location: mesinfos.php");
+    header("Location: mesinfos.php");
 } else {
     header("Location: erreur.php");
-    
 }
