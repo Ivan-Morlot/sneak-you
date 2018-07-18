@@ -1,7 +1,7 @@
 <?php   
     try
 {
-    $bdd = new PDO('mysql:host=localhost;dbname=examen2018','root','');
+    $bdd = new PDO('mysql:host=localhost;dbname=db_boutique','root','');
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);}
  catch(Exception $e){
             echo '<h3>Oups ! Nous avons rencontré un problème...</h3>';
@@ -26,7 +26,7 @@ if(isset($_POST['nom']) && isset($_POST['sexe']) && isset($_POST['ville']) && is
  
  
  
-$reponse = $bdd->query('SELECT * FROM etudiant WHERE code='.$_GET['code']);
+$reponse = $bdd->query('SELECT * FROM product WHERE code='.$_GET['code']);
 $donnees = $reponse->fetch();
 echo '<form action="" method="post">
 <input type="text" name="nome" value="'.$donnees['nom'].'"/>
