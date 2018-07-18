@@ -32,34 +32,17 @@ CREATE TABLE IF NOT EXISTS customer (
     credit_card_expiration datetime
 )ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS indent (
+CREATE TABLE IF NOT EXISTS customer_order (
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     created_date datetime NOT NULL,
     status enum('validated', 'canceled', 'in_progress') NOT NULL,
-    customer_id int,
+    customer_id int NOT NULL,
     FOREIGN KEY (customer_id) REFERENCES customer(id)
 )ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS product (
+CREATE TABLE IF NOT EXISTS brand (
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    ref varchar(10) UNIQUE NOT NULL,
-    name varchar(30) NOT NULL,
-    description varchar(1000),
-    stock int,
-    price float NOT NULL,
-    picture_name varchar(30),
-    is_available boolean,
-    is_on_promo boolean,
-    is_in_selection boolean
-)ENGINE=InnoDB;
-
-CREATE TABLE IF NOT EXISTS product_quantity (
-    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    quantity int NOT NULL,
-    indent_id int,
-    FOREIGN KEY (indent_id) REFERENCES indent(id),
-    product_id int,
-    FOREIGN KEY (product_id) REFERENCES product(id)
+    name varchar(30) NOT NULL
 )ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS category (
@@ -68,10 +51,43 @@ CREATE TABLE IF NOT EXISTS category (
     description varchar(1000)
 )ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS product_category (
+CREATE TABLE IF NOT EXISTS product (
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    product_id int,
-    FOREIGN KEY (product_id) REFERENCES product(id),
-    category_id int,
+    ref varchar(10) UNIQUE NOT NULL,
+    name varchar(100) NOT NULL,
+    description varchar(1000),
+    price float NOT NULL,
+    picture_name varchar(30),
+    is_available boolean,
+    is_on_promo boolean,
+    reduction_percent smallint,
+    promo_price float,
+    is_in_selection boolean,
+    brand_id int,
+    FOREIGN KEY (brand_id) REFERENCES brand(id),
+    category_id int NOT NULL,
     FOREIGN KEY (category_id) REFERENCES category(id)
+)ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS size (
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    size varchar(4) NOT NULL
+)ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS product_size (
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    stock int,
+    product_id int NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES product(id),
+    size_id int NOT NULL,
+    FOREIGN KEY (size_id) REFERENCES size(id)
+)ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS order_item (
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    quantity int NOT NULL,
+    customer_order_id int NOT NULL,
+    FOREIGN KEY (customer_order_id) REFERENCES customer_order(id),
+    product_id int NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES product(id)
 )ENGINE=InnoDB;
