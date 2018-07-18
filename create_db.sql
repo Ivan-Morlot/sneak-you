@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS customer (
     nom varchar(30) NOT NULL,
     email varchar(50) NOT NULL,
     password varchar(32) NOT NULL,
+    auth_level smallint NOT NULL,
     birthdate datetime,
     main_phone_number varchar(20) NOT NULL,
     secondary_phone_number varchar(20),
