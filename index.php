@@ -221,5 +221,6 @@
     <script src="js/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script type="text/javascript"> document.addEventListener('click', function(e) { if(document.activeElement.toString() != '[object HTMLInputElement]' && document.activeElement.toString() != '[object HTMLTextAreaElement]'){ document.activeElement.blur(); } }); </script>
   </body>
 </html>
