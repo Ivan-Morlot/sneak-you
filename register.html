@@ -28,124 +28,118 @@
     <![endif]-->
 
     <!-- Custom styles for this template -->
+    <link href="css/register.css" rel="stylesheet">
     <link href="css/carousel.css" rel="stylesheet">
-  </head>
-<!-- NAVBAR
-================================================== -->
-<header>
-<!--attention au style présent dans cette div -->
- <div class="navbar-wrapper" style="position:inherit">
-      
-
-        <nav class="navbar navbar-inverse navbar-static-top">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">Project name</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li class="dropdown-header">Nav header</li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
-                  </ul>
-                  </li>
-                    
-              </ul>
-               <form class="form-inline mt-2 mt-md-0" style="margin-top: 0.8vh">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-            </div>
-          </div>
-        </nav>
-
-      </div>
-      </header>
-  <body>
-   <div class="container">
-    <form>
-  <div class="form-row">
-    <div class="col-md-4 mb-3">
-      <label for="validationServer01"></label>
-      <input type="text" class="form-control is-valid" id="validationServer01" placeholder="Prénom" required>
-      <div class="valid-feedback">
-        
-      </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="validationServer02"></label>
-      <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Nom" required>
-      <div class="valid-feedback">
-        
-      </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="validationServerUsername"></label>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroupPrepend3"></span>
-        </div>
-        <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Pseudo" aria-describedby="inputGroupPrepend3" required>
-        <div class="invalid-feedback">
-         
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="validationServer03"></label>
-      <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="Ville" required>
-      <div class="invalid-feedback">
-        
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationServer04"></label>
-      <input type="text" class="form-control is-invalid" id="validationServer04" placeholder="Pays" required>
-      <div class="invalid-feedback">
-       
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationServer05"></label>
-      <input type="text" class="form-control is-invalid" id="validationServer05" placeholder="Code postale" required>
-      <div class="invalid-feedback">
-        
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
-      <label class="form-check-label" for="invalidCheck3">
-        Accepter les conditions d'utilisations
-      </label>
-      <div class="invalid-feedback">
     
-      </div>
+  </head>
+
+ <div class="container">
+ <!---heading---->
+     <header class="heading"> Registration-Form</header><hr>
+	<!---Form starting----> 
+	<div class="row ">
+	 <!--- For Name---->
+         <div class="col-sm-12">
+             <div class="row">
+			     <div class="col-xs-4">
+          	         <label class="firstname">First Name :</label> </div>
+		         <div class="col-xs-8">
+		             <input type="text" name="fname" id="fname" placeholder="Enter your First Name" class="form-control ">
+             </div>
+		      </div>
+		 </div>
+		 
+		 
+         <div class="col-sm-12">
+		     <div class="row">
+			     <div class="col-xs-4">
+                     <label class="lastname">Last Name :</label></div>
+				<div class ="col-xs-8">	 
+		             <input type="text" name="lname" id="lname" placeholder="Enter your Last Name" class="form-control last">
+                </div>
+		     </div>
+		 </div>
+<!--   date de naissance -->
+      <div class="col-sm-12">
+		         <div class="row">
+				     <div class="col-xs-4">
+		 	              <label class="pass">Birth date :</label></div>
+				  <div class="col-xs-8">
+			             <input type="date" name="date" id="date" placeholder="20/02/1992" class="form-control">
+				 </div>
+          </div>
+		  </div>
+     <!-----For email---->
+		 <div class="col-sm-12">
+		     <div class="row">
+			     <div class="col-xs-4">
+		             <label class="mail" >Email :</label></div>
+			     <div class="col-xs-8"	>	 
+			          <input type="email" name="email"  id="email"placeholder="Enter your email" class="form-control" >
+		         </div>
+		     </div>
+		 </div>
+	 <!-----For Password and confirm password---->
+          <div class="col-sm-12">
+		         <div class="row">
+				     <div class="col-xs-4">
+		 	              <label class="pass">Password :</label></div>
+				  <div class="col-xs-8">
+			             <input type="password" name="password" id="password" placeholder="Enter your Password" class="form-control">
+				 </div>
+          </div>
+		  </div>
+		  
+		  
+		  
+     <!-----------For Phone number(mobile)-------->
+         <div class="col-sm-12">
+		         <div class="row">
+				     <div class="col-xs-4">
+		 	              <label class="pass">Mobile :</label></div>
+				  <div class="col-xs-8">
+			             <input type="tel" name="tel" id="tel" placeholder="06 45 12 54 84" class="form-control">
+				 </div>
+          </div>
+		  </div>
+		  
+		  <!-----------For Phone number (fixe)-------->
+         <div class="col-sm-12">
+		         <div class="row">
+				     <div class="col-xs-4">
+		 	              <label class="pass">Fixe :</label></div>
+				  <div class="col-xs-8">
+			             <input type="tel" name="tel" id="tel" placeholder="+33" class="form-control">
+				 </div>
+          </div>
+		  </div>
+<!--   gender     -->
+         <div class="col-sm-12">
+		     <div class ="row">
+                 <div class="col-xs-4 ">
+			       <label class="gender">Gender:</label>
+				 </div>
+			 
+			     <div class="col-xs-4 male">	 
+                     <input type="radio" name="gender"  id="gender" value="boy">Male</input>
+				 </div>
+				 
+				 <div class="col-xs-4 female">
+				     <input type="radio"  name="gender" id="gender" value="girl" >Female</input>
+			     </div>
+			
+		  	 </div>
+		     <div class="col-sm-12">
+		         <div class="btn btn-warning">Submit</div>
+		   </div>
+		 </div>
+    
+	 
+ 		 
+		 
+</div>
+
     </div>
-  </div>
-  <button class="btn btn-primary" type="submit">S'inscire</button>
-</form>
-     </div>   
-      
         
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
