@@ -30,5 +30,6 @@
             </tr>
         </table>
     </form>
+    <script src="js/tools.js"></script>
 </body>
 </html>
