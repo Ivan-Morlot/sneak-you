@@ -1,3 +1,7 @@
+<?php session_start();
+    if(isset($_SESSION['auth_level']) && $_SESSION['auth_level'] == 1) header("location:adminZone.php");
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

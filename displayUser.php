@@ -35,6 +35,11 @@
             <td>Adresse</td>
             <td>Code postal</td>
             <td>Ville</td>
+            <td>Complément d'adresse</td>
+            <td>Bâtiment</td>
+            <td>Escalier</td>
+            <td>Etage</td>
+            <td>Porte</td>
             <td></td>
             <td></td>
         </tr>
@@ -76,6 +81,21 @@
             <td>
                 <?php echo $user['del_city'] ?>
             </td>
+            <td>
+                <?php echo $user['del_address_supp'] ?>
+            </td>
+            <td>
+                <?php echo $user['del_building'] ?>
+            </td>
+            <td>
+                <?php echo $user['del_staircase'] ?>
+            </td>
+            <td>
+                <?php echo $user['del_floor'] ?>
+            </td>
+            <td>
+                <?php echo $user['del_door'] ?>
+            </td>
             <td><a href="deleteUser.php?id=<?php echo $user['id'] ?>">Supprimer</a></td>
             <td><a href="editUser.php?id=<?php echo $user['id'] ?>">Editer</a></td>
         </tr>
@@ -84,8 +104,10 @@
 ?>
     </table>
     <br>
+    <a href="createUser.php">Créer un nouvel utilisateur</a>
+    <br><br>
     <a href="adminZone.php">Accueil admin</a>
-    <br>
+    <br><br>
     <a href="utils/logout.php">Déconnexion</a>
     <script src="js/tools.js"></script>
 </body>
