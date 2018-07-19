@@ -6,6 +6,15 @@ body {
   padding-bottom: 40px;
   color: #5a5a5a;
 }
+.btn {
+  transition: -webkit-box-shadow 0.1s;
+  transition: box-shadow 0.1s;
+}
+.form-inline .btn.active.focus, .form-inline .btn.active:focus, .form-inline .btn.focus, .form-inline .btn:active.focus, .form-inline .btn:active:focus, .form-inline .btn:focus {
+  outline: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125), 0 0 0 1pt #66afe9;
+  box-shadow: inset 0 3px 5px rgba(0,0,0,.125), 0 0 0 1pt #66afe9;
+}
 
 
 /* CUSTOMIZE THE NAVBAR
