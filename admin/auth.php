@@ -1,4 +1,4 @@
-<?php session_start(); require_once("utils\connection.php");
+<?php session_start(); require_once("..\utils\connection.php");
 
     if (isset($_POST['login']) && isset($_POST['password'])) {
         $login = $_POST['login'];
@@ -8,7 +8,7 @@
             if($user['auth_level'] == 1) {
                 $_SESSION['login'] = $user['email'];
                 $_SESSION['auth_level'] = $user['auth_level'];
-                header("location:adminZone.php");
+                header("location:home.php");
             } else {
 ?>
                 <!DOCTYPE html>
@@ -19,8 +19,8 @@
                 </head>
                 <body>
                     <h1>Vous n'êtes pas autorisé à accéder à cette partie du site.</h1>
-                    <a href="index.php">Retour à l'accueil</a>
-                    <script src="js/tools.js"></script>
+                    <a href="../index.php">Retour à l'accueil</a>
+                    <script src="../js/tools.js"></script>
                 </body>
                 </html>
 <?php
@@ -35,14 +35,13 @@
             </head>
             <body>
                 <h1>L'identifiant et/ou le mot de passe n'existe(nt) pas.</h1>
-                <a href="admin.php">Retour à l'écran de connexion</a>
-                <script src="js/tools.js"></script>
+                <a href="index.php">Retour à l'écran de connexion</a>
+                <script src="../js/tools.js"></script>
             </body>
             </html>
 <?php
         }
     } else {
-        require_once("utils\adminCheck.php");
-        header("location:adminZone.php");
+        header("location:home.php");
     }
 

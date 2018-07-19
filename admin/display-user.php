@@ -1,4 +1,4 @@
-<?php session_start(); require_once("utils\connection.php"); require_once("utils\adminCheck.php"); ?>
+<?php session_start(); require_once("..\utils\connection.php"); require_once("..\utils\admin-check.php"); ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -7,7 +7,7 @@
     <title>Afficher les utilisateurs</title>
 </head>
 <body>
-    <form action="displayUser.php" method="post">
+    <form action="display-user.php" method="post">
         <label for="research">Recherche par nom :</label>
         <input type="text" name="research">
         <button type="submit">Rechercher</button>
@@ -96,19 +96,19 @@
             <td>
                 <?php echo $user['del_door'] ?>
             </td>
-            <td><a href="deleteUser.php?id=<?php echo $user['id'] ?>">Supprimer</a></td>
-            <td><a href="editUser.php?id=<?php echo $user['id'] ?>">Editer</a></td>
+            <td><a href="delete-user.php?id=<?php echo $user['id'] ?>">Supprimer</a></td>
+            <td><a href="edit-user.php?id=<?php echo $user['id'] ?>">Editer</a></td>
         </tr>
 <?php }
     $req->closeCursor();
 ?>
     </table>
     <br>
-    <a href="createUser.php">Créer un nouvel utilisateur</a>
+    <a href="create-user.php">Créer un nouvel utilisateur</a>
     <br><br>
-    <a href="adminZone.php">Accueil admin</a>
+    <a href="home.php">Accueil admin</a>
     <br><br>
-    <a href="utils/logout.php">Déconnexion</a>
-    <script src="js/tools.js"></script>
+    <a href="../utils/logout.php">Déconnexion</a>
+    <script src="../js/tools.js"></script>
 </body>
 </html>

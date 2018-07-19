@@ -1,4 +1,4 @@
-<?php session_start(); require_once("utils\connection.php"); require_once("utils\adminCheck.php"); ?>
+<?php session_start(); require_once("..\utils\connection.php"); require_once("..\utils\admin-check.php"); ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -7,7 +7,7 @@
     <title>Afficher les marques</title>
 </head>
 <body>
-    <form action="displayBrand.php" method="post">
+    <form action="display-brand.php" method="post">
         <label for="research">Recherche par nom :</label>
         <input type="text" name="research">
         <button type="submit">Rechercher</button>
@@ -36,19 +36,19 @@
             <td>
                 <?php echo $brd['name'] ?>
             </td>
-            <td><a href="deleteBrand.php?id=<?php echo $brd['id'] ?>">Supprimer</a></td>
-            <td><a href="editBrand.php?id=<?php echo $brd['id'] ?>">Editer</a></td>
+            <td><a href="delete-brand.php?id=<?php echo $brd['id'] ?>">Supprimer</a></td>
+            <td><a href="edit-brand.php?id=<?php echo $brd['id'] ?>">Editer</a></td>
         </tr>
 <?php }
     $req->closeCursor();
 ?>
     </table>
     <br>
-    <a href="createBrand.php">Créer une nouvelle marque</a>
+    <a href="create-brand.php">Créer une nouvelle marque</a>
     <br><br>
-    <a href="adminZone.php">Accueil admin</a>
+    <a href="home.php">Accueil admin</a>
     <br><br>
-    <a href="utils/logout.php">Déconnexion</a>
-    <script src="js/tools.js"></script>
+    <a href="../utils/logout.php">Déconnexion</a>
+    <script src="../js/tools.js"></script>
 </body>
 </html>

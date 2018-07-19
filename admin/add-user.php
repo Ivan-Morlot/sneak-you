@@ -1,4 +1,4 @@
-<?php session_start(); require_once("utils\connection.php"); require_once("utils\adminCheck.php"); ?>
+<?php session_start(); require_once("..\utils\connection.php"); require_once("..\utils\admin-check.php"); ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -154,14 +154,14 @@
     <br>
 <?php
     } else {
-        header("location:adminZone.php");
+        header("location:home.php");
     }
 ?>
-    <a href="adminZone.php">Accueil admin</a>
+    <a href="home.php">Accueil admin</a>
     <br>
-    <a href="displayUser.php">Afficher les utilisateurs</a>
+    <a href="display-user.php">Afficher les utilisateurs</a>
     <br>
-    <a href="utils/logout.php">Déconnection</a>
-    <script src="js/tools.js"></script>
+    <a href="../utils/logout.php">Déconnection</a>
+    <script src="../js/tools.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<?php session_start(); require_once("utils\connection.php"); require_once("utils\adminCheck.php");
+<?php session_start(); require_once("..\utils\connection.php"); require_once("..\utils\admin-check.php");
 
     if (isset($_POST['id']) &&
         isset($_POST['name'])) {
@@ -6,7 +6,7 @@
         $name = $_POST['name'];
         if(isset($_POST['description']) && $_POST['description'] != "") {$dispDescription = $_POST['description']; $description = "'".$dispDescription."'";} else {$description = 'NULL';}
         $db->exec("UPDATE category SET name = '$name', description = $description WHERE id='$id'");
-        header("location:displayCategory.php");
+        header("location:display-category.php");
     } else {
-        header("location:adminZone.php");
+        header("location:home.php");
     }

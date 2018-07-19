@@ -1,11 +1,11 @@
-<?php session_start(); require_once("utils\connection.php"); require_once("utils\adminCheck.php");
+<?php session_start(); require_once("..\utils\connection.php"); require_once("..\utils\admin-check.php");
 
     if (isset($_POST['id']) &&
         isset($_POST['name'])) {
         $id = $_POST['id'];
         $name = $_POST['name'];
         $db->exec("UPDATE brand SET name = '$name' WHERE id='$id'");
-        header("location:displayBrand.php");
+        header("location:display-brand.php");
     } else {
-        header("location:adminZone.php");
+        header("location:home.php");
     }

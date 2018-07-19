@@ -1,4 +1,4 @@
-<?php session_start(); require_once("utils\connection.php"); require_once("utils\adminCheck.php"); ?>
+<?php session_start(); require_once("..\utils\connection.php"); require_once("..\utils\admin-check.php"); ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -31,12 +31,12 @@
             <td>
                 <?php echo $cat['description'] ?>
             </td>
-            <td><a href="deleteCategory.php?id=<?php echo $cat['id'] ?>">Supprimer</a></td>
+            <td><a href="delete-category.php?id=<?php echo $cat['id'] ?>">Supprimer</a></td>
         </tr>
 <?php } ?>
     </table>
     <br>
-    <form action="updateCategory.php" method="post">
+    <form action="update-category.php" method="post">
         <table border="1">
             <tr>
                 <td>ID</td>
@@ -61,11 +61,11 @@
         </table>
     </form>
     <br>
-    <a href="displayCategory.php">Afficher les catégories</a>
+    <a href="display-category.php">Afficher les catégories</a>
     <br><br>
-    <a href="adminZone.php">Accueil admin</a>
+    <a href="home.php">Accueil admin</a>
     <br><br>
-    <a href="utils/logout.php">Déconnection</a>
-    <script src="js/tools.js"></script>
+    <a href="../utils/logout.php">Déconnection</a>
+    <script src="../js/tools.js"></script>
 </body>
 </html>

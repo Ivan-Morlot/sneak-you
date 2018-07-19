@@ -1,4 +1,4 @@
-<?php session_start(); require_once("utils\connection.php"); require_once("utils\adminCheck.php"); ?>
+<?php session_start(); require_once("..\utils\connection.php"); require_once("..\utils\admin-check.php"); ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -27,12 +27,12 @@
             <td>
                 <?php echo $brd['name'] ?>
             </td>
-            <td><a href="deleteBrand.php?id=<?php echo $brd['id'] ?>">Supprimer</a></td>
+            <td><a href="delete-brand.php?id=<?php echo $brd['id'] ?>">Supprimer</a></td>
         </tr>
 <?php } ?>
     </table>
     <br>
-    <form action="updateBrand.php" method="post">
+    <form action="update-brand.php" method="post">
         <table border="1">
             <tr>
                 <td>ID</td>
@@ -53,11 +53,11 @@
         </table>
     </form>
     <br>
-    <a href="displayBrand.php">Afficher les marques</a>
+    <a href="display-brand.php">Afficher les marques</a>
     <br><br>
-    <a href="adminZone.php">Accueil admin</a>
+    <a href="home.php">Accueil admin</a>
     <br><br>
-    <a href="utils/logout.php">Déconnection</a>
-    <script src="js/tools.js"></script>
+    <a href="../utils/logout.php">Déconnection</a>
+    <script src="../js/tools.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<?php session_start(); require_once("utils\adminCheck.php")?>
+<?php session_start(); require_once("..\utils\admin-check.php")?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -7,7 +7,7 @@
     <title>Créer une catégorie</title>
 </head>
 <body>
-    <form enctype="multipart/form-data" action="addCategory.php" method="post">
+    <form enctype="multipart/form-data" action="add-category.php" method="post">
         <table border="1">
             <tr>
                 <td>Nom</td>
@@ -24,11 +24,11 @@
         </table>
     </form>
     <br>
-    <a href="displayCategory.php">Afficher les catégories</a>
+    <a href="display-category.php">Afficher les catégories</a>
     <br><br>
-    <a href="adminZone.php">Accueil admin</a>
+    <a href="home.php">Accueil admin</a>
     <br><br>
-    <a href="utils/logout.php">Déconnexion</a>
-    <script src="js/tools.js"></script>
+    <a href="../utils/logout.php">Déconnexion</a>
+    <script src="../js/tools.js"></script>
 </body>
 </html>

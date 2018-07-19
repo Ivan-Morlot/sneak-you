@@ -1,4 +1,4 @@
-<?php session_start(); require_once("utils\connection.php"); require_once("utils\adminCheck.php");
+<?php session_start(); require_once("..\utils\connection.php"); require_once("..\utils\admin-check.php");
 
     if (isset($_POST['id']) &&
         isset($_POST['gender']) &&
@@ -33,7 +33,7 @@
         } else {
             $db->exec("UPDATE customer SET gender = '$gender', prenom = '$prenom', nom = '$nom', email = '$email', auth_level = '$authLevel', birthdate = $birthdate, main_phone_number = '$mainPhone', secondary_phone_number = $secPhone, delivery_address = '$address', del_postal_code = '$postalCode', del_city = '$city', del_address_supp = $addressSup, del_building = $building, del_staircase = $staircase, del_floor = $floor, del_door = $door WHERE id='$id'");
         }
-        header("location:displayUser.php");
+        header("location:display-user.php");
     } else {
-        header("location:adminZone.php");
+        header("location:home.php");
     }
