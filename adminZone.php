@@ -2,8 +2,9 @@
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+  <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Zone admin</title>
 </head>
 <body>
@@ -22,5 +23,5 @@
     <br><br>
     <a href="utils/logout.php">Déconnexion</a>
     <script src="js/tools.js"></script>
-</body>
+  </body>
 </html>
