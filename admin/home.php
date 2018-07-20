@@ -8,6 +8,10 @@
 </head>
 <body>
     <h1>Zone admin</h1>
+    <a href="display-product.php">Afficher les produits</a>
+    <br>
+    <a href="create-product.php">Créer un nouveau produit</a>
+    <br><br>
     <a href="display-category.php">Afficher les catégories</a>
     <br>
     <a href="create-category.php">Créer une nouvelle catégorie</a>

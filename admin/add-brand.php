@@ -28,10 +28,13 @@
         header("location:home.php");
     }
 ?>
-    <a href="home.php">Accueil admin</a>
     <br>
     <a href="display-brand.php">Afficher les marques</a>
     <br>
+    <a href="create-brand.php">Créer une autre marque</a>
+    <br><br>
+    <a href="home.php">Accueil admin</a>
+    <br><br>
     <a href="../utils/logout.php">Déconnection</a>
     <script src="../js/tools.js"></script>
 </body>

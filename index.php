@@ -49,8 +49,8 @@
               </button>
               <a class="navbar-brand" href="#">sne*k you</a>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
+            <div id="navbar" class="navbar-collapse collapse d-flex bd-highlight mb-2">
+              <ul class="nav navbar-nav p-2 bd-highlight">
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -66,12 +66,12 @@
                     <li><a href="#">One more separated link</a></li>
                   </ul>
                   </li>
-                    
               </ul>
-               <form class="form-inline mt-2 mt-md-0" style="margin-top: 0.8vh">
+               <form class="form-inline ml-auto p-2 bd-highlight" style="margin-top: 0.8vh">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
+          </div>
            <!-- Modal-->
                       <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
                         <div role="document" class="modal-dialog">

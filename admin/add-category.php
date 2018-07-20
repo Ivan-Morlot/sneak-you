@@ -37,10 +37,13 @@
         header("location:home.php");
     }
 ?>
-    <a href="home.php">Accueil admin</a>
     <br>
     <a href="display-category.php">Afficher les catégories</a>
     <br>
+    <a href="create-category.php">Créer une autre catégorie</a>
+    <br><br>
+    <a href="home.php">Accueil admin</a>
+    <br><br>
     <a href="../utils/logout.php">Déconnection</a>
     <script src="../js/tools.js"></script>
 </body>

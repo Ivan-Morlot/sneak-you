@@ -10,7 +10,7 @@
 <?php
     if(isset($_GET['id'])) {
         $id = $_GET['id'];
-        $req = $db->query("SELECT * FROM brand WHERE (id = $id)");
+        $req = $db->query("SELECT * FROM brand WHERE id = '$id'");
     }
 ?>
     <table border="1">

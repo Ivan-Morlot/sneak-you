@@ -53,5 +53,17 @@ document.addEventListener('click', function (e) {
     }
 });
 
-  
- 
+$(document).ready(function () {
+    $('.prm-switch').on('change', function () {
+        if ($(this).prop('checked') && $(this).is('#prm-true')) {
+            $('.prm-options').each(function () {
+                $(this).prop('disabled', false);
+            });
+        } else {
+            $('.prm-options').each(function () {
+                $(this).val("");
+                $(this).prop('disabled', true);
+            });
+        }
+    });
+});

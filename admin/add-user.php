@@ -157,10 +157,13 @@
         header("location:home.php");
     }
 ?>
+    <br>
+    <a href="display-category.php">Afficher les utilisateurs</a>
+    <br>
+    <a href="create-category.php">Créer un autre utilisateur</a>
+    <br><br>
     <a href="home.php">Accueil admin</a>
-    <br>
-    <a href="display-user.php">Afficher les utilisateurs</a>
-    <br>
+    <br><br>
     <a href="../utils/logout.php">Déconnection</a>
     <script src="../js/tools.js"></script>
 </body>
