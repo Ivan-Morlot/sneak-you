@@ -80,7 +80,7 @@
         <tr>
             <td>Photo</td>
             <td>
-                <img src="../img/<?php echo $dispPictureName ?>" alt="<?php echo $dispPictureName ?>">
+                <img src="../img/<?php echo $dispPictureName ?>" alt="<?php echo $dispPictureName ?>" width="400px">
             </td>
         </tr>
 <?php } ?>
