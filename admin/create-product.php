@@ -22,7 +22,7 @@
                 <td><textarea name="description" maxlength="1000" cols="30" rows="5" style="resize:none"></textarea></td>
             </tr>
             <tr>
-                <td>Prix</td>
+                <td>Prix (en €)</td>
                 <td><input type="number" name="price" step="0.01" min="0" required></td>
             </tr>
             <tr>
@@ -52,7 +52,7 @@
                 <td><input type="number" name="reduction-percent" class="prm-options" step="1" min="0" max="100" disabled></td>
             </tr>
             <tr>
-                <td>Prix après réduction</td>
+                <td>Prix après réduction (en €)</td>
                 <td><input type="number" name="promo-price" class="prm-options" step="0.01" min="0" disabled></td>
             </tr>
             <tr>
@@ -96,7 +96,6 @@
                 <td>Tailles disponibles</td>
                 <td>
                     <select multiple name="sizes[]" required>
-                        <option selected disabled></option>
 <?php
     $req = $db->query("SELECT * FROM size");
     while($siz = $req->fetch(PDO::FETCH_ASSOC)) {

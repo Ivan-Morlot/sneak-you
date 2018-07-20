@@ -55,7 +55,7 @@
                 <?php echo $prd['description'] ?>
             </td>
             <td>
-                <?php echo $prd['price'] ?>
+                <?php echo $prd['price'] ?>€
             </td>
             <td>
                 <img src="../img/<?php echo $prd['picture_name'] ?>" alt="<?php echo $prd['picture_name'] ?>" width="400px">
@@ -67,10 +67,18 @@
                 <?php if(isset($prd['is_on_promo']) && $prd['is_on_promo'] == 0) {echo "Non";} else if(isset($prd['is_on_promo']) && $prd['is_on_promo'] == 1) {echo "Oui";} else {echo "N/A";} ?>
             </td>
             <td>
-                <?php echo $prd['reduction_percent'] ?>
+<?php
+    if ($prd['reduction_percent'] != NULL) {
+        echo $prd['reduction_percent']."%";
+    }
+?>
             </td>
             <td>
-                <?php echo $prd['promo_price'] ?>
+<?php
+    if ($prd['promo_price'] != NULL) {
+        echo $prd['promo_price']."€";
+    }
+?>
             </td>
             <td>
                 <?php if(isset($prd['is_in_selection']) && $prd['is_in_selection'] == 0) {echo "Non";} else if(isset($prd['is_in_selection']) && $prd['is_in_selection'] == 1) {echo "Oui";} else {echo "N/A";} ?>
@@ -78,7 +86,7 @@
             <td>
 <?php
     $brandId = $prd['brand_id'];
-    $reqBrd = $db->query("SELECT * FROM brand WHERE id = '$brandId'");
+    $reqBrd = $db->query("SELECT name FROM brand WHERE id = '$brandId'");
     if($brd = $reqBrd->fetch(PDO::FETCH_ASSOC)) {
         echo $brd['name'];
     }
@@ -87,7 +95,7 @@
             <td>
 <?php
     $categoryId = $prd['category_id'];
-    $reqCat = $db->query("SELECT * FROM category WHERE id = '$categoryId'");
+    $reqCat = $db->query("SELECT name FROM category WHERE id = '$categoryId'");
     if($cat = $reqCat->fetch(PDO::FETCH_ASSOC)) {
         echo $cat['name'];
     }
@@ -96,7 +104,7 @@
             <td>
 <?php
     $productId = $prd['id'];
-    $reqPrdSizes = $db->query("SELECT * FROM size s INNER JOIN product_size ps WHERE ps.product_id = '$productId' AND s.id = ps.size_id");
+    $reqPrdSizes = $db->query("SELECT size FROM size s INNER JOIN product_size ps WHERE ps.product_id = '$productId' AND s.id = ps.size_id");
     while($prdSize = $reqPrdSizes->fetch(PDO::FETCH_ASSOC)) {
         echo $prdSize['size'].'<br>';
     }

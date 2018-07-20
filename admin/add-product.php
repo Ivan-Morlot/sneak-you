@@ -13,7 +13,7 @@
     if(move_uploaded_file($_FILES['picture']['tmp_name'], $uploadfile)) {
         echo "<p>L'image a été téléchargée avec succès.</p>";
     } else {
-        echo "<p>Le téléchargement de l'image est impossible. Attaque potentielle par téléchargement de fichier ou fichier trop lourd.</p>";
+        echo "<p>Aucune image téléchargée (aucun fichier renseigné, fichier trop lourd ou attaque potentielle par téléchargement de fichier.</p>";
     }
 
     if (isset($_POST['ref']) &&
@@ -73,7 +73,7 @@
         <tr>
             <td>Prix</td>
             <td>
-                <?php echo $price ?>
+                <?php echo $price ?>€
             </td>
         </tr>
 <?php if($pictureName != 'NULL') { ?>
@@ -100,13 +100,13 @@
         <tr>
             <td>Pourcent de réduction</td>
             <td>
-                <?php echo $dispReductionPercent ?>
+                <?php echo $dispReductionPercent ?>%
             </td>
         </tr>
         <tr>
             <td>Prix après réduction</td>
             <td>
-                <?php echo $dispPromoPrice ?>
+                <?php echo $dispPromoPrice ?>€
             </td>
         </tr>
 <?php } ?>
@@ -121,8 +121,8 @@
             <td>Marque</td>
             <td>
 <?php
-    $req = $db->query("SELECT * FROM brand WHERE id = $brand");
-    if($brd = $req->fetch(PDO::FETCH_ASSOC)) {
+    $reqBrd = $db->query("SELECT name FROM brand WHERE id = $brand");
+    if($brd = $reqBrd->fetch(PDO::FETCH_ASSOC)) {
         echo $brd['name'];
     }
 ?>
@@ -133,9 +133,20 @@
             <td>Catégorie</td>
             <td>
 <?php
-    $req = $db->query("SELECT * FROM category WHERE id = '$category'");
-    if($cat = $req->fetch(PDO::FETCH_ASSOC)) {
+    $reqCat = $db->query("SELECT name FROM category WHERE id = '$category'");
+    if($cat = $reqCat->fetch(PDO::FETCH_ASSOC)) {
         echo $cat['name'];
+    }
+?>
+            </td>
+        </tr>
+        <tr>
+            <td>Tailles disponibles</td>
+            <td>
+<?php
+    $reqPrdSizes = $db->query("SELECT size FROM size s INNER JOIN product_size ps WHERE ps.product_id = '$thisProductId' AND s.id = ps.size_id");
+    while($prdSize = $reqPrdSizes->fetch(PDO::FETCH_ASSOC)) {
+        echo $prdSize['size'].'<br>';
     }
 ?>
             </td>
