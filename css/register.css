@@ -11,7 +11,7 @@ body{
 }
 
 /*-----for border----*/
-.container{
+.container2{
 	font-family:Roboto,sans-serif;
 	  background-image:url(https://image.freepik.com/free-vector/dark-blue-blurred-background_1034-589.jpg) ;
     
@@ -19,12 +19,12 @@ body{
      margin: 0 auto;
      text-align: center;
      opacity: 0.9;
-     margin-top: 67px;
+     margin-top: 40px;
    box-shadow: 2px 5px 5px 0px #eee;
      max-width: 500px;
      padding-top: 10px;
      height: 500px;
-     margin-top: 166px;
+     margin-top: 40px;
 }
 /*--- for label of first and last name---*/
 .lastname{
