@@ -19,7 +19,7 @@
                 </head>
                 <body>
                     <h1>Vous n'êtes pas autorisé à accéder à cette partie du site.</h1>
-                    <a href="../index.php">Retour à l'accueil</a>
+                    <a href="../index.html">Retour à l'accueil</a>
                     <script src="../js/tools.js"></script>
                 </body>
                 </html>
@@ -35,7 +35,7 @@
             </head>
             <body>
                 <h1>L'identifiant et/ou le mot de passe n'existe(nt) pas.</h1>
-                <a href="index.php">Retour à l'écran de connexion</a>
+                <a href="../index.html">Retour à l'écran de connexion</a>
                 <script src="../js/tools.js"></script>
             </body>
             </html>
