@@ -8,9 +8,9 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="robots" content="all,follow">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<!--<link rel="shortcut icon" href="img/favicon.ico">-->
-	<link rel="stylesheet" href="css/admin.css">
+	<link rel="stylesheet" href="../css/admin.css">
 </head>
 
 <body>
@@ -28,7 +28,6 @@
 					sne*k you
 				</a>
 			</div>
-
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<form class="navbar-form navbar-left" method="GET" role="search">
@@ -46,7 +45,7 @@
 					<li class="dropdown ">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 							Profil
-							<span class="caret"></span>
+						<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" role="menu">
 							<li class="dropdown-header">MON COMPTE</li>
@@ -101,12 +100,12 @@
 	</div>
 
 	<!-- JavaScript files-->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.cookie.js"> </script>
+	<script src="..js/jquery.min.js"></script>
+	<script src="..js/bootstrap.min.js"></script>
+	<script src="..js/jquery.cookie.js"> </script>
 
 	<!-- Main File-->
-	<script src="js/front.js"></script>
+	<script src="..js/front.js"></script>
 
 </body>
 
