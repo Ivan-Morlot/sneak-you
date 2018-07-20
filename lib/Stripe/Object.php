@@ -145,7 +145,7 @@ class Stripe_Object implements ArrayAccess
    * @return Stripe_Object The object of the same class as $this constructed
    *    from the given values.
    */
-  public static function constructFrom($values, $apiKey=null)
+  public function constructFrom($values, $apiKey=null)
   {
     $class = get_class($this);
     return self::scopedConstructFrom($class, $values, $apiKey);
