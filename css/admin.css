@@ -14,4 +14,57 @@ h1.page-header {
 
 .footer {
     width: 100%;
-}  
+}
+
+td, tr {
+    padding: 0.5rem 1rem;
+}
+
+.post-table {
+    border: #ddd 1px inset;
+}
+
+.post-table td:nth-of-type(odd) {
+    background-color: rgb(248, 248, 248);
+}
+
+.post-table td:nth-of-type(even) {
+    background-color: rgb(253, 253, 253);
+}
+
+.display-table tr:last-of-type {
+    border-bottom: #ddd 1px inset;
+}
+
+.display-table td:first-child {
+    border-left: #ddd 1px inset;
+}
+
+.display-table td:last-child {
+    border-right: #ddd 1px inset;
+}
+
+.display-table tr:first-of-type {
+    background-color: #98bbd8;
+    color: #fff;
+}
+
+.display-table tr:nth-of-type(odd):not(:first-of-type) {
+    background-color: rgb(248, 248, 248);
+}
+
+.display-table tr:nth-of-type(even) {
+    background-color: rgb(253, 253, 253);
+}
+
+.display-table tr:first-of-type td {
+    border: unset;
+}
+
+table td + td {
+    border-left: #888 1px solid;
+}
+
+* + table {
+    margin-top: 1rem;
+}

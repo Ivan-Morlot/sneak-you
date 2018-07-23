@@ -1,4 +1,4 @@
-<?php session_start(); require_once("..\utils\admin-check.php")?>
+<?php session_start(); require_once("admin-check.php")?>
 
 <!DOCTYPE html>
 <html lang="fr">

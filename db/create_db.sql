@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS customer (
     credit_card_holder varchar(30),
     credit_card_number varchar(16),
     credit_card_expiration datetime
-)ENGINE=InnoDB;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS customer_order (
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -39,18 +39,18 @@ CREATE TABLE IF NOT EXISTS customer_order (
     status enum('validated', 'canceled', 'in_progress') NOT NULL,
     customer_id int NOT NULL,
     FOREIGN KEY (customer_id) REFERENCES customer(id)
-)ENGINE=InnoDB;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS brand (
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     name varchar(30) NOT NULL
-)ENGINE=InnoDB;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS category (
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     name varchar(30) NOT NULL,
     description varchar(1000)
-)ENGINE=InnoDB;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS product (
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -68,12 +68,12 @@ CREATE TABLE IF NOT EXISTS product (
     FOREIGN KEY (brand_id) REFERENCES brand(id),
     category_id int NOT NULL,
     FOREIGN KEY (category_id) REFERENCES category(id)
-)ENGINE=InnoDB;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS size (
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     size varchar(4) NOT NULL
-)ENGINE=InnoDB;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS product_size (
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS product_size (
     FOREIGN KEY (product_id) REFERENCES product(id),
     size_id int NOT NULL,
     FOREIGN KEY (size_id) REFERENCES size(id)
-)ENGINE=InnoDB;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS order_item (
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -91,4 +91,4 @@ CREATE TABLE IF NOT EXISTS order_item (
     FOREIGN KEY (customer_order_id) REFERENCES customer_order(id),
     product_id int NOT NULL,
     FOREIGN KEY (product_id) REFERENCES product(id)
-)ENGINE=InnoDB;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -123,6 +123,7 @@
     <a href="home.php">Accueil admin</a>
     <br><br>
     <a href="../utils/logout.php">Déconnexion</a>
+    <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/tools.js"></script>
 </body>
 </html>

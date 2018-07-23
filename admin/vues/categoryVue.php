@@ -8,9 +8,9 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="robots" content="all,follow">
-	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
 	<!--<link rel="shortcut icon" href="img/favicon.ico">-->
-	<link rel="stylesheet" href="../css/admin.css">
+	<link rel="stylesheet" href="../../css/admin.css">
 </head>
 
 <body>
@@ -54,7 +54,7 @@
 							</li>
 							<li class="divider"></li>
 							<li>
-								<a href="../utils/logout.php">Se déconnecter</a>
+								<a href="../../utils/logout.php">Se déconnecter</a>
 							</li>
 						</ul>
 					</li>
@@ -68,44 +68,82 @@
 		<div class="col-md-2 sidebar">
 			<ul class="nav nav-pills nav-stacked">
 				<li class="active">
-					<a href="home.php">Lien</a>
+					<a href="#">Gérer les catégories</a>
 				</li>
 				<li>
-					<a href="home1.php">Lien</a>
+					<a href="#">Gérer les marques</a>
 				</li>
 				<li>
-					<a href="#">Lien</a>
+					<a href="#">Gérer les produits</a>
 				</li>
 				<li>
-					<a href="#">Lien</a>
+					<a href="#">Gérer les stocks</a>
 				</li>
 				<li>
-					<a href="#">Lien</a>
+					<a href="#">Gérer les utilisateurs</a>
 				</li>
 			</ul>
 		</div>
 		<div class="col-md-10 content">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					Dashboard
+					Editer une catégorie
 				</div>
 				<div class="panel-body">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-					irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-					cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					<a href="category.php">Tout afficher</a>
+					<form action="category.php" method="post">
+        				<label for="research">Recherche par nom :</label>
+        				<input type="text" name="research">
+						<button type="submit">Rechercher</button>
+    				</form>
+    				<table class="display-table">
+						<tr>
+							<td>ID</td>
+							<td>Nom</td>
+							<td>Description</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<?=$result?>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-10 content">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Ajouter une catégorie
+				</div>
+				<div class="panel-body">
+				<form enctype="multipart/form-data" action="add-category.php" method="post">
+					<table class="post-table">
+						<tr>
+							<td>Nom</td>
+							<td><input type="text" name="name" maxlength="30" required></td>
+						</tr>
+						<tr>
+							<td>Description</td>
+							<td><textarea name="description" maxlength="1000" cols="30" rows="5" style="resize:none"></textarea></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="submit" value="Enregistrer"></td>
+						</tr>
+					</table>
+				</form>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<!-- JavaScript files-->
-	<script src="..js/jquery.min.js"></script>
-	<script src="..js/bootstrap.min.js"></script>
-	<script src="..js/jquery.cookie.js"> </script>
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/jquery.cookie.js"> </script>
 
 	<!-- Main File-->
-	<script src="..js/front.js"></script>
+	<script src="../../js/front.js"></script>
+	<script src="../../js/tools.js"></script>
 
 </body>
 
