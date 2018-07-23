@@ -1,5 +1,5 @@
 <?php session_start();
-    if(isset($_SESSION['auth_level']) && $_SESSION['auth_level'] == 1) header("location:home.php");
+    if(isset($_SESSION['auth_level']) && $_SESSION['auth_level'] == '1') header("location:home.php");
 ?>
 
 <!DOCTYPE html>

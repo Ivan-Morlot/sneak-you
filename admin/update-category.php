@@ -4,7 +4,7 @@
         isset($_POST['name'])) {
         $id = $_POST['id'];
         $name = $_POST['name'];
-        if(isset($_POST['description']) && $_POST['description'] != "") {$dispDescription = $_POST['description']; $description = "'".$dispDescription."'";} else {$description = 'NULL';}
+        if(isset($_POST['description']) && $_POST['description'] != "") {$description = "'".$_POST['description']."'";} else {$description = 'NULL';}
         $db->exec("UPDATE category SET name = '$name', description = $description WHERE id='$id'");
         header("location:display-category.php");
     } else {

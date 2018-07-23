@@ -43,78 +43,78 @@
         <tr>
             <td>Civilité</td>
             <td>
-                <?php echo $gender ?>
+                <?= $gender ?>
             </td>
         </tr>
         <tr>
             <td>Prénom</td>
             <td>
-                <?php echo $prenom ?>
+                <?= $prenom ?>
             </td>
         </tr>
         <tr>
             <td>Nom</td>
             <td>
-                <?php echo $nom ?>
+                <?= $nom ?>
             </td>
         </tr>
         <tr>
             <td>E-mail</td>
             <td>
-                <?php echo $email ?>
+                <?= $email ?>
             </td>
         </tr>
         <tr>
             <td>Niveau d'accès au site</td>
             <td>
-                <?php if($authLevel == 0) {echo "Utilisateur";} else if($authLevel == 1) {echo "Administrateur";} else {echo "N/A";} ?>
+                <?php if($authLevel == '0') {echo "Utilisateur";} else if($authLevel == '1') {echo "Administrateur";} else {echo "N/A";} ?>
             </td>
         </tr>
 <?php if($birthdate != 'NULL') { ?>
         <tr>
             <td>Date de naissance</td>
             <td>
-                <?php echo $dispBirthdate ?>
+                <?= $dispBirthdate ?>
             </td>
         </tr>
 <?php } ?>
         <tr>
             <td>Tél. principal</td>
             <td>
-                <?php echo $mainPhone ?>
+                <?= $mainPhone ?>
             </td>
         </tr>
 <?php if($secPhone != 'NULL') { ?>
         <tr>
             <td>Tél. secondaire</td>
             <td>
-                <?php echo $dispSecPhone ?>
+                <?= $dispSecPhone ?>
             </td>
         </tr>
 <?php } ?>
         <tr>
             <td>Adresse</td>
             <td>
-                <?php echo $address ?>
+                <?= $address ?>
             </td>
         </tr>
         <tr>
             <td>Code postal</td>
             <td>
-                <?php echo $postalCode ?>
+                <?= $postalCode ?>
             </td>
         </tr>
         <tr>
             <td>Ville</td>
             <td>
-                <?php echo $city ?>
+                <?= $city ?>
             </td>
         </tr>
 <?php if($addressSupp != 'NULL') { ?>
         <tr>
             <td>Complément d'adresse</td>
             <td>
-                <?php echo $dispAdressSupp ?>
+                <?= $dispAdressSupp ?>
             </td>
         </tr>
 <?php } ?>
@@ -122,7 +122,7 @@
         <tr>
             <td>Bâtiment</td>
             <td>
-                <?php echo $dispBuilding ?>
+                <?= $dispBuilding ?>
             </td>
         </tr>
 <?php } ?>
@@ -130,7 +130,7 @@
         <tr>
             <td>Escalier</td>
             <td>
-                <?php echo $dispStaircase ?>
+                <?= $dispStaircase ?>
             </td>
         </tr>
 <?php } ?>
@@ -138,7 +138,7 @@
         <tr>
             <td>Etage</td>
             <td>
-                <?php echo $dispFloor ?>
+                <?= $dispFloor ?>
             </td>
         </tr>
 <?php } ?>
@@ -146,7 +146,7 @@
         <tr>
             <td>Porte</td>
             <td>
-                <?php echo $dispDoor ?>
+                <?= $dispDoor ?>
             </td>
         </tr>
 <?php } ?>

@@ -5,7 +5,7 @@
         $password = md5($_POST['password']);
         $req = $db->query("SELECT * FROM customer WHERE (email = '$login' AND password = '$password')");
         if($user = $req->fetch(PDO::FETCH_ASSOC)) {
-            if($user['auth_level'] == 1) {
+            if($user['auth_level'] == '1') {
                 $_SESSION['login'] = $user['email'];
                 $_SESSION['auth_level'] = $user['auth_level'];
                 header("location:home.php");

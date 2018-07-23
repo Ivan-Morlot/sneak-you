@@ -73,7 +73,7 @@
     $req = $db->query("SELECT * FROM brand");
     while($brd = $req->fetch(PDO::FETCH_ASSOC)) {
 ?>
-                        <option value="<?php echo $brd['id'] ?>"><?php echo $brd['name'] ?></option>
+                        <option value="<?= $brd['id'] ?>"><?= $brd['name'] ?></option>
 <?php } ?>
                     </select>
                 </td>
@@ -87,7 +87,7 @@
     $req = $db->query("SELECT * FROM category");
     while($cat = $req->fetch(PDO::FETCH_ASSOC)) {
 ?>
-                        <option value="<?php echo $cat['id'] ?>"><?php echo $cat['name'] ?></option>
+                        <option value="<?= $cat['id'] ?>"><?= $cat['name'] ?></option>
 <?php } ?>
                     </select>
                 </td>
@@ -100,7 +100,7 @@
     $req = $db->query("SELECT * FROM size");
     while($siz = $req->fetch(PDO::FETCH_ASSOC)) {
 ?>
-                        <option value="<?php echo $siz['id'] ?>"><?php echo $siz['size'] ?></option>
+                        <option value="<?= $siz['id'] ?>"><?= $siz['size'] ?></option>
 <?php } ?>
                     </select>
 

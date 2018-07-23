@@ -46,58 +46,58 @@
 <?php while($user = $req->fetch(PDO::FETCH_ASSOC)) { ?>
         <tr>
             <td>
-                <?php echo $user['id'] ?>
+                <?= $user['id'] ?>
             </td>
             <td>
-                <?php echo $user['gender'] ?>
+                <?= $user['gender'] ?>
             </td>
             <td>
-                <?php echo $user['prenom'] ?>
+                <?= $user['prenom'] ?>
             </td>
             <td>
-                <?php echo $user['nom'] ?>
+                <?= $user['nom'] ?>
             </td>
             <td>
-                <?php echo $user['email'] ?>
+                <?= $user['email'] ?>
             </td>
             <td>
-                <?php if($user['auth_level'] == 0) {echo "Utilisateur";} else if($user['auth_level'] == 1) {echo "Administrateur";} else {echo "N/A";} ?>
+                <?php if($user['auth_level'] == '0') {echo "Utilisateur";} else if($user['auth_level'] == '1') {echo "Administrateur";} else {echo "N/A";} ?>
             </td>
             <td>
-                <?php echo $user['birthdate'] ?>
+                <?= $user['birthdate'] ?>
             </td>
             <td>
-                <?php echo $user['main_phone_number'] ?>
+                <?= $user['main_phone_number'] ?>
             </td>
             <td>
-                <?php echo $user['secondary_phone_number'] ?>
+                <?= $user['secondary_phone_number'] ?>
             </td>
             <td>
-                <?php echo $user['delivery_address'] ?>
+                <?= $user['delivery_address'] ?>
             </td>
             <td>
-                <?php echo $user['del_postal_code'] ?>
+                <?= $user['del_postal_code'] ?>
             </td>
             <td>
-                <?php echo $user['del_city'] ?>
+                <?= $user['del_city'] ?>
             </td>
             <td>
-                <?php echo $user['del_address_supp'] ?>
+                <?= $user['del_address_supp'] ?>
             </td>
             <td>
-                <?php echo $user['del_building'] ?>
+                <?= $user['del_building'] ?>
             </td>
             <td>
-                <?php echo $user['del_staircase'] ?>
+                <?= $user['del_staircase'] ?>
             </td>
             <td>
-                <?php echo $user['del_floor'] ?>
+                <?= $user['del_floor'] ?>
             </td>
             <td>
-                <?php echo $user['del_door'] ?>
+                <?= $user['del_door'] ?>
             </td>
-            <td><a href="delete-user.php?id=<?php echo $user['id'] ?>">Supprimer</a></td>
-            <td><a href="edit-user.php?id=<?php echo $user['id'] ?>">Editer</a></td>
+            <td><a href="delete-user.php?id=<?= $user['id'] ?>">Supprimer</a></td>
+            <td><a href="edit-user.php?id=<?= $user['id'] ?>">Editer</a></td>
         </tr>
 <?php }
     $req->closeCursor();

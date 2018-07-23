@@ -37,57 +37,57 @@
 <?php if($user = $req->fetch(PDO::FETCH_ASSOC)) { ?>
         <tr>
             <td>
-                <?php echo $user['id'] ?>
+                <?= $user['id'] ?>
             </td>
             <td>
-                <?php echo $user['gender'] ?>
+                <?= $user['gender'] ?>
             </td>
             <td>
-                <?php echo $user['prenom'] ?>
+                <?= $user['prenom'] ?>
             </td>
             <td>
-                <?php echo $user['nom'] ?>
+                <?= $user['nom'] ?>
             </td>
             <td>
-                <?php echo $user['email'] ?>
+                <?= $user['email'] ?>
             </td>
             <td>
-                <?php if($user['auth_level'] == 0) {echo "Utilisateur";} else if($user['auth_level'] == 1) {echo "Administrateur";} else {echo "N/A";} ?>
+                <?php if($user['auth_level'] == '0') {echo "Utilisateur";} else if($user['auth_level'] == '1') {echo "Administrateur";} else {echo "N/A";} ?>
             </td>
             <td>
-                <?php echo $user['birthdate'] ?>
+                <?= $user['birthdate'] ?>
             </td>
             <td>
-                <?php echo $user['main_phone_number'] ?>
+                <?= $user['main_phone_number'] ?>
             </td>
             <td>
-                <?php echo $user['secondary_phone_number'] ?>
+                <?= $user['secondary_phone_number'] ?>
             </td>
             <td>
-                <?php echo $user['delivery_address'] ?>
+                <?= $user['delivery_address'] ?>
             </td>
             <td>
-                <?php echo $user['del_postal_code'] ?>
+                <?= $user['del_postal_code'] ?>
             </td>
             <td>
-                <?php echo $user['del_city'] ?>
+                <?= $user['del_city'] ?>
             </td>
             <td>
-                <?php echo $user['del_address_supp'] ?>
+                <?= $user['del_address_supp'] ?>
             </td>
             <td>
-                <?php echo $user['del_building'] ?>
+                <?= $user['del_building'] ?>
             </td>
             <td>
-                <?php echo $user['del_staircase'] ?>
+                <?= $user['del_staircase'] ?>
             </td>
             <td>
-                <?php echo $user['del_floor'] ?>
+                <?= $user['del_floor'] ?>
             </td>
             <td>
-                <?php echo $user['del_door'] ?>
+                <?= $user['del_door'] ?>
             </td>
-            <td><a href="delete-user.php?id=<?php echo $user['id'] ?>">Supprimer</a></td>
+            <td><a href="delete-user.php?id=<?= $user['id'] ?>">Supprimer</a></td>
         </tr>
         <?php } ?>
     </table>
@@ -96,7 +96,7 @@
         <table border="1">
             <tr>
                 <td>ID</td>
-                <td><input type="text" name="id" value="<?php echo $id ?>" style="background-color: lightgrey" readonly></td>
+                <td><input type="text" name="id" value="<?= $id ?>" style="background-color: lightgrey" readonly></td>
             </tr>
             <tr>
                 <td>Changer la civilité</td>
@@ -109,19 +109,19 @@
             </tr>
             <tr>
                 <td>Editer le prénom</td>
-                <td><input type="text" name="prenom" maxlength="30" value="<?php echo $user['prenom'] ?>" required></td>
+                <td><input type="text" name="prenom" maxlength="30" value="<?= $user['prenom'] ?>" required></td>
             </tr>
             <tr>
                 <td>Editer le nom</td>
-                <td><input type="text" name="nom" maxlength="30" value="<?php echo $user['nom'] ?>" required></td>
+                <td><input type="text" name="nom" maxlength="30" value="<?= $user['nom'] ?>" required></td>
             </tr>
             <tr>
                 <td>Editer l'e-mail</td>
-                <td><input type="email" name="email" maxlength="50" id="email" onblur="checkEmail('confirm-email', 'email')" value="<?php echo $user['email'] ?>" required></td>
+                <td><input type="email" name="email" maxlength="50" id="email" onblur="checkEmail('confirm-email', 'email')" value="<?= $user['email'] ?>" required></td>
             </tr>
             <tr>
                 <td>Confirmer l'e-mail</td>
-                <td><input type="email" name="confirm-email" maxlength="50" id="confirm-email" onblur="checkEmail('confirm-email', 'email')" value="<?php echo $user['email'] ?>" required></td>
+                <td><input type="email" name="confirm-email" maxlength="50" id="confirm-email" onblur="checkEmail('confirm-email', 'email')" value="<?= $user['email'] ?>" required></td>
             </tr>
             <tr>
                 <td>Changer le mot de passe</td>
@@ -135,34 +135,34 @@
                 <td>Changer le niveau d'accès au site</td>
                 <td>
                     <select name="auth-level" required>
-                        <option value="0" <?php if($user['auth_level'] == 0) echo 'selected' ?>>Utilisateur</option>
-                        <option value="1" <?php if($user['auth_level'] == 1) echo 'selected' ?>>Administrateur</option>
+                        <option value="0" <?php if($user['auth_level'] == '0') echo 'selected' ?>>Utilisateur</option>
+                        <option value="1" <?php if($user['auth_level'] == '1') echo 'selected' ?>>Administrateur</option>
                     </select>
                 </td>
             </tr>
             <tr>
                 <td>Ajouter / Editer la date de naissance</td>
-                <td><input type="date" name="birthdate" value="<?php echo $user['birthdate'] ?>"></td>
+                <td><input type="date" name="birthdate" value="<?= $user['birthdate'] ?>"></td>
             </tr>
             <tr>
                 <td>Editer le tél. principal</td>
-                <td><input type="text" name="main-phone" maxlength="10" size="10" oninput="checkPhoneNumber(this)" value="<?php echo $user['main_phone_number'] ?>" required></td>
+                <td><input type="text" name="main-phone" maxlength="10" size="10" oninput="checkPhoneNumber(this)" value="<?= $user['main_phone_number'] ?>" required></td>
             </tr>
             <tr>
                 <td>Ajouter / Editer le tél. secondaire</td>
-                <td><input type="text" name="sec-phone" maxlength="10" size="10" oninput="checkPhoneNumber(this)" value="<?php echo $user['secondary_phone_number'] ?>"></td>
+                <td><input type="text" name="sec-phone" maxlength="10" size="10" oninput="checkPhoneNumber(this)" value="<?= $user['secondary_phone_number'] ?>"></td>
             </tr>
             <tr>
                 <td>Editer l'adresse</td>
-                <td><textarea name="address" maxlength="100" cols="30" rows="3" style="resize:none" required><?php echo $user['delivery_address'] ?></textarea></td>
+                <td><textarea name="address" maxlength="100" cols="30" rows="3" style="resize:none" required><?= $user['delivery_address'] ?></textarea></td>
             </tr>
             <tr>
                 <td>Editer le code postal</td>
-                <td><input type="text" name="postal-code" maxlength="5" size="5" oninput="checkPostalCode(this)" value="<?php echo $user['del_postal_code'] ?>" required></td>
+                <td><input type="text" name="postal-code" maxlength="5" size="5" oninput="checkPostalCode(this)" value="<?= $user['del_postal_code'] ?>" required></td>
             </tr>
             <tr>
                 <td>Editer la ville</td>
-                <td><input type="text" name="city" maxlength="30" value="<?php echo $user['del_city'] ?>" required></td>
+                <td><input type="text" name="city" maxlength="30" value="<?= $user['del_city'] ?>" required></td>
             </tr>
             <tr>
                 <td>Ajouter / Editer le complément d'adresse</td>

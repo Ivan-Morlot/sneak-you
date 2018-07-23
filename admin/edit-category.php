@@ -23,15 +23,15 @@
 <?php if($cat = $req->fetch(PDO::FETCH_ASSOC)) { ?>
         <tr>
             <td>
-                <?php echo $cat['id'] ?>
+                <?= $cat['id'] ?>
             </td>
             <td>
-                <?php echo $cat['name'] ?>
+                <?= $cat['name'] ?>
             </td>
             <td>
-                <?php echo $cat['description'] ?>
+                <?= $cat['description'] ?>
             </td>
-            <td><a href="delete-category.php?id=<?php echo $cat['id'] ?>">Supprimer</a></td>
+            <td><a href="delete-category.php?id=<?= $cat['id'] ?>">Supprimer</a></td>
         </tr>
 <?php } ?>
     </table>
@@ -40,15 +40,15 @@
         <table border="1">
             <tr>
                 <td>ID</td>
-                <td><input type="text" name="id" value="<?php echo $id ?>" style="background-color: lightgrey" readonly></td>
+                <td><input type="text" name="id" value="<?= $id ?>" style="background-color: lightgrey" readonly></td>
             </tr>
             <tr>
                 <td>Editer le nom</td>
-                <td><input type="text" name="name" maxlength="30" value="<?php echo $cat['name'] ?>" required></td>
+                <td><input type="text" name="name" maxlength="30" value="<?= $cat['name'] ?>" required></td>
             </tr>
             <tr>
                 <td>Editer la description</td>
-                <td><textarea name="description" maxlength="1000" cols="30" rows="5" style="resize:none"><?php echo $cat['description'] ?></textarea></td>
+                <td><textarea name="description" maxlength="1000" cols="30" rows="5" style="resize:none"><?= $cat['description'] ?></textarea></td>
             </tr>
             <tr>
                 <td></td>

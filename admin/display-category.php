@@ -32,16 +32,16 @@
 <?php while($cat = $req->fetch(PDO::FETCH_ASSOC)) { ?>
         <tr>
             <td>
-                <?php echo $cat['id'] ?>
+                <?= $cat['id'] ?>
             </td>
             <td>
-                <?php echo $cat['name'] ?>
+                <?= $cat['name'] ?>
             </td>
             <td>
-                <?php echo $cat['description'] ?>
+                <?= $cat['description'] ?>
             </td>
-            <td><a href="delete-category.php?id=<?php echo $cat['id'] ?>">Supprimer</a></td>
-            <td><a href="edit-category.php?id=<?php echo $cat['id'] ?>">Editer</a></td>
+            <td><a href="delete-category.php?id=<?= $cat['id'] ?>">Supprimer</a></td>
+            <td><a href="edit-category.php?id=<?= $cat['id'] ?>">Editer</a></td>
         </tr>
 <?php }
     $req->closeCursor();

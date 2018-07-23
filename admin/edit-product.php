@@ -35,28 +35,28 @@
 <?php if($prd = $req->fetch(PDO::FETCH_ASSOC)) { ?>
         <tr>
             <td>
-                <?php echo $prd['id'] ?>
+                <?= $prd['id'] ?>
             </td>
             <td>
-                <?php echo $prd['ref'] ?>
+                <?= $prd['ref'] ?>
             </td>
             <td>
-                <?php echo $prd['name'] ?>
+                <?= $prd['name'] ?>
             </td>
             <td>
-                <?php echo $prd['description'] ?>
+                <?= $prd['description'] ?>
             </td>
             <td>
-                <?php echo $prd['price'] ?>€
+                <?= $prd['price'] ?>€
             </td>
             <td>
-                <img src="../img/<?php echo $prd['picture_name'] ?>" alt="<?php echo $prd['picture_name'] ?>" width="400px">
+                <img src="../img/<?= $prd['picture_name'] ?>" alt="<?= $prd['picture_name'] ?>" width="400px">
             </td>
             <td>
-                <?php if(isset($prd['is_available']) && $prd['is_available'] == 0) {echo "Non";} else if(isset($prd['is_available']) && $prd['is_available'] == 1) {echo "Oui";} else {echo "N/A";} ?>
+                <?php if(isset($prd['is_available']) && $prd['is_available'] == '0') {echo "Non";} else if(isset($prd['is_available']) && $prd['is_available'] == '1') {echo "Oui";} else {echo "N/A";} ?>
             </td>
             <td>
-                <?php if(isset($prd['is_on_promo']) && $prd['is_on_promo'] == 0) {echo "Non";} else if(isset($prd['is_on_promo']) && $prd['is_on_promo'] == 1) {echo "Oui";} else {echo "N/A";} ?>
+                <?php if(isset($prd['is_on_promo']) && $prd['is_on_promo'] == '0') {echo "Non";} else if(isset($prd['is_on_promo']) && $prd['is_on_promo'] == '1') {echo "Oui";} else {echo "N/A";} ?>
             </td>
             <td>
 <?php
@@ -73,7 +73,7 @@
 ?>
             </td>
             <td>
-                <?php if(isset($prd['is_in_selection']) && $prd['is_in_selection'] == 0) {echo "Non";} else if(isset($prd['is_in_selection']) && $prd['is_in_selection'] == 1) {echo "Oui";} else {echo "N/A";} ?>
+                <?php if(isset($prd['is_in_selection']) && $prd['is_in_selection'] == '0') {echo "Non";} else if(isset($prd['is_in_selection']) && $prd['is_in_selection'] == '1') {echo "Oui";} else {echo "N/A";} ?>
             </td>
             <td>
 <?php
@@ -102,7 +102,7 @@
     }
 ?>
             </td>
-            <td><a href="delete-product.php?id=<?php echo $prd['id'] ?>">Supprimer</a></td>
+            <td><a href="delete-product.php?id=<?= $prd['id'] ?>">Supprimer</a></td>
         </tr>
 <?php }
     $req->closeCursor();
@@ -113,23 +113,23 @@
         <table border="1">
             <tr>
                 <td>ID</td>
-                <td><input type="text" name="id" value="<?php echo $id ?>" style="background-color: lightgrey" readonly></td>
+                <td><input type="text" name="id" value="<?= $id ?>" style="background-color: lightgrey" readonly></td>
             </tr>
             <tr>
                 <td>Editer la référence</td>
-                <td><input type="text" name="ref" maxlength="10" required></td>
+                <td><input type="text" name="ref" maxlength="10" required value="<?= $prd['ref'] ?>"></td>
             </tr>
             <tr>
                 <td>Editer le nom</td>
-                <td><input type="text" name="name" maxlength="100" required></td>
+                <td><input type="text" name="name" maxlength="100" required value="<?= $prd['name'] ?>"></td>
             </tr>
             <tr>
                 <td>Editer la description</td>
-                <td><textarea name="description" maxlength="1000" cols="30" rows="5" style="resize:none"></textarea></td>
+                <td><textarea name="description" maxlength="1000" cols="30" rows="5" style="resize:none"><?= $prd['description'] ?></textarea></td>
             </tr>
             <tr>
                 <td>Editer le prix (en €)</td>
-                <td><input type="number" name="price" step="0.01" min="0" required></td>
+                <td><input type="number" name="price" step="0.01" min="0" required value="<?= $prd['price'] ?>"></td>
             </tr>
             <tr>
                 <td>Changer la photo</td>
@@ -138,35 +138,35 @@
             <tr>
                 <td>Disponible</td>
                 <td>
-                    <input type="radio" name="is-available" id="avb-true" value="1">
+                    <input type="radio" name="is-available" id="avb-true" value="1" <?php if($prd['is_available'] == '1') echo 'checked' ?>>
                     <label for="avb-true">Oui</label>
-                    <input type="radio" name="is-available" id="avb-false" value="0">
+                    <input type="radio" name="is-available" id="avb-false" value="0" <?php if($prd['is_available'] == '0') echo 'checked' ?>>
                     <label for="avb-false">Non</label>
                 </td>
             </tr>
             <tr>
                 <td>En promotion</td>
                 <td>
-                    <input type="radio" name="is-on-promo" class="prm-switch" id="prm-true" value="1">
+                    <input type="radio" name="is-on-promo" class="prm-switch" id="prm-true" value="1" <?php if($prd['is_on_promo'] == '1') echo 'checked' ?>>
                     <label for="prm-true">Oui</label>
-                    <input type="radio" name="is-on-promo" class="prm-switch" id="prm-false" value="0">
+                    <input type="radio" name="is-on-promo" class="prm-switch" id="prm-false" value="0" <?php if($prd['is_on_promo'] == '0') echo 'checked' ?>>
                     <label for="prm-false">Non</label>
                 </td>
             </tr>
             <tr>
                 <td>Pourcent de réduction</td>
-                <td><input type="number" name="reduction-percent" class="prm-options" step="1" min="0" max="100" disabled></td>
+                <td><input type="number" name="reduction-percent" class="prm-options" step="1" min="0" max="100" disabled value="<?= $prd['reduction_percent'] ?>"></td>
             </tr>
             <tr>
                 <td>Prix après réduction (en €)</td>
-                <td><input type="number" name="promo-price" class="prm-options" step="0.01" min="0" disabled></td>
+                <td><input type="number" name="promo-price" class="prm-options" step="0.01" min="0" disabled value="<?= $prd['promo_price'] ?>"></td>
             </tr>
             <tr>
                 <td>En sélection</td>
                 <td>
-                    <input type="radio" name="is-in-selection" id="sel-true" value="1">
+                    <input type="radio" name="is-in-selection" id="sel-true" value="1" <?php if($prd['is_in_selection'] == '1') echo 'checked' ?>>
                     <label for="sel-true">Oui</label>
-                    <input type="radio" name="is-in-selection" id="sel-false" value="0">
+                    <input type="radio" name="is-in-selection" id="sel-false" value="0" <?php if($prd['is_in_selection'] == '0') echo 'checked' ?>>
                     <label for="sel-false">Non</label>
                 </td>
             </tr>
@@ -174,12 +174,12 @@
                 <td>Changer la marque</td>
                 <td>
                     <select name="brand">
-                        <option selected disabled></option>
+                        <option <?php if($prd['brand_id'] == 'NULL') echo 'selected' ?> disabled></option>
 <?php
     $req = $db->query("SELECT * FROM brand");
     while($brd = $req->fetch(PDO::FETCH_ASSOC)) {
 ?>
-                        <option value="<?php echo $brd['id'] ?>"><?php echo $brd['name'] ?></option>
+                        <option value="<?= $brd['id'] ?>" <?php if($prd['brand_id'] == $brd['id']) echo 'selected' ?>><?= $brd['name'] ?></option>
 <?php } ?>
                     </select>
                 </td>
@@ -188,12 +188,12 @@
                 <td>Changer la catégorie</td>
                 <td>
                     <select name="category" required>
-                        <option selected disabled></option>
+                        <option <?php if($prd['category_id'] == 'NULL') echo 'selected' ?> disabled></option>
 <?php
     $req = $db->query("SELECT * FROM category");
     while($cat = $req->fetch(PDO::FETCH_ASSOC)) {
 ?>
-                        <option value="<?php echo $cat['id'] ?>"><?php echo $cat['name'] ?></option>
+                        <option value="<?= $cat['id'] ?>" <?php if($prd['category_id'] == $cat['id']) echo 'selected' ?>><?= $cat['name'] ?></option>
 <?php } ?>
                     </select>
                 </td>
@@ -206,7 +206,7 @@
     $req = $db->query("SELECT * FROM size");
     while($siz = $req->fetch(PDO::FETCH_ASSOC)) {
 ?>
-                        <option value="<?php echo $siz['id'] ?>"><?php echo $siz['size'] ?></option>
+                        <option value="<?= $siz['id'] ?>"><?= $siz['size'] ?></option>
 <?php } ?>
                     </select>
 

@@ -22,12 +22,12 @@
 <?php if($brd = $req->fetch(PDO::FETCH_ASSOC)) { ?>
         <tr>
             <td>
-                <?php echo $brd['id'] ?>
+                <?= $brd['id'] ?>
             </td>
             <td>
-                <?php echo $brd['name'] ?>
+                <?= $brd['name'] ?>
             </td>
-            <td><a href="delete-brand.php?id=<?php echo $brd['id'] ?>">Supprimer</a></td>
+            <td><a href="delete-brand.php?id=<?= $brd['id'] ?>">Supprimer</a></td>
         </tr>
 <?php } ?>
     </table>
@@ -36,11 +36,11 @@
         <table border="1">
             <tr>
                 <td>ID</td>
-                <td><input type="text" name="id" value="<?php echo $id ?>" style="background-color: lightgrey" readonly></td>
+                <td><input type="text" name="id" value="<?= $id ?>" style="background-color: lightgrey" readonly></td>
             </tr>
             <tr>
                 <td>Editer le nom</td>
-                <td><input type="text" name="name" maxlength="30" value="<?php echo $brd['name'] ?>" required></td>
+                <td><input type="text" name="name" maxlength="30" value="<?= $brd['name'] ?>" required></td>
             </tr>
             <tr>
                 <td></td>

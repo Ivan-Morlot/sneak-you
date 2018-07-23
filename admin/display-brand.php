@@ -31,13 +31,13 @@
 <?php while($brd = $req->fetch(PDO::FETCH_ASSOC)) { ?>
         <tr>
             <td>
-                <?php echo $brd['id'] ?>
+                <?= $brd['id'] ?>
             </td>
             <td>
-                <?php echo $brd['name'] ?>
+                <?= $brd['name'] ?>
             </td>
-            <td><a href="delete-brand.php?id=<?php echo $brd['id'] ?>">Supprimer</a></td>
-            <td><a href="edit-brand.php?id=<?php echo $brd['id'] ?>">Editer</a></td>
+            <td><a href="delete-brand.php?id=<?= $brd['id'] ?>">Supprimer</a></td>
+            <td><a href="edit-brand.php?id=<?= $brd['id'] ?>">Editer</a></td>
         </tr>
 <?php }
     $req->closeCursor();

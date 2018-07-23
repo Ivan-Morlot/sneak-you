@@ -19,14 +19,14 @@
         <tr>
             <td>Nom</td>
             <td>
-                <?php echo $name ?>
+                <?= $name ?>
             </td>
         </tr>
 <?php if($description != 'NULL') { ?>
         <tr>
             <td>Description</td>
             <td>
-                <?php echo $dispDescription ?>
+                <?= $dispDescription ?>
             </td>
         </tr>
 <?php } ?>

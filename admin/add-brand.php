@@ -18,7 +18,7 @@
         <tr>
             <td>Nom</td>
             <td>
-                <?php echo $name ?>
+                <?= $name ?>
             </td>
         </tr>
     </table>

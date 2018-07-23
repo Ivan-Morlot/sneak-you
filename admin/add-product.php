@@ -53,67 +53,67 @@
         <tr>
             <td>Référence</td>
             <td>
-                <?php echo $ref ?>
+                <?= $ref ?>
             </td>
         </tr>
         <tr>
             <td>Nom</td>
             <td>
-                <?php echo $name ?>
+                <?= $name ?>
             </td>
         </tr>
 <?php if($description != 'NULL') { ?>
         <tr>
             <td>Description</td>
             <td>
-                <?php echo $dispDescription ?>
+                <?= $dispDescription ?>
             </td>
         </tr>
 <?php } ?>
         <tr>
             <td>Prix</td>
             <td>
-                <?php echo $price ?>€
+                <?= $price ?>€
             </td>
         </tr>
 <?php if($pictureName != 'NULL') { ?>
         <tr>
             <td>Photo</td>
             <td>
-                <img src="../img/<?php echo $dispPictureName ?>" alt="<?php echo $dispPictureName ?>" width="400px">
+                <img src="../img/<?= $dispPictureName ?>" alt="<?= $dispPictureName ?>" width="400px">
             </td>
         </tr>
 <?php } ?>
         <tr>
             <td>Disponible</td>
             <td>
-                <?php if(isset($dispIsAvailable) && $dispIsAvailable == 0) {echo "Non";} else if(isset($dispIsAvailable) && $dispIsAvailable == 1) {echo "Oui";} else {echo "N/A";} ?>
+                <?php if(isset($dispIsAvailable) && $dispIsAvailable == '0') {echo "Non";} else if(isset($dispIsAvailable) && $dispIsAvailable == '1') {echo "Oui";} else {echo "N/A";} ?>
             </td>
         </tr>
         <tr>
             <td>En promotion</td>
             <td>
-                <?php if(isset($dispIsOnPromo) && $dispIsOnPromo == 0) {echo "Non";} else if(isset($dispIsOnPromo) && $dispIsOnPromo == 1) {echo "Oui";} else {echo "N/A";} ?>
+                <?php if(isset($dispIsOnPromo) && $dispIsOnPromo == '0') {echo "Non";} else if(isset($dispIsOnPromo) && $dispIsOnPromo == '1') {echo "Oui";} else {echo "N/A";} ?>
             </td>
         </tr>
-<?php if(isset($dispIsOnPromo) && $dispIsOnPromo == 1 && $reductionPercent != 'NULL' && $promoPrice != 'NULL') { ?>
+<?php if(isset($dispIsOnPromo) && $dispIsOnPromo == '1' && $reductionPercent != 'NULL' && $promoPrice != 'NULL') { ?>
         <tr>
             <td>Pourcent de réduction</td>
             <td>
-                <?php echo $dispReductionPercent ?>%
+                <?= $dispReductionPercent ?>%
             </td>
         </tr>
         <tr>
             <td>Prix après réduction</td>
             <td>
-                <?php echo $dispPromoPrice ?>€
+                <?= $dispPromoPrice ?>€
             </td>
         </tr>
 <?php } ?>
         <tr>
             <td>En sélection</td>
             <td>
-                <?php if(isset($dispIsInSelection) && $dispIsInSelection == 0) {echo "Non";} else if(isset($dispIsInSelection) && $dispIsInSelection == 1) {echo "Oui";} else {echo "N/A";} ?>
+                <?php if(isset($dispIsInSelection) && $dispIsInSelection == '0') {echo "Non";} else if(isset($dispIsInSelection) && $dispIsInSelection == '1') {echo "Oui";} else {echo "N/A";} ?>
             </td>
         </tr>
 <?php if($brand != 'NULL') { ?>

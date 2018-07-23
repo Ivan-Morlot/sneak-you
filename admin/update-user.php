@@ -20,13 +20,13 @@
         $address = $_POST['address'];
         $postalCode = $_POST['postal-code'];
         $city = $_POST['city'];
-        if(isset($_POST['birthdate']) && $_POST['birthdate'] != "") {$dispBirthdate = $_POST['birthdate']; $birthdate = "'".$dispBirthdate."'";} else {$birthdate = 'NULL';}
-        if(isset($_POST['sec-phone']) && $_POST['sec-phone'] != "") {$dispSecPhone = $_POST['sec-phone']; $secPhone = "'".$dispSecPhone."'";} else {$secPhone = 'NULL';}
-        if(isset($_POST['address_supp']) && $_POST['address_supp'] != "") {$dispAddressSupp = $_POST['address_supp']; $addressSupp = "'".$dispAddressSupp."'";} else {$addressSupp = 'NULL';}
-        if(isset($_POST['building']) && $_POST['building'] != "") {$dispBuilding = $_POST['building']; $building = "'".$dispBuilding."'";} else {$building = 'NULL';}
-        if(isset($_POST['staircase']) && $_POST['staircase'] != "") {$dispStaircase = $_POST['staircase']; $staircase = "'".$dispStaircase."'";} else {$staircase = 'NULL';}
-        if(isset($_POST['floor']) && $_POST['floor'] != "") {$dispFloor = $_POST['floor']; $floor = "'".$dispFloor."'";} else {$floor = 'NULL';}
-        if(isset($_POST['door']) && $_POST['door'] != "") {$dispDoor = $_POST['door']; $door = "'".$dispDoor."'";} else {$door = 'NULL';}
+        if(isset($_POST['birthdate']) && $_POST['birthdate'] != "") {$birthdate = "'".$_POST['birthdate']."'";} else {$birthdate = 'NULL';}
+        if(isset($_POST['sec-phone']) && $_POST['sec-phone'] != "") {$secPhone = "'".$_POST['sec-phone']."'";} else {$secPhone = 'NULL';}
+        if(isset($_POST['address_supp']) && $_POST['address_supp'] != "") {$addressSupp = "'".$_POST['address_supp']."'";} else {$addressSupp = 'NULL';}
+        if(isset($_POST['building']) && $_POST['building'] != "") {$building = "'".$_POST['building']."'";} else {$building = 'NULL';}
+        if(isset($_POST['staircase']) && $_POST['staircase'] != "") {$staircase = "'".$_POST['staircase']."'";} else {$staircase = 'NULL';}
+        if(isset($_POST['floor']) && $_POST['floor'] != "") {$floor = "'".$_POST['floor']."'";} else {$floor = 'NULL';}
+        if(isset($_POST['door']) && $_POST['door'] != "") {$door = "'".$_POST['door']."'";} else {$door = 'NULL';}
         if(isset($_POST['password']) && $_POST['password'] != "") {
             $password = md5($_POST['password']);
             $db->exec("UPDATE customer SET gender = '$gender', prenom = '$prenom', nom = '$nom', email = '$email', password = '$password', auth_level = '$authLevel', birthdate = $birthdate, main_phone_number = '$mainPhone', secondary_phone_number = $secPhone, delivery_address = '$address', del_postal_code = '$postalCode', del_city = '$city', del_address_supp = $addressSup, del_building = $building, del_staircase = $staircase, del_floor = $floor, del_door = $door WHERE id='$id'");
