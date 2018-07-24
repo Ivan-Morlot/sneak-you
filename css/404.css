@@ -1,6 +1,19 @@
 body {
     background: #dedede;
 }
+
 .page-wrap {
     min-height: 100vh;
+}
+
+.er404 {
+    margin-top: 4rem;
+}
+
+span {
+    font-size: 3rem;
+}
+
+.lead {
+    margin-top: 2rem;
 }

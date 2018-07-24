@@ -2,6 +2,10 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
+html {
+  overflow-y: scroll;
+}
+
 body {
   padding-bottom: 40px;
   color: #5a5a5a;
@@ -22,7 +26,7 @@ body {
 
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
-  position: absolute;
+  position: relative;
   top: 0;
   right: 0;
   left: 0;
@@ -37,20 +41,33 @@ body {
 .navbar-wrapper .navbar {
   padding-right: 15px;
   padding-left: 15px;
+  margin-bottom: unset;
 }
-.navbar-wrapper .navbar .container {
- 
+@media (min-width: 768px) {
+  .extended-searchbar {
+    min-width: 300px;
+  }
 }
 
+.navbar-inverse {
+  border-color: #333;
+}
 
+#navbar .form-search {
+  margin-top: 1vh;
+  margin-bottom: 8px;
+}
+
+.form-control {
+  display: inline-block;
+  width: 80%;
+}
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
 /* Carousel base class */
 .carousel {
-  height: 500px;
-  margin-top: 42px;
   margin-bottom: 60px;
 }
 /* Since positioning the image, we need to help out the caption */
@@ -93,7 +110,7 @@ body {
 ------------------------- */
 
 .featurette-divider {
-  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+  margin: 50px 0; /* Space out the Bootstrap <hr> more */
 }
 
 /* Thin out the marketing headings */
@@ -164,9 +181,6 @@ body {
     transform: scale(0);
     -webkit-transition: all 350ms ease;
     transition: all 350ms ease;
-
-}
-#portfolio-container .tile:hover { 
 
 }
 
@@ -245,7 +259,7 @@ body {
 }
 
 #portfolio-container {
-    margin-top:12vh;
+    margin-top:2vh;
 }
 
 .img-circle {
@@ -253,12 +267,15 @@ body {
     height:unset;
 }
 
-.container marketing > .row {
-    display: flex;
-    flex-wrap: wrap;
+.container.marketing > .row > div {
+  margin-bottom: 3rem;
 }
 
-.text-center {
+.container.marketing > .row img {
+  margin-bottom: 1rem;
+}
+
+#product-container .text-center {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -281,4 +298,8 @@ body {
 
 .col-md-offset-12 {
         margin-left:unset;
+}
+
+.thumbnail.pull-left {
+  margin-right: 1rem;
 }
