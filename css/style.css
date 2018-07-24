@@ -201,7 +201,7 @@ body {
 }
 
 #portfolio-container .btn {
-    font-family: Lato;
+    font-family: sans-serif;
     font-size: 18px;
     font-weight: normal;
     text-decoration: none;
@@ -270,4 +270,15 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+}
+
+/*modal */
+
+.modal-body {
+    background-color: aliceblue;
+}
+
+
+.col-md-offset-12 {
+        margin-left:unset;
 }
