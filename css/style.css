@@ -39,7 +39,7 @@ body {
   padding-left: 15px;
 }
 .navbar-wrapper .navbar .container {
-  width: auto;
+ 
 }
 
 
@@ -68,7 +68,7 @@ body {
   top: 0;
   left: 0;
   min-width: 100%;
-  height: 500px;
+  height: unset;
 }
 
 
@@ -248,4 +248,26 @@ body {
     margin-top:12vh;
 }
 
+.img-circle {
+    border-radius: 0%;
+    height:unset;
+}
 
+.container marketing > .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+.open>.dropdown-menu {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}

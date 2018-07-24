@@ -140,4 +140,8 @@ body{
 	transition: background-color 1.15s ease-in-out,border-color 1.15s ease-in-out,box-shadow 1.15s ease-in-out;
 	
 }	 
+
+.form-control {
+    width:unset;
+}
 	  
