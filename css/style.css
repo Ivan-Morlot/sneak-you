@@ -2,11 +2,8 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
-html {
-  overflow-y: scroll;
-}
-
 body {
+  overflow-y: scroll;
   padding-bottom: 40px;
   color: #5a5a5a;
 }
@@ -223,7 +220,7 @@ body {
     display: inline-block;
     line-height: normal;
     padding: 5px 10px;
-    margin: 0;
+    margin: 3px;
     height: auto;
     border: 1px solid;
     vertical-align: middle;
@@ -292,14 +289,9 @@ body {
 /*modal */
 
 .modal-body {
-    background-color: aliceblue;
+  background-color: aliceblue;
 }
-
 
 .col-md-offset-12 {
-        margin-left:unset;
-}
-
-.thumbnail.pull-left {
-  margin-right: 1rem;
+  margin-left:unset;
 }

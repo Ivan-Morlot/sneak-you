@@ -5,13 +5,8 @@
 /*-----Background-----*/
 
 body{
-	 background-image:url("../img/store.png");
-	 background-repeat:no-repeat;
-	 background-size:cover;
-	 width:100%;
-	 height:100vh;
-	 overflow:auto;
-	 
+	 background:url("../img/sneakers.jpg") no-repeat fixed;
+   background-size: cover;
 }
 
 /*-----for border----*/
@@ -22,11 +17,10 @@ body{
      text-align: center;
      opacity: 0.9;
      margin-top: 40px;
-     box-shadow: 2px 5px 5px 0px #555;
+     box-shadow: 2px 5px 5px 0px rgba(0, 0, 0, 0.4);
      max-width: 500px;
      padding-top: 10px;
      padding-bottom: 30px;
-     margin-top: 40px;
 }
 /*--- for label of first and last name---*/
 .lastname, .firstname{
@@ -107,5 +101,10 @@ body{
 }
 .form-control {
     width:unset;
+}
+
+.min-title {
+  font-size: 22px;
+  color: #bee9ff;
 }
 	  

@@ -25,7 +25,7 @@
     <![endif]-->
 
   <!-- Custom styles for this template -->
-  <link href="css/register.css" rel="stylesheet">
+  <link href="css/account.css" rel="stylesheet">
   <link href="css/carousel.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 </head>
@@ -63,7 +63,7 @@
               <a href="contact.html">Nous contacter</a>
             </li>
             <li>
-              <a href="register.html">Se connecter / S'inscrire</a>
+              <a href="register.html">S'inscrire</a>
             </li>
             <li>
               <a href="cart.html">
@@ -71,37 +71,19 @@
                 Mon panier
               </a>
             </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <span class="glyphicon glyphicon-asterisk"></span>
-                Mon-compte
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="#">Profil</a>
-                </li>
-                <li>
-                  <a href="#">Mes commandes</a>
-                </li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Compte</li>
-                <li>
-                  <a href="#">Utiliser un autre compte</a>
-                </li>
-                <li>
-                  <a href="#">Se déconnecter</a>
-                </li>
-              </ul>
+            <li>
+              <a href="connect.html">Se connecter</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
   </div>
-  <div class="container2">
+  <form action="index.html" method="post" class="container2">
     <!---heading---->
-    <header class="heading"> Inscrivez-vous !</header>
+    <header class="heading">
+      Formulaire d'inscription
+    </header>
     <hr>
     <!---Form starting---->
     <div class="row ">
@@ -198,12 +180,11 @@
           </div>
         </div>
         <div class="col-sm-12">
-          <div class="btn btn-warning">S'inscire</div>
+          <button class="btn btn-warning" type="submit">S'inscire</button>
         </div>
       </div>
     </div>
-  </div>
-
+  </form>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
   <script src="js/bootstrap.min.js"></script>

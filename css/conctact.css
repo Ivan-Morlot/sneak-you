@@ -63,10 +63,6 @@ textarea.form-control {
 }
 
 body{
-	 background-image:url("../img/Black_Converse_sneakers.png");
-	 background-repeat:no-repeat;
-	 background-size:cover;
-	 width:100%;
-	 height:100vh;
-	 overflow:auto;
+   background:url("../img/Black_Converse_sneakers.png") no-repeat fixed;
+   background-size: cover;
 }
