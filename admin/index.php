@@ -39,9 +39,9 @@
               <div class="info d-flex align-items-center">
                 <div class="content">
                   <div class="logo">
-                    <h1>Bienvenue Maître !</h1>
+                    <h1>sne*k you</h1>
+                    <p>Espace administrateur</p>
                   </div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                 </div>
               </div>
             </div>
@@ -51,12 +51,12 @@
                 <div class="content">
                   <form class="form-validate" action="auth.php" method="post">
                     <div class="form-group">
-                      <input id="register-username" type="text" name="login" required data-msg="Please enter your username" class="input-material">
-                      <label for="register-username" class="label-material">User Name</label>
+                      <input id="register-username" type="text" name="login" required data-msg="Veuillez entrer votre e-mail administrateur" class="input-material">
+                      <label for="register-username" class="label-material">Login</label>
                     </div>
                     <div class="form-group">
-                      <input id="register-password" type="password" name="password" required data-msg="Please enter your password" class="input-material">
-                      <label for="register-password" class="label-material">password</label>
+                      <input id="register-password" type="password" name="password" required data-msg="Veuillez entrer votre mot de passe" class="input-material">
+                      <label for="register-password" class="label-material">Mot de passe</label>
                     </div>
                     <div class="form-group">
                       <button id="regidter" type="submit" name="registerSubmit" class="btn btn-primary">Connect</button>

@@ -67,46 +67,42 @@
 	<div class="container-fluid main-container">
 		<div class="col-md-2 sidebar">
 			<ul class="nav nav-pills nav-stacked">
-				<li class="active">
+				<li>
 					<a href="category.php">Gérer les catégories</a>
 				</li>
 				<li>
-					<a href="#">Gérer les marques</a>
+					<a href="brand.php">Gérer les marques</a>
 				</li>
 				<li>
-					<a href="#">Gérer les produits</a>
+					<a href="product.php">Gérer les produits</a>
 				</li>
 				<li>
-					<a href="#">Gérer les stocks</a>
+					<a href="stock.php">Gérer les stocks</a>
 				</li>
 				<li>
-					<a href="#">Gérer les utilisateurs</a>
+					<a href="user.php">Gérer les utilisateurs</a>
 				</li>
 			</ul>
 		</div>
 		<div class="col-md-10 content">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					Editer une catégorie
+					Assistant
 				</div>
 				<div class="panel-body">
-					<a href="category.php">Tout afficher</a>
-					<form action="category.php" method="post">
-        				<label for="research">Recherche par nom :</label>
-        				<input type="text" name="research">
-						<button type="submit">Rechercher</button>
-    				</form>
-					<?=$displayVue?>
+					« <strong>Heureux de vous revoir maître !</strong> »
 				</div>
 			</div>
 		</div>
 		<div class="col-md-10 content">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					Ajouter une catégorie
+					Dashboard
 				</div>
 				<div class="panel-body">
-				<?=$addingVue?>
+					<p>
+						<i>Rien pour le moment</i>
+					</p>
 				</div>
 			</div>
 		</div>

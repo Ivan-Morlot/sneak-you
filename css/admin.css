@@ -68,3 +68,9 @@ table td + td {
 * + table {
     margin-top: 1rem;
 }
+
+@media (min-width: 992px) {
+    .sidebar {
+        height: 100vh;
+    }
+}
