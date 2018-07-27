@@ -231,26 +231,43 @@ body {
 
 
 
-#portfolio-container .btn:hover {
-  text-decoration: none;color:#fff;background-color:#FF1351;
+#portfolio-container .btn.fil-cat:hover:not(.active) {
+  text-decoration: none;background-color:rgba(19, 169, 255, 0.5);
 }
 
+#portfolio-container .btn.fil-tmp:hover:not(.active) {
+  text-decoration: none;background-color:rgba(255, 19, 82, 0.5);
+}
+
+#portfolio-container .btn.fil-brd:hover:not(.active),
+#dropdownMenu2:hover:not(.active) {
+  text-decoration: none;background-color:rgba(188, 226, 19, 0.5);
+}
+
+#portfolio-container .btn:active,
 #portfolio-container .btn:focus {
   outline: none;
-  border-color: var(--darken-2);
-  box-shadow: 0 0 0 3px var(--darken-3);
 }
+
 /*Portfolio===============================*/
-
-
-#portfolio-container .active {
-   background-color:#FF1351;color:#fff;
+#portfolio-container .fil-cat.active,
+#portfolio-container .fil-cat.active:active {
+   background-color:#13a9ff;color:#fff;
     outline: 0;
     box-shadow: none; 
 }
-
-#portfolio-container .active:active{
-   background-color:#FF1351;color:#fff;
+#portfolio-container .fil-tmp.active,
+#portfolio-container .fil-tmp.active:active {
+   background-color:#ff1351;color:#fff;
+    outline: 0;
+    box-shadow: none; 
+}
+#portfolio-container .fil-brd.active,
+#portfolio-container .fil-brd.active:active,
+#portfolio-container #dropdownMenu2.active,
+#portfolio-container #dropdownMenu2.active:active
+ {
+   background-color:#bce213;color:#fff;
     outline: 0;
     box-shadow: none; 
 }
