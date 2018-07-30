@@ -1,65 +1,77 @@
-.content-header{
-  font-family: 'roboto', sans-serif;
-  color:#fcc500;
-  font-size: 38px;
+.content-header {
+    font-family: 'roboto', sans-serif;
+    color: #fcc500;
+    font-size: 38px;
 }
 
-.section-content{
-  text-align: center; 
+.section-content {
+    text-align: center;
 
 }
-#contact{
-  font-family: 'Teko', sans-serif;
-  padding: 2vh;
-  padding-bottom: 5vh;
-  width: 100%;
-  height:auto;
-  background: #3a6186; /* fallback for old browsers */
-  opacity: 0.9;
-  color : #fff;
-  background-image: url("../img/dark-blue-blurred-background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+
+#contact {
+    font-family: 'Teko', sans-serif;
+    padding: 2vh;
+    padding-bottom: 5vh;
+    width: 100%;
+    height: auto;
+    background: #3a6186;
+    /* fallback for old browsers */
+    opacity: 0.9;
+    color: #fff;
+    background-image: url("../img/dark-blue-blurred-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
 #contact h4 {
-  margin-top: 30px;
-}
-.contact-section{
-  padding-top: 20px;
+    margin-top: 30px;
 }
 
-.form-line{
-  border-right: 1px solid #B29999;
+.contact-section {
+    padding-top: 20px;
 }
 
-.form-group{
-  margin-top: 10px;
+@media (min-width:992px) {
+
+    .form-line {
+        border-right: 1px solid #B29999;
+    }
 }
-label{
-  font-size: 1.2em;
-  line-height: 1em;
-  font-weight: normal;
+
+
+
+.form-group {
+    margin-top: 10px;
 }
-#contact .form-control{
-  font-size: 1.2em;
-  color: #080808;
-  display: block;
+
+label {
+    font-size: 1.2em;
+    line-height: 1em;
+    font-weight: normal;
 }
+
+#contact .form-control {
+    font-size: 1.2em;
+    color: #080808;
+    display: block;
+}
+
 textarea.form-control {
     height: 135px;
-   /* margin-top: px;*/
+    /* margin-top: px;*/
 }
 
-.submit{
-  font-size: 1.2em;
-  float: right;
-  width: 150px;
-  background-color: transparent;
-  color: #fff;
+.submit {
+    font-size: 1.2em;
+    float: right;
+    width: 150px;
+    background-color: transparent;
+    color: #fff;
 
 }
 
-body{
-   background:url("../img/Black_Converse_sneakers.png") no-repeat fixed;
-   background-size: cover;
+body {
+    background: url("../img/Black_Converse_sneakers.png") no-repeat fixed;
+    background-size: cover;
 }
