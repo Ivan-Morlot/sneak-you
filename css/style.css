@@ -5,7 +5,9 @@
 html {
   overflow-y: scroll; 
 }
-
+.modal-open {
+  padding-right: unset !important;
+}
 body {
   overflow: hidden;
   padding-bottom: 40px;
