@@ -5,7 +5,7 @@
     
     require_once "../utils/connection.php";
     
-    require "models/categoryModel.php";
+    require "models/brandModel.php";
     
     $createDiv = '';
     
@@ -14,15 +14,11 @@
     $result = '';
 
     $createDiv .= '
-        <form enctype="multipart/form-data" action="category.php?req=create" method="post">
+        <form enctype="multipart/form-data" action="brand.php?req=create" method="post">
             <table class="post-table">
                 <tr>
                     <td>Nom</td>
                     <td><input type="text" name="name" maxlength="30" required></td>
-                </tr>
-                <tr>
-                    <td>Description</td>
-                    <td><textarea name="description" maxlength="1000" cols="30" rows="5" style="resize:none"></textarea></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -34,9 +30,9 @@
 
     if(isset($_GET['req']) && $_GET['req'] == 'delete' && isset($_GET['id'])) {
         $id = $_GET['id'];
-        deleteCat($db, $id);
+        deleteBrd($db, $id);
     }
-    
+
     if (isset($_GET['req']) && $_GET['req'] == 'create' && isset($_POST['name'])) {
         $name = $_POST['name'];
         if(isset($_POST['description']) && $_POST['description'] != "") {
