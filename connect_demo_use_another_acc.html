@@ -25,17 +25,13 @@
     <![endif]-->
 
   <!-- Custom styles for this template -->
-
-  <link href="css/conctact.css" rel="stylesheet">
+  <link href="css/account.css" rel="stylesheet">
+  <link href="css/carousel.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 </head>
-<!-- NAVBAR
-================================================== -->
 
 <body>
   <div class="navbar-wrapper">
-
-
     <nav class="navbar navbar-inverse navbar-static-top" style="margin-bottom:0px">
       <div class="container">
         <div class="navbar-header">
@@ -100,45 +96,48 @@
       </div>
     </nav>
   </div>
-  <section id="contact">
-    <div class="section-content">
-      <h2 class="section-header">N'hésitez plus
-        <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Contactez-nous !</span>
-      </h2>
-      <h4>Un de nos amoureux de la sneaker vous répondra rapidement.</h4>
-    </div>
-    <div class="contact-section">
-      <div class="container">
-        <form>
-          <div class="col-md-6 form-line">
-            <div class="form-group">
-              <label for="exampleInputUsername">Votre nom</label>
-              <input type="text" class="form-control" id="" placeholder="Martin Dupont">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail">Votre adresse e-mail</label>
-              <input type="email" class="form-control" id="exampleInputEmail" placeholder="dupont.martin@gmail.com">
-            </div>
-            <div class="form-group">
-              <label for="telephone">Numéro de tel</label>
-              <input type="tel" class="form-control" id="telephone" placeholder="06 12 34 56 78">
-            </div>
+  <form action="index.html" method="post" class="container2">
+    <!---heading---->
+    <header class="heading">Se connecter</header>
+    <hr>
+    <!---Form starting---->
+    <div class="row ">
+      <!-----For login---->
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-xs-4">
+            <label class="mail">Login :</label>
           </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="description">Message</label>
-              <textarea class="form-control" id="description" placeholder="Bonjour !"></textarea>
-            </div>
-            <div>
-            <button type="submit" class="btn btn-default submit">
-              <i class="fa fa-paper-plane" aria-hidden="true"></i>Envoyer</button>
-            </div>
+          <div class="col-xs-8">
+            <input type="text" name="login" id="login" placeholder="Enter your login" class="form-control">
           </div>
-        </form>
+        </div>
+      </div>
+      <!-----For Password and confirm password---->
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-xs-4">
+            <label class="pass">Mot de passe :</label>
+          </div>
+          <div class="col-xs-8">
+            <input type="password" name="password" id="password" placeholder="Enter your Password" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <button class="btn btn-warning" type="submit">Connexion</button>
       </div>
     </div>
-
-  </section>
+  </form>
+  <div class="container2">
+    <!---heading---->
+    <header class="heading">
+      <span class="min-title">Pas encore de compte ?</span>
+      <p>
+        <a href="register.html">Inscrivez-vous !</a>
+      </p>
+    </header>
+  </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
   <script src="js/bootstrap.min.js"></script>

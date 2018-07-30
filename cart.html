@@ -321,7 +321,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#">Profil</a>
+                                    <a href="profil.html">Profil</a>
                                 </li>
                                 <li>
                                     <a href="#">Mes commandes</a>
@@ -329,7 +329,7 @@
                                 <li role="separator" class="divider"></li>
                                 <li class="dropdown-header">Compte</li>
                                 <li>
-                                    <a href="connect.html">Utiliser un autre compte</a>
+                                    <a href="connect_demo_use_another_acc.html">Utiliser un autre compte</a>
                                 </li>
                                 <li>
                                     <a href="index_demo_disconnected.html">Se déconnecter</a>
@@ -671,6 +671,10 @@ if ($_POST) {
                                             Passer la commande
                                             <span class="glyphicon glyphicon-play"></span>
                                         </button>
+                                        <br><button type="button" class="btn btn-success" data-toggle="modal" data-target="#connection-modal">
+                                            Passer la commande (test déco)
+                                            <span class="glyphicon glyphicon-play"></span>
+                                        </button>
                                     </td>
                         </tr>
                     </tbody>
@@ -688,10 +692,9 @@ if ($_POST) {
                 <button type="button" data-dismiss="modal" aria-label="Close" class="close">
                     <span aria-hidden="true">×</span>
                 </button>
-                <h4 id="exampleModalLabel" class="modal-title">Bienvenue !</h4>
+                <h4 id="exampleModalLabel" class="modal-title">Finalisez vos achats en vous connectant</h4>
             </div>
             <div class="modal-body">
-
                 <form>
                     <div class="form-group">
                         <label>Login :</label>
@@ -707,6 +710,8 @@ if ($_POST) {
                         <input type="submit" value="Signin" class="btn btn-primary">
                     </div>
                 </form>
+                <span class="min-title">Pas encore de compte ?</span>
+                <p><a href="register.html">Inscrivez-vous !</a></p>
             </div>
 
         </div>
