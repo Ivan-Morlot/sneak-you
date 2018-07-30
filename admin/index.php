@@ -22,8 +22,8 @@
         } else {
             $result = '
                 <div>
-                <p class="error">Vous n\'êtes pas autorisé à accéder à cette partie du site.</p>
-                <a class="error-link" href="../index.html">Retour à l\'accueil du site</a>
+                <p class="error">Vous n\'êtes pas autorisé à accéder à cette partie du site, désolé !</p>
+                <a class="error-link" href="../index.html">Retour à l\'accueil</a>
                 </div>
             ';
         }
