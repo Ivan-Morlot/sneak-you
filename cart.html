@@ -472,15 +472,15 @@
                             <td>   </td>
                             <td>   </td>
                             <td>
-                                <button type="button " class="btn btn-default ">
+                                <a class="btn btn-default" href="product.html">
                                     <span class="glyphicon glyphicon-shopping-cart "></span> Continuer mon shopping
-                                </button>
+                                </a>
                             </td>
 
 
 
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal fade" id="val-order-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
 
@@ -640,9 +640,9 @@ if ($_POST) {
 
                                                             <!-- CVV -->
                                                             <div class="form-group">
-                                                                <label class="col-sm-4 control-label" for="textinput">CVV/CVV2</label>
+                                                                <label class="col-sm-4 control-label" for="textinput">Code de sécurité</label>
                                                                 <div class="col-sm-3">
-                                                                    <input type="text" id="cvv" placeholder="CVV" maxlength="4" class="card-cvc form-control">
+                                                                    <input type="text" id="cvv" maxlength="3" class="card-cvc form-control">
                                                                 </div>
                                                             </div>
 
@@ -652,11 +652,11 @@ if ($_POST) {
                                                             <div class="control-group">
                                                                 <div class="controls">
                                                                     <center>
-                                                                        <button class="btn btn-success" type="submit">Commander</button>
                                                                     </center>
                                                                 </div>
                                                             </div>
                                                         </fieldset>
+                                                        <button class="btn btn-success" type="submit">Commander</button>
                                             </form>
                                             </div>
                                             <div class="modal-header">
@@ -667,7 +667,7 @@ if ($_POST) {
                                         </div>
                                     </div>
                                     <td>
-                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
+                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#val-order-modal">
                                             Passer la commande
                                             <span class="glyphicon glyphicon-play"></span>
                                         </button>
@@ -679,5 +679,39 @@ if ($_POST) {
                 </div>
             </div>
 </body>
+
+<!-- Modal-->
+<div id="connection-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+    <div role="document" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 id="exampleModalLabel" class="modal-title">Bienvenue !</h4>
+            </div>
+            <div class="modal-body">
+
+                <form>
+                    <div class="form-group">
+                        <label>Login :</label>
+                        <br>
+                        <input type="email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Mot de passe :</label>
+                        <br>
+                        <input type="password" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Signin" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--fin modal-->
 
 </html>

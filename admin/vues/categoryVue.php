@@ -96,7 +96,7 @@
         				<input type="text" name="research">
 						<button type="submit">Rechercher</button>
     				</form>
-					<?=$displayVue?>
+					<?=$displayDiv?>
 				</div>
 			</div>
 		</div>
@@ -106,7 +106,7 @@
 					Ajouter une catégorie
 				</div>
 				<div class="panel-body">
-				<?=$addingVue?>
+				<?=$createDiv?>
 				</div>
 			</div>
 		</div>

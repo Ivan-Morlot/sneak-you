@@ -12,6 +12,16 @@ h1.page-header {
     margin-top: -20px;
 }
 
+.error {
+    color: #ff7a7a;
+    font-size: 18px;
+}
+
+.error-link {
+    font-size: 16px;
+    color: #4d35ff;
+}
+
 .footer {
     width: 100%;
 }
