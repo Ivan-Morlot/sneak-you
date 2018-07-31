@@ -73,7 +73,7 @@
 				<li>
 					<a href="brand.php">Gérer les marques</a>
 				</li>
-				<li>
+				<li class="active">
 					<a href="product.php">Gérer les produits</a>
 				</li>
 				<li>
@@ -87,22 +87,26 @@
 		<div class="col-md-10 content">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					Assistant
+					Editer un produit
 				</div>
 				<div class="panel-body">
-					« <strong>Heureux de vous revoir maître !</strong> »
+					<a href="product.php">Tout afficher</a>
+					<form action="product.php" method="post">
+        				<label for="research">Recherche par nom :</label>
+        				<input type="text" name="research">
+						<button type="submit">Rechercher</button>
+    				</form>
+					<?=$displayDiv?>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-10 content">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					Dashboard
+					Ajouter un produit
 				</div>
 				<div class="panel-body">
-					<p>
-						<i>Rien pour le moment</i>
-					</p>
+				<?=$createDiv?>
 				</div>
 			</div>
 		</div>

@@ -84,3 +84,7 @@ table td + td {
         height: 100vh;
     }
 }
+
+.panel-body {
+    overflow-x: scroll;
+}

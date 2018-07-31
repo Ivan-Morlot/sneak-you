@@ -1,13 +1,13 @@
 <?php
-    function reqSearch($db, $search) {
+    function reqSearchBrd($db, $search) {
         return $db->query("SELECT * FROM brand WHERE name LIKE '%$search%'");
     }
 
-    function reqAll($db) {
+    function reqAllBrd($db) {
         return $db->query("SELECT * FROM brand");
     }
 
-    function insertBrd($db, $name, $description){
+    function insertBrd($db, $name) {
         return $db->exec("INSERT INTO `brand` (`id`, `name`) VALUES (NULL, '$name')");
     }
 
@@ -19,6 +19,10 @@
         return $db->query("SELECT * FROM brand WHERE id = '$id'");
     }
 
-    function updateBrd($db, $name, $description, $id) {
+    function selectBrdName($db, $id) {
+        return $db->query("SELECT name FROM brand WHERE id = $id");
+    }
+
+    function updateBrd($db, $name, $id) {
         return $db->exec("UPDATE brand SET name = '$name' WHERE id='$id'");
     }

@@ -1,13 +1,13 @@
 <?php
-    function reqSearch($db, $search) {
+    function reqSearchCat($db, $search) {
         return $db->query("SELECT * FROM category WHERE name LIKE '%$search%'");
     }
 
-    function reqAll($db) {
+    function reqAllCat($db) {
         return $db->query("SELECT * FROM category");
     }
 
-    function insertCat($db, $name, $description){
+    function insertCat($db, $name, $description) {
         return $db->exec("INSERT INTO `category` (`id`, `name`, `description`) VALUES (NULL, '$name', $description)");
     }
 
@@ -17,6 +17,10 @@
 
     function selectCat($db, $id) {
         return $db->query("SELECT * FROM category WHERE id = '$id'");
+    }
+
+    function selectCatName($db, $id) {
+        return $db->query("SELECT name FROM category WHERE id = '$id'");
     }
 
     function updateCat($db, $name, $description, $id) {

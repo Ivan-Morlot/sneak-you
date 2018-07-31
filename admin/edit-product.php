@@ -30,7 +30,6 @@
             <td>Catégorie</td>
             <td>Tailles disponibles</td>
             <td></td>
-            <td></td>
         </tr>
 <?php if($prd = $req->fetch(PDO::FETCH_ASSOC)) { ?>
         <tr>
@@ -214,7 +213,11 @@
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" value="Enregistrer"></td>
+                <td><button type="submit">Valider</button></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="reset">Annuler</button></td>
             </tr>
         </table>
     </form>

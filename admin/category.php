@@ -32,12 +32,29 @@
         </form>
     ';
 
+    if (isset($_GET['req']) && $_GET['req'] == 'update' &&
+        isset($_POST['id']) &&
+        isset($_POST['name'])) {
+        $id = $_POST['id'];
+        $name = $_POST['name'];
+        if(isset($_POST['description']) && $_POST['description'] != "") {
+            $description = "'".$_POST['description']."'";
+        } else {
+            $description = 'NULL';
+        }
+        updateCat($db, $name, $description, $id);
+        $displayDiv .= '
+            <br><h4> La catégorie "'.$name.'" a été éditée avec succès.</h4>
+        ';
+    }
+
     if(isset($_GET['req']) && $_GET['req'] == 'delete' && isset($_GET['id'])) {
         $id = $_GET['id'];
         deleteCat($db, $id);
     }
-    
-    if (isset($_GET['req']) && $_GET['req'] == 'create' && isset($_POST['name'])) {
+
+    if (isset($_GET['req']) && $_GET['req'] == 'create' &&
+        isset($_POST['name'])) {
         $name = $_POST['name'];
         if(isset($_POST['description']) && $_POST['description'] != "") {
             $dispDescription = $_POST['description'];
@@ -47,15 +64,15 @@
         }
         insertCat($db, $name, $description);
         $createDiv .= '
-            <h4>Catégorie créée avec succès.</h4>
+            <br><h4>Catégorie créée avec succès.</h4>
             <p><b>Récapitulatif :</b></p>
             <table class="post-table">
-            <tr>
-                <td>Nom</td>
-                <td>
-                '.$name.'
-                </td>
-            </tr>
+                <tr>
+                    <td>Nom</td>
+                    <td>
+                    '.$name.'
+                    </td>
+                </tr>
         ';
         if($description != 'NULL') {
             $createDiv .= '
@@ -147,9 +164,9 @@
     } else {
         if(isset($_POST['research'])) {
             $search = trim($_POST['research']);
-            $req = reqSearch($db, $search);
+            $req = reqSearchCat($db, $search);
         } else {
-            $req = reqAll($db);
+            $req = reqAllCat($db);
         }
 
         while($cat = $req->fetch(PDO::FETCH_ASSOC)) {
@@ -198,21 +215,6 @@
                 </tr>
                 '.$result.'
             </table>
-        ';
-    }
-
-    if (isset($_GET['req']) && $_GET['req'] == 'update' &&
-        isset($_POST['id']) &&
-        isset($_POST['name'])) {
-        $id = $_POST['id'];
-        $name = $_POST['name'];
-        if(isset($_POST['description']) && $_POST['description'] != "") {
-            $description = "'".$_POST['description']."'";
-        } else {
-            $description = 'NULL';}
-        updateCat($db, $name, $description, $id);
-        $displayDiv .= '
-            <br><h4> La catégorie "'.$name.'" a été éditée avec succès.</h4>
         ';
     }
 

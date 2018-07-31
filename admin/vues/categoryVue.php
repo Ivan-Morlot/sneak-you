@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Bootstrap Material Admin by Bootstrapious.com</title>
+	<title>sne*k you - Admin</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="robots" content="all,follow">
@@ -19,7 +19,7 @@
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
+					<span class="sr-only">Menu</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -71,16 +71,16 @@
 					<a href="category.php">Gérer les catégories</a>
 				</li>
 				<li>
-					<a href="#">Gérer les marques</a>
+					<a href="brand.php">Gérer les marques</a>
 				</li>
 				<li>
-					<a href="#">Gérer les produits</a>
+					<a href="product.php">Gérer les produits</a>
 				</li>
 				<li>
-					<a href="#">Gérer les stocks</a>
+					<a href="stock.php">Gérer les stocks</a>
 				</li>
 				<li>
-					<a href="#">Gérer les utilisateurs</a>
+					<a href="user.php">Gérer les utilisateurs</a>
 				</li>
 			</ul>
 		</div>
