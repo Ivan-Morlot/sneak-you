@@ -31,57 +31,64 @@
 </head>
 
 <body>
-  <div class="navbar-wrapper">
-    <nav class="navbar navbar-inverse navbar-static-top" style="margin-bottom:0px">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-            aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html">sne*k you</a>
+  <header>
+    <div class="navbar-wrapper">
+      <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+              aria-controls="navbar">
+              <span class="sr-only">Menu</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">
+              <img src="img/logo.png" class="nav-logo" alt="logo">
+              <span>sne*k you</span>
+            </a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li>
+                <form class="form-inline ml-auto p-2 bd-highlight" style="margin-top: 0.8vh">
+                  <div class="form-search form-inline ml-auto p-2 bd-highlight">
+                    <input class="extended-searchbar form-control mr-sm-2" type="text" placeholder="Rechercher un modèle" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                      <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                  </div>
+                </form>
+              </li>
+              <li>
+                <a href="product.html">E-shop sneakers</a>
+              </li>
+              <li>
+                <a href="contact.html">Nous contacter</a>
+              </li>
+              <li>
+                <a href="register.html">S'inscrire</a>
+              </li>
+              <li>
+                <a href="cart.html">
+                  <span class="glyphicon glyphicon-shopping-cart"></span>
+                  Mon panier
+                </a>
+              </li>
+              <li>
+                <a href="connect.html">Se connecter</a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li>
-              <form class="form-inline ml-auto p-2 bd-highlight" style="margin-top: 0.8vh">
-                <div class="form-search form-inline ml-auto p-2 bd-highlight">
-                  <input class="extended-searchbar form-control mr-sm-2" type="text" placeholder="Rechercher un modèle" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                    <span class="glyphicon glyphicon-search"></span>
-                  </button>
-                </div>
-              </form>
-            </li>
-            <li>
-              <a href="product.html">E-shop sneakers</a>
-            </li>
-            <li>
-              <a href="contact.html">Nous contacter</a>
-            </li>
-            <li>
-              <a href="register.html">S'inscrire</a>
-            </li>
-            <li>
-              <a href="cart.html">
-                <span class="glyphicon glyphicon-shopping-cart"></span>
-                Mon panier
-              </a>
-            </li>
-            <li>
-              <a href="connect.html">Se connecter</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
   <form action="index.html" method="post" class="container2">
     <!---heading---->
-    <header class="heading">Se connecter</header>
+    <div class="heading">Se connecter</div>
     <hr>
     <!---Form starting---->
     <div class="row ">
@@ -112,13 +119,84 @@
       </div>
     </div>
   </form>
+
   <div class="container2">
-    <!---heading---->
-    <header class="heading">
+    <div class="heading">
       <span class="min-title">Pas encore de compte ?</span>
-      <p><a href="register.html">Inscrivez-vous !</a></p>
-    </header>
+      <p>
+        <a href="register.html">Inscrivez-vous !</a>
+      </p>
+    </div>
   </div>
+</main>
+
+<footer class="section footer-classic context-dark bg-image">
+    <div class="container">
+      <div class="row row-30">
+        <div class="col-md-4 col-xl-5">
+          <div class="pr-xl-4">
+            <h4>
+              <a class="brand" href="index.html">
+                <img class="brand-logo-light" src="img/logo.png" alt="" width="auto" height="37">
+              </a>
+            </h4>
+            <p>
+              <i>L'e-shop numéro 1 de vente de sneakers à travers le monde !</i>
+            </p>
+            <br>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h4>Nous retrouver</h4>
+          <dl class="contact-list">
+            <dt>Adresse :</dt>
+            <dd>2 avenue du Général de Gaulle, 75000 Paris</dd>
+          </dl>
+          <dl class="contact-list">
+            <dt>E-mail :</dt>
+            <dd>
+              <a href="mailto:#">contact@sneakyou.com</a>
+            </dd>
+          </dl>
+          <dl class="contact-list">
+            <dt>Tél. :</dt>
+            <dd>
+              <a href="tel:#">+0146521548</a>
+              <span>/</span>
+              <a href="tel:#">+094582154</a>
+            </dd>
+          </dl>
+        </div>
+        <div class="col-md-4 col-xl-3">
+          <h4>Liens utiles</h4>
+          <ul class="nav-list">
+            <li class="partners">
+              <a href="#">Nos partenaires</a>
+            </li>
+            <li class="facebook">
+              <a href="#">Facebook</a>
+            </li>
+            <li class="twitter">
+              <a href="#">Twitter</a>
+            </li>
+            <li class="instagram">
+              <a href="#">Instagram</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p class="rights pull-left">
+        <span>©  </span>
+        <span class="copyright-year">2018</span>
+        <span> </span>
+        <span>Sne*k you</span>
+      </p>
+      <p class="pull-right">
+        <a href="#">Retour en haut</a>
+      </p>
+    </div>
+  </footer>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
   <script src="js/bootstrap.min.js"></script>

@@ -31,204 +31,235 @@
 </head>
 
 <body>
-  <div class="navbar-wrapper">
-    <nav class="navbar navbar-inverse navbar-static-top" style="margin-bottom:0px">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-            aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html">sne*k you</a>
+  <header>
+    <div class="navbar-wrapper">
+      <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+              aria-controls="navbar">
+              <span class="sr-only">Menu</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">
+              <img src="img/logo.png" class="nav-logo" alt="logo">
+              <span>sne*k you</span>
+            </a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li>
+                <form class="form-inline ml-auto p-2 bd-highlight" style="margin-top: 0.8vh">
+                  <div class="form-search form-inline ml-auto p-2 bd-highlight">
+                    <input class="extended-searchbar form-control mr-sm-2" type="text" placeholder="Rechercher un modèle" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                      <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                  </div>
+                </form>
+              </li>
+              <li>
+                <a href="product.html">E-shop sneakers</a>
+              </li>
+              <li>
+                <a href="contact.html">Nous contacter</a>
+              </li>
+              <li>
+                <a href="register.html">S'inscrire</a>
+              </li>
+              <li>
+                <a href="cart.html">
+                  <span class="glyphicon glyphicon-shopping-cart"></span>
+                  Mon panier
+                </a>
+              </li>
+              <li>
+                <a href="connect.html">Se connecter</a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li>
-              <form class="form-inline ml-auto p-2 bd-highlight" style="margin-top: 0.8vh">
-                <div class="form-search form-inline ml-auto p-2 bd-highlight">
-                  <input class="extended-searchbar form-control mr-sm-2" type="text" placeholder="Rechercher un modèle" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                    <span class="glyphicon glyphicon-search"></span>
-                  </button>
-                </div>
-              </form>
-            </li>
-            <li>
-              <a href="product.html">E-shop sneakers</a>
-            </li>
-            <li>
-              <a href="contact.html">Nous contacter</a>
-            </li>
-            <li>
-              <a href="register.html">S'inscrire</a>
-            </li>
-            <li>
-              <a href="cart.html">
-                <span class="glyphicon glyphicon-shopping-cart"></span>
-                Mon panier
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <form action="index.html" method="post" class="container2">
+      <!---heading---->
+      <header class="heading">
+        Formulaire d'inscription
+      </header>
+      <hr>
+      <!---Form starting---->
+      <div class="row ">
+        <!--- For Name---->
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label class="firstname">Prénom :</label>
+            </div>
+            <div class="col-xs-8">
+              <input type="text" name="fname" id="fname" placeholder="Enter your First Name" class="form-control ">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label class="lastname">Nom :</label>
+            </div>
+            <div class="col-xs-8">
+              <input type="text" name="lname" id="lname" placeholder="Enter your Last Name" class="form-control last">
+            </div>
+          </div>
+        </div>
+        <!--   date de naissance -->
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label class="pass">Birth date :</label>
+            </div>
+            <div class="col-xs-8">
+              <input type="date" name="date" id="date" placeholder="20/02/1992" class="form-control">
+            </div>
+          </div>
+        </div>
+        <!-----For email---->
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label class="mail">Email :</label>
+            </div>
+            <div class="col-xs-8">
+              <input type="email" name="email" id="email" placeholder="Enter your email" class="form-control">
+            </div>
+          </div>
+        </div>
+        <!-----For Password and confirm password---->
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label class="pass">Mot de passe :</label>
+            </div>
+            <div class="col-xs-8">
+              <input type="password" name="password" id="password" placeholder="Enter your Password" class="form-control">
+            </div>
+          </div>
+        </div>
+        <!-----------For Phone number(mobile)-------->
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label class="pass">Mobile :</label>
+            </div>
+            <div class="col-xs-8">
+              <input type="tel" name="tel" id="tel" placeholder="06 45 12 54 84" class="form-control">
+            </div>
+          </div>
+        </div>
+        <!-----------For Phone number (fixe)-------->
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label class="pass">Fixe :</label>
+            </div>
+            <div class="col-xs-8">
+              <input type="tel" name="tel" id="tel" placeholder="+33" class="form-control">
+            </div>
+          </div>
+        </div>
+        <!--   gender     -->
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4 ">
+              <label class="gender">Civilité:</label>
+            </div>
+            <div class="col-xs-4 male">
+              <input type="radio" name="gender" id="boy" value="M">
+              <label for="boy">M.</label>
+            </div>
+
+            <div class="col-xs-4 female">
+              <input type="radio" name="gender" id="girl" value="F">
+              <label for="girl">Mme.</label>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <button class="btn btn-warning" type="submit">S'inscire</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <footer class="section footer-classic context-dark bg-image">
+    <div class="container">
+      <div class="row row-30">
+        <div class="col-md-4 col-xl-5">
+          <div class="pr-xl-4">
+            <h4>
+              <a class="brand" href="index.html">
+                <img class="brand-logo-light" src="img/logo.png" alt="" width="auto" height="37">
               </a>
+            </h4>
+            <p>
+              <i>L'e-shop numéro 1 de vente de sneakers à travers le monde !</i>
+            </p>
+            <br>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h4>Nous retrouver</h4>
+          <dl class="contact-list">
+            <dt>Adresse :</dt>
+            <dd>2 avenue du Général de Gaulle, 75000 Paris</dd>
+          </dl>
+          <dl class="contact-list">
+            <dt>E-mail :</dt>
+            <dd>
+              <a href="mailto:#">contact@sneakyou.com</a>
+            </dd>
+          </dl>
+          <dl class="contact-list">
+            <dt>Tél. :</dt>
+            <dd>
+              <a href="tel:#">+0146521548</a>
+              <span>/</span>
+              <a href="tel:#">+094582154</a>
+            </dd>
+          </dl>
+        </div>
+        <div class="col-md-4 col-xl-3">
+          <h4>Liens utiles</h4>
+          <ul class="nav-list">
+            <li class="partners">
+              <a href="#">Nos partenaires</a>
             </li>
-            <li>
-              <a href="connect.html">Se connecter</a>
+            <li class="facebook">
+              <a href="#">Facebook</a>
+            </li>
+            <li class="twitter">
+              <a href="#">Twitter</a>
+            </li>
+            <li class="instagram">
+              <a href="#">Instagram</a>
             </li>
           </ul>
         </div>
       </div>
-    </nav>
-  </div>
-  <form action="index.html" method="post" class="container2">
-    <!---heading---->
-    <header class="heading">
-      Formulaire d'inscription
-    </header>
-    <hr>
-    <!---Form starting---->
-    <div class="row ">
-      <!--- For Name---->
-      <div class="col-sm-12">
-        <div class="row">
-          <div class="col-xs-4">
-            <label class="firstname">Prénom :</label>
-          </div>
-          <div class="col-xs-8">
-            <input type="text" name="fname" id="fname" placeholder="Enter your First Name" class="form-control ">
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-12">
-        <div class="row">
-          <div class="col-xs-4">
-            <label class="lastname">Nom :</label>
-          </div>
-          <div class="col-xs-8">
-            <input type="text" name="lname" id="lname" placeholder="Enter your Last Name" class="form-control last">
-          </div>
-        </div>
-      </div>
-      <!--   date de naissance -->
-      <div class="col-sm-12">
-        <div class="row">
-          <div class="col-xs-4">
-            <label class="pass">Birth date :</label>
-          </div>
-          <div class="col-xs-8">
-            <input type="date" name="date" id="date" placeholder="20/02/1992" class="form-control">
-          </div>
-        </div>
-      </div>
-      <!-----For email---->
-      <div class="col-sm-12">
-        <div class="row">
-          <div class="col-xs-4">
-            <label class="mail">Email :</label>
-          </div>
-          <div class="col-xs-8">
-            <input type="email" name="email" id="email" placeholder="Enter your email" class="form-control">
-          </div>
-        </div>
-      </div>
-      <!-----For Password and confirm password---->
-      <div class="col-sm-12">
-        <div class="row">
-          <div class="col-xs-4">
-            <label class="pass">Mot de passe :</label>
-          </div>
-          <div class="col-xs-8">
-            <input type="password" name="password" id="password" placeholder="Enter your Password" class="form-control">
-          </div>
-        </div>
-      </div>
-      <!-----------For Phone number(mobile)-------->
-      <div class="col-sm-12">
-        <div class="row">
-          <div class="col-xs-4">
-            <label class="pass">Mobile :</label>
-          </div>
-          <div class="col-xs-8">
-            <input type="tel" name="tel" id="tel" placeholder="06 45 12 54 84" class="form-control">
-          </div>
-        </div>
-      </div>
-      <!-----------For Phone number (fixe)-------->
-      <div class="col-sm-12">
-        <div class="row">
-          <div class="col-xs-4">
-            <label class="pass">Fixe :</label>
-          </div>
-          <div class="col-xs-8">
-            <input type="tel" name="tel" id="tel" placeholder="+33" class="form-control">
-          </div>
-        </div>
-      </div>
-      <!--   gender     -->
-      <div class="col-sm-12">
-        <div class="row">
-          <div class="col-xs-4 ">
-            <label class="gender">Civilité:</label>
-          </div>
-          <div class="col-xs-4 male">
-            <input type="radio" name="gender" id="boy" value="M">
-            <label for="boy">M.</label>
-          </div>
-
-          <div class="col-xs-4 female">
-            <input type="radio" name="gender" id="girl" value="F">
-            <label for="girl">Mme.</label>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <button class="btn btn-warning" type="submit">S'inscire</button>
-        </div>
-      </div>
-    </div>
-  </form>
-   <!-- FOOTER -->
-    
-     
-      <footer class="section footer-classic context-dark bg-image">
-        <div class="container">
-          <p class="pull-right">
-        <a href="#">Back to top</a>
+      <p class="rights pull-left">
+        <span>©  </span>
+        <span class="copyright-year">2018</span>
+        <span> </span>
+        <span>Sne*k you</span>
       </p>
-          <div class="row row-30">
-            <div class="col-md-4 col-xl-5">
-              <div class="pr-xl-4"><a class="brand" href="index.html"><img class="brand-logo-light" src="images/agency/logo-inverse-140x37.png" alt="" width="140" height="37" srcset="images/agency/logo-retina-inverse-280x74.png 2x"></a>
-                <p>Sne*k you est l'entreprise numéro 1 de vente de sneakers à travers le monde</p>
-                <!-- Rights-->
-                <p class="rights"><span>©  </span><span class="copyright-year">2018</span><span> </span><span>Sne*k you</span><span>. </span><span>All Rights Reserved.</span></p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <h5>Contacts</h5>
-              <dl class="contact-list">
-                <dt>Adresse:</dt>
-                <dd>2 avenue du Général de Gaulle, 75000 Paris</dd>
-              </dl>
-              <dl class="contact-list">
-                <dt>email:</dt>
-                <dd><a href="mailto:#">contact@sneakyou.com</a></dd>
-              </dl>
-              <dl class="contact-list">
-                <dt>Téléphones:</dt>
-                <dd><a href="tel:#">+0146521548</a> <span>or</span> <a href="tel:#">+094582154</a>
-                </dd>
-              </dl>
-            </div>
-            <div class="col-md-4 col-xl-3">
-              <h5>Liens utiles</h5>
-              <ul class="nav-list">
-                <li><a href="#">Sne*k you</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contacts</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-       
-      </footer>
+      <p class="pull-right">
+        <a href="#">Retour en haut</a>
+      </p>
+    </div>
+  </footer>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>

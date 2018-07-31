@@ -2,18 +2,12 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
-html {
-  overflow-y: scroll; 
-  
-}
-.modal-open {
-  padding-right: unset !important;
-}
 body {
-  overflow: hidden;
   padding-bottom: 215px;
   color: #5a5a5a;
-   height: 100%;
+}
+main {
+  min-height: 100vh;
 }
 .btn {
   transition: -webkit-box-shadow 0.1s;
@@ -24,8 +18,21 @@ body {
   -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125), 0 0 0 1pt #66afe9;
   box-shadow: inset 0 3px 5px rgba(0,0,0,.125), 0 0 0 1pt #66afe9;
 }
-
-
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  padding: 4px 12px;
+}
+.navbar-brand>img {
+  padding: 4px;
+}
+.navbar-brand>span {
+  padding: 1rem;
+}
+.nav-logo {
+  width: 50px;
+  height: auto;
+}
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
 
@@ -326,14 +333,12 @@ body {
 /*Footer*/
 
 .footer-classic {
-    
     background-color: #222;
-   
-    
     position:absolute;
     left:0px;
 width: 100%;
-  
+padding-top: 1rem; 
+  margin-top: 4rem;
 }
 
 .context-dark, .bg-gray-dark, .bg-primary {
@@ -373,10 +378,9 @@ ul, ol {
 .social-container .col {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 .nav-list li a:before {
-    content: "\f14f";
     font: 400 21px/1 "Material Design Icons";
-    color: #4d6de6;
     display: inline-block;
     vertical-align: baseline;
     margin-left: -28px;
@@ -384,6 +388,22 @@ ul, ol {
     opacity: 0;
     visibility: hidden;
     transition: .22s ease;
+}
+
+.nav-list .partners a:before {
+  content: "\F00E";
+}
+.nav-list .facebook a:before {
+  content: "\F20C";
+  color: #4d6de6;
+}
+.nav-list .twitter a:before {
+  content: "\F544";
+  color: #1b95e0;
+}
+.nav-list .instagram a:before {
+  content: "\F2FE";
+  color: #e8466f;
 }
 
 /*fin footer*/
@@ -400,4 +420,34 @@ ul, ol {
     color: #5a5a5a;
     text-decoration: none;
       
+}
+
+.sells {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.sells h2 {
+  font-style: italic;
+  margin: 0;
+  letter-spacing: 4px;
+  font-variant: small-caps;
+  font-size: 38px;
+}
+.container.marketing > .row .sells-img.t1,
+.container.marketing > .row .sells-img.t2 {
+  width: 180px;
+  max-width: 40%;
+  margin:0;
+}
+.sells-img.t1 {
+  padding: 2rem 2.2em;
+}
+.sells-img.t2 {
+  padding:2rem;
+}
+.all-sells {
+  margin: 9rem auto 3rem auto;
+  font-size: 38px;
 }
