@@ -4,8 +4,8 @@ USE db_boutique;
 CREATE TABLE IF NOT EXISTS customer (
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     gender enum('F','M') NOT NULL,
-    prenom varchar(30) NOT NULL,
-    nom varchar(30) NOT NULL,
+    firstname varchar(30) NOT NULL,
+    lastname varchar(30) NOT NULL,
     email varchar(50) NOT NULL,
     password varchar(32) NOT NULL,
     auth_level smallint NOT NULL,

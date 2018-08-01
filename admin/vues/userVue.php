@@ -73,10 +73,10 @@
 				<li>
 					<a href="brand.php">Gérer les marques</a>
 				</li>
-				<li class="active">
+				<li>
 					<a href="product.php">Gérer les produits</a>
 				</li>
-				<li>
+				<li class="active">
 					<a href="user.php">Gérer les utilisateurs</a>
 				</li>
 			</ul>
@@ -84,11 +84,11 @@
 		<div class="col-md-10 content">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					Editer un produit
+					Liste des utilisateurs
 				</div>
 				<div class="panel-body">
-					<a href="product.php">Tout afficher</a>
-					<form action="product.php" method="post">
+					<a href="user.php">Tout afficher</a>
+					<form action="user.php" method="post">
         				<label for="research">Recherche par nom :</label>
         				<input type="text" name="research">
 						<button type="submit">Rechercher</button>
@@ -100,7 +100,7 @@
 		<div class="col-md-10 content">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					Ajouter un produit
+					Ajouter un utilisateur
 				</div>
 				<div class="panel-body">
 				<?=$createDiv?>

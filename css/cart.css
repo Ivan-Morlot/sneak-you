@@ -1,0 +1,38 @@
+html {
+    overflow-y: scroll;
+}
+
+body {
+    background: url("../img/store.png") no-repeat fixed;
+    background-size: cover;
+}
+
+.col-centered {
+    display: inline-block;
+    float: none;
+    text-align: left;
+    margin-right: -4px;
+}
+
+.row-centered {
+    margin-left: 9px;
+    margin-right: 9px;
+}
+
+#cart-container {
+    margin-top: 2vh;
+}
+
+#cart-container>div {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 2px;
+}
+
+.thumbnail.pull-left {
+    margin-right: 1rem;
+}
+
+.media>.pull-left {
+    padding-right: 4px;
+}

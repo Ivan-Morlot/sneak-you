@@ -1,10 +1,14 @@
+<?php
+  session_start(); 
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>404</title>
+  <title>sne*k you - Page introuvable</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
 
@@ -24,10 +28,10 @@
   <section class="error_section">
     <p class="error_section_subtitle">Oups, cette page n'a pas l'air bien dans ses sneakers !</p>
     <h1 class="error_title">
-      <p>404</p>
-      404
+      <p>Page introuvable</p>
+      Page introuvable
     </h1>
-    <a href="index.html" class="btn">Retour à l'accueil</a>
+    <a href="index.php" class="btn">Retour à l'accueil</a>
   </section>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>

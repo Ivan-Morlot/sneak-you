@@ -1,75 +1,27 @@
+<?php
+  session_start();
+
+  require_once "utils/connection.php";
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Votre panier</title>
+    <title>sne*k you - Panier</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
-    <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-formhelpers-min.css" media="screen">
     <link rel="stylesheet" href="css/bootstrapValidator-min.css" />
-    <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap-side-notes.css" />
-    <!-- Fontastic Custom icon font-->
-    <!--    <link rel="stylesheet" href="css/fontastic.css">-->
-    <!-- Google fonts - Poppins -->
-    <!--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">-->
-    <!-- theme stylesheet-->
-    <!--    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">-->
-    <!-- Custom stylesheet - for your changes-->
-    <!--    <link rel="stylesheet" href="css/custom.css">-->
-    <!-- Favicon-->
     <link rel="shortcut icon" href="img/favicon.ico">
     <link href="css/style.css" rel="stylesheet">
-    <!-- Tweaks for older IEs-->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-    <style type="text/css">
-        html {
-            overflow-y: scroll;
-        }
-
-        body {
-            background: url("img/store.png") no-repeat fixed;
-            background-size: cover;
-        }
-
-        .col-centered {
-            display: inline-block;
-            float: none;
-            text-align: left;
-            margin-right: -4px;
-        }
-
-        .row-centered {
-            margin-left: 9px;
-            margin-right: 9px;
-        }
-
-        #cart-container {
-            margin-top: 2vh;
-        }
-
-        #cart-container>div {
-            background-color: #fff;
-            border: 1px solid #eee;
-            border-radius: 2px;
-        }
-
-        .thumbnail.pull-left {
-            margin-right: 1rem;
-        }
-
-        .media>.pull-left {
-            padding-right: 4px;
-        }
-    </style>
+    <link href="css/cart.css" rel="stylesheet">
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap-min.js"></script>
@@ -263,7 +215,7 @@
                 // show hidden div
                 document.getElementById('a_x200').style.display = 'block';
                 // show the errors on the form
-                $(".payment-errors").html(response.error.message);
+                $(".payment-errors").php(response.error.message);
             } else {
                 var form$ = $("#payment-form");
                 // token contains id, last4, and card type
@@ -278,73 +230,85 @@
 </head>
 
 <body>
-    <header>
-        <div class="navbar-wrapper">
-            <nav class="navbar navbar-inverse navbar-static-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                            aria-controls="navbar">
-                            <span class="sr-only">Menu</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="index.html">
-                            <img src="img/logo.png" class="nav-logo" alt="logo">
-                            <span>sne*k you</span>
-                        </a>
-                    </div>
-                    <div id="navbar" class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <form class="form-inline ml-auto p-2 bd-highlight" style="margin-top: 0.8vh">
-                                    <div class="form-search form-inline ml-auto p-2 bd-highlight">
-                                        <input class="extended-searchbar form-control mr-sm-2" type="text" placeholder="Rechercher un modèle" aria-label="Search">
-                                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                                            <span class="glyphicon glyphicon-search"></span>
-                                        </button>
-                                    </div>
-                                </form>
-                            </li>
-                            <li>
-                                <a href="product.html">E-shop sneakers</a>
-                            </li>
-                            <li>
-                                <a href="contact.html">Nous contacter</a>
-                            </li>
-                            <li>
-                                <a href="cart.html">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span>
-                                    Mon panier
-                                </a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span class="glyphicon glyphicon-asterisk"></span>
-                                    Mon-compte
-                                    <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="profil.html">Profil</a>
-                                    </li>
-                                    <li role="separator" class="divider"></li>
-                                    <li class="dropdown-header">Compte</li>
-                                    <li>
-                                        <a href="connect_demo_use_another_acc.html">Utiliser un autre compte</a>
-                                    </li>
-                                    <li>
-                                        <a href="index_demo_disconnected.html">Se déconnecter</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+<header>
+    <div class="navbar-wrapper">
+      <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+              aria-controls="navbar">
+              <span class="sr-only">Menu</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.php">
+              <img src="img/logo.png" class="nav-logo" alt="logo">
+              <span>sne*k you</span>
+            </a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li>
+                <form class="form-inline ml-auto p-2 bd-highlight" style="margin-top: 0.8vh" action="product.php">
+                  <div class="form-search form-inline ml-auto p-2 bd-highlight">
+                    <input class="extended-searchbar form-control mr-sm-2" type="text" placeholder="Rechercher un modèle" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                      <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                  </div>
+                </form>
+              </li>
+              <li>
+                <a href="product.php">E-shop sneakers</a>
+              </li>
+              <li>
+                <a href="contact.php">Nous contacter</a>
+              </li>
+<?php if(!isset($_SESSION['login'])) {?>
+              <li>
+                <a href="register.php">S'inscrire</a>
+              </li>
+<?php } ?>
+              <li>
+                <a href="cart.php">
+                  <span class="glyphicon glyphicon-shopping-cart"></span>
+                  Mon panier
+                </a>
+              </li>
+<?php if(isset($_SESSION['login'])) {?>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <span class="glyphicon glyphicon-asterisk"></span>
+                  Mon-compte
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="profil.php">Profil</a>
+                  </li>
+                  <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">Compte</li>
+                  <li>
+                    <a href="connect.php">Utiliser un autre compte</a>
+                  </li>
+                  <li>
+                    <a href="utils\logout.php">Se déconnecter</a>
+                  </li>
+                </ul>
+              </li>
+<?php } else { ?>
+              <li>
+                <a href="connect.php">Se connecter</a>
+              </li>
+<?php } ?>
+            </ul>
+          </div>
         </div>
-    </header>
+      </nav>
+    </div>
+  </header>
+
     <main>
         <div class="container">
             <div id="cart-container" class="row">
@@ -361,76 +325,82 @@
                             </tr>
                         </thead>
                         <tbody>
+<?php if(isset($_SESSION['cart']) && count($_SESSION['cart']['product']) > 0) {
+        $nbPrd = count($_SESSION['cart']['product']);
+        for($i = 0; $i < $nbPrd; $i++) {
+            $prdSizeId = $_SESSION['cart']['product'][$i];
+            $prdQty = $_SESSION['cart']['product_qty'][$i];
+
+            $reqPrdId = $db->query("SELECT * FROM product_size ps WHERE ps.id = $prdSizeId");
+            if($tempPrd = $reqPrdId->fetch(PDO::FETCH_ASSOC)) {
+                $prdId = $tempPrd['product_id'];
+                $dispSizeId = $tempPrd['size_id'];
+            }
+
+            $reqDispSize = $db->query("SELECT size FROM size WHERE id = $dispSizeId");
+            if($tempSize = $reqDispSize->fetch(PDO::FETCH_ASSOC)){
+                $dispSize = $tempSize['size'];
+            }
+
+            $reqPrd = $db->query("SELECT p.* FROM product p INNER JOIN product_size ps WHERE ps.product_id = $prdId AND p.id = $prdId");
+            if($product = $reqPrd->fetch(PDO::FETCH_ASSOC));
+            
+            if(isset($product['is_on_promo']) && $product['is_on_promo'] == 1 && isset($product['promo_price'])) {
+                $prdPrice = $product['promo_price'];
+            } else {
+                $prdPrice = $product['price'];
+            }
+
+            $prdTotalPrice = $prdPrice * (float)$prdQty;
+?>
                             <tr>
                                 <td class="col-sm-8 col-md-6 ">
                                     <div class="media ">
                                         <a class="thumbnail pull-left" href="# ">
-                                            <img class="media-object " src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png
-            " style="width: 72px; height: 72px; "> </a>
+                                            <img class="media-object " src="img/<?= $product['picture_name'] ?>" style="width: 72px; height: 72px; ">
+                                        </a>
                                         <div class="media-body ">
                                             <h4 class="media-heading ">
-                                                <a href="# ">Premier produit</a>
+                                                <a href="product.php"><?= $product['name'] ?></a>
                                             </h4>
-                                            <h5 class="media-heading "> par
-                                                <a href="# ">Marque</a>
+                                            <h5 class="media-heading "> ref.
+                                                <span><?= $product['ref'] ?></span>
                                             </h5>
-                                            <span>Statut: </span>
-                                            <span class="text-success ">
-                                                <strong>En stock</strong>
+                                            <span>Taille : </span>
+                                            <span>
+                                                <strong><?= $dispSize ?></strong>
                                             </span>
+                                            <div class="text-success ">
+                                                <strong><?php if(isset($product['is_available']) && $product['is_available'] == 1) { echo 'En stock'; } else { echo 'En réapprovisionnement' ; } ?></strong>
+                                            </div>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="col-sm-1 col-md-1 " style="text-align: center ">
-                                    <input type="email " class="form-control " id="exampleInputEmail1 " value="3 ">
+                                    <input type="number" class="form-control" value="<?= $prdQty ?>">
                                 </td>
                                 <td class="col-sm-1 col-md-1 text-center ">
-                                    <strong>4,87€</strong>
+                                    <strong><?= $prdPrice ?>€</strong>
                                 </td>
                                 <td class="col-sm-1 col-md-1 text-center ">
-                                    <strong>14,61€</strong>
+                                    <strong><?= $prdTotalPrice ?>€</strong>
                                 </td>
                                 <td class="col-sm-1 col-md-1 ">
-                                    <button type="button " class="btn btn-danger ">
+                                    <button type="button " class="btn btn-danger " action="cart.php?del=<?= $i ?>">
                                         <span class="glyphicon glyphicon-remove "></span> Annuler
                                     </button>
                                 </td>
                             </tr>
+<?php
+        }
+    } else {
+?>
                             <tr>
-                                <td class="col-md-6 ">
-                                    <div class="media ">
-                                        <a class="thumbnail pull-left" href="# ">
-                                            <img class="media-object " src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png
-            " style="width: 72px; height: 72px; "> </a>
-                                        <div class="media-body ">
-                                            <h4 class="media-heading ">
-                                                <a href="# ">Deuxième produit</a>
-                                            </h4>
-                                            <h5 class="media-heading "> by
-                                                <a href="# ">Marque</a>
-                                            </h5>
-                                            <span>Statut: </span>
-                                            <span class="text-warning ">
-                                                <strong>En réapprovisionnement</strong>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="col-md-1 " style="text-align: center ">
-                                    <input type="email " class="form-control " id="exampleInputEmail1 " value="2 ">
-                                </td>
-                                <td class="col-md-1 text-center ">
-                                    <strong>4,99 €</strong>
-                                </td>
-                                <td class="col-md-1 text-center ">
-                                    <strong>9,98 €</strong>
-                                </td>
-                                <td class="col-md-1 ">
-                                    <button type="button " class="btn btn-danger ">
-                                        <span class="glyphicon glyphicon-remove "></span> Annuler
-                                    </button>
+                                <td>
+                                    Votre panier est vide
                                 </td>
                             </tr>
+<?php } ?>
                             <tr>
                                 <td>   </td>
                                 <td>   </td>
@@ -440,7 +410,7 @@
                                 </td>
                                 <td class="text-right ">
                                     <h5>
-                                        <strong>24,59 €</strong>
+                                        <strong>0 €</strong>
                                     </h5>
                                 </td>
                             </tr>
@@ -453,7 +423,7 @@
                                 </td>
                                 <td class="text-right ">
                                     <h5>
-                                        <strong>6,94 €</strong>
+                                        <strong>0 €</strong>
                                     </h5>
                                 </td>
                             </tr>
@@ -466,7 +436,7 @@
                                 </td>
                                 <td class="text-right ">
                                     <h3>
-                                        <strong>31,53 €</strong>
+                                        <strong>0 €</strong>
                                     </h3>
                                 </td>
                             </tr>
@@ -475,7 +445,7 @@
                                 <td>   </td>
                                 <td>   </td>
                                 <td>
-                                    <a class="btn btn-default" href="product.html">
+                                    <a class="btn btn-default" href="product.php">
                                         <span class="glyphicon glyphicon-shopping-cart "></span> Continuer mon shopping
                                     </a>
                                 </td>
@@ -486,60 +456,13 @@
                                 <div class="modal fade" id="val-order-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
-
                                             <div class="modal-body">
                                                 <form action="" method="POST" id="payment-form" class="form-horizontal">
                                                     <div class="row row-centered">
                                                         <div class="col-md-12 col-md-offset-12">
                                                             <div class="page-header">
-                                                                <h2 class="gdfg">Paiement sécurisé</h2>
+                                                                <h2 class="gdfg">Valider le paiement</h2>
                                                             </div>
-                                                            <noscript>
-                                                                <div class="bs-callout bs-callout-danger">
-                                                                    <h4>JavaScript is not enabled!</h4>
-                                                                    <p>This payment form requires your browser to have JavaScript
-                                                                        enabled. Please activate JavaScript and reload this
-                                                                        page. Check
-                                                                        <a href="http://enable-javascript.com" target="_blank">enable-javascript.com</a> for more informations.</p>
-                                                                </div>
-                                                            </noscript>
-                                                            <!--<?php
-require 'lib/Stripe.php';
-
-$error = '';
-$success = '';
-	  
-if ($_POST) {
-  Stripe::setApiKey("<Stripe Secret Key>");
-
-  try {
-	if (empty($_POST['street']) || empty($_POST['city']) || empty($_POST['zip']))
-      throw new Exception("Fill out all required fields.");
-    if (!isset($_POST['stripeToken']))
-      throw new Exception("The Stripe Token was not generated correctly");
-    Stripe_Charge::create(array("amount" => 3000,
-                                "currency" => "eur",
-                                "card" => $_POST['stripeToken'],
-								"description" => $_POST['email']));
-    $success = '<div class="alert alert-success">
-                <strong>Success!</strong> Your payment was successful.
-				</div>';
-  }
-  catch (Exception $e) {
-	$error = '<div class="alert alert-danger">
-			  <strong>Error!</strong> '.$e->getMessage().'
-			  </div>';
-  }
-}
-?>-->
-                                                            <div class="alert alert-danger" id="a_x200" style="display: none;">
-                                                                <strong>Error!</strong>
-                                                                <span class="payment-errors"></span>
-                                                            </div>
-                                                            <span class="payment-success">
-                                                                <!--<?= $success ?>
-                                                            <?= $error ?>-->
-                                                            </span>
                                                             <fieldset>
 
                                                                 <!-- Form Name -->
@@ -670,15 +593,17 @@ if ($_POST) {
                                             </div>
                                         </div>
                                         <td>
+<?php if(isset($_SESSION['login'])) { ?>
                                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#val-order-modal">
                                                 Passer la commande
                                                 <span class="glyphicon glyphicon-play"></span>
                                             </button>
-                                            <br>
+<?php } else { ?>
                                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#connection-modal">
-                                                Passer la commande (test déco)
+                                                Se connecter et passer commande
                                                 <span class="glyphicon glyphicon-play"></span>
                                             </button>
+<?php } ?>
                                         </td>
                             </tr>
                         </tbody>
@@ -693,7 +618,7 @@ if ($_POST) {
                 <div class="col-md-4 col-xl-5">
                     <div class="pr-xl-4">
                         <h4>
-                            <a class="brand" href="index.html">
+                            <a class="brand" href="index.php">
                                 <img class="brand-logo-light" src="img/logo.png" alt="" width="auto" height="37">
                             </a>
                         </h4>
@@ -784,7 +709,7 @@ if ($_POST) {
                 </form>
                 <span class="min-title">Pas encore de compte ?</span>
                 <p>
-                    <a href="register.html">Inscrivez-vous !</a>
+                    <a href="register.php">Inscrivez-vous !</a>
                 </p>
             </div>
 

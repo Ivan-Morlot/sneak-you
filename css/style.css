@@ -2,6 +2,12 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
+@keyframes fadeout {
+  0% {width: unset; padding: 15px;}
+  50% {width: unset; padding: 15px; opacity: 1;}
+  100% {width: unset; padding: 15px; opacity: 0;}
+}
+
 body {
   padding-bottom: 215px;
   color: #5a5a5a;
@@ -205,9 +211,8 @@ main {
   padding:10px; 
   border-bottom: 1px #ccc dotted; 
   text-decoration: none; 
-  font-family: lato; 
-  text-transform:uppercase; 
-  font-size: 12px; 
+  font-family: roboto;
+  font-size: 16px;
   color: #333; 
   display:block; 
   float:left;
@@ -244,17 +249,19 @@ main {
     background-color: rgba(0, 0, 0, 0);
 }
 
+#portfolio-container .btn.btn-all:hover:not(.active) {
+  text-decoration: none;background-color:rgba(255, 145, 19, 0.5);
+}
 
-
-#portfolio-container .btn.fil-cat:hover:not(.active) {
+#portfolio-container .btn.btn-cat:hover:not(.active) {
   text-decoration: none;background-color:rgba(19, 169, 255, 0.5);
 }
 
-#portfolio-container .btn.fil-tmp:hover:not(.active) {
+#portfolio-container .btn.btn-tmp:hover:not(.active) {
   text-decoration: none;background-color:rgba(255, 19, 82, 0.5);
 }
 
-#portfolio-container .btn.fil-brd:hover:not(.active),
+#portfolio-container .btn.btn-brd:hover:not(.active),
 #dropdownMenu2:hover:not(.active) {
   text-decoration: none;background-color:rgba(188, 226, 19, 0.5);
 }
@@ -264,21 +271,26 @@ main {
   outline: none;
 }
 
-/*Portfolio===============================*/
-#portfolio-container .fil-cat.active,
-#portfolio-container .fil-cat.active:active {
+#portfolio-container .btn-all.active,
+#portfolio-container .btn-all.active:active {
+   background-color:#ff9113;color:#fff;
+    outline: 0;
+    box-shadow: none; 
+}
+#portfolio-container .btn-cat.active,
+#portfolio-container .btn-cat.active:active {
    background-color:#13a9ff;color:#fff;
     outline: 0;
     box-shadow: none; 
 }
-#portfolio-container .fil-tmp.active,
-#portfolio-container .fil-tmp.active:active {
+#portfolio-container .btn-tmp.active,
+#portfolio-container .btn-tmp.active:active {
    background-color:#ff1351;color:#fff;
     outline: 0;
     box-shadow: none; 
 }
-#portfolio-container .fil-brd.active,
-#portfolio-container .fil-brd.active:active,
+#portfolio-container .btn-brd.active,
+#portfolio-container .btn-brd.active:active,
 #portfolio-container #dropdownMenu2.active,
 #portfolio-container #dropdownMenu2.active:active
  {
@@ -450,4 +462,21 @@ ul, ol {
 .all-sells {
   margin: 9rem auto 3rem auto;
   font-size: 38px;
+}
+
+.added-to-cart {
+  width: 0;
+  overflow: hidden;
+  background-color: rgb(19, 209, 92);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 20px;
+  position: absolute;
+  z-index: 600;
+  right: 20px;
+}
+
+.fadeout {
+  animation-name: fadeout;
+  animation-duration: 2s;
 }

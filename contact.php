@@ -1,3 +1,7 @@
+<?php
+  session_start(); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,12 +29,13 @@
     <![endif]-->
 
   <!-- Custom styles for this template -->
-  <link href="css/profil.css" rel="stylesheet">
+
+  <link href="css/conctact.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
-  <header>
+<header>
     <div class="navbar-wrapper">
       <nav class="navbar navbar-inverse navbar-static-top">
         <div class="container">
@@ -42,7 +47,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.php">
               <img src="img/logo.png" class="nav-logo" alt="logo">
               <span>sne*k you</span>
             </a>
@@ -50,7 +55,7 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li>
-                <form class="form-inline ml-auto p-2 bd-highlight" style="margin-top: 0.8vh">
+                <form class="form-inline ml-auto p-2 bd-highlight" style="margin-top: 0.8vh" action="product.php">
                   <div class="form-search form-inline ml-auto p-2 bd-highlight">
                     <input class="extended-searchbar form-control mr-sm-2" type="text" placeholder="Rechercher un modèle" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
@@ -60,17 +65,23 @@
                 </form>
               </li>
               <li>
-                <a href="product.html">E-shop sneakers</a>
+                <a href="product.php">E-shop sneakers</a>
               </li>
               <li>
-                <a href="contact.html">Nous contacter</a>
+                <a href="contact.php">Nous contacter</a>
               </li>
+<?php if(!isset($_SESSION['login'])) {?>
               <li>
-                <a href="cart.html">
+                <a href="register.php">S'inscrire</a>
+              </li>
+<?php } ?>
+              <li>
+                <a href="cart.php">
                   <span class="glyphicon glyphicon-shopping-cart"></span>
                   Mon panier
                 </a>
               </li>
+<?php if(isset($_SESSION['login'])) {?>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   <span class="glyphicon glyphicon-asterisk"></span>
@@ -79,18 +90,23 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a href="profil.html">Profil</a>
+                    <a href="profil.php">Profil</a>
                   </li>
                   <li role="separator" class="divider"></li>
                   <li class="dropdown-header">Compte</li>
                   <li>
-                    <a href="connect_demo_use_another_acc.html">Utiliser un autre compte</a>
+                    <a href="connect.php">Utiliser un autre compte</a>
                   </li>
                   <li>
-                    <a href="index_demo_disconnected.html">Se déconnecter</a>
+                    <a href="utils\logout.php">Se déconnecter</a>
                   </li>
                 </ul>
               </li>
+<?php } else { ?>
+              <li>
+                <a href="connect.php">Se connecter</a>
+              </li>
+<?php } ?>
             </ul>
           </div>
         </div>
@@ -99,86 +115,45 @@
   </header>
 
   <main>
-    <div class="container">
-      <div class="row">
-
-        <div class="col-md-9">
-          <div class="card">
-            <div class="card-body profil-card">
-              <div class="row">
-                <div class="col-md-12">
-                  <h4>Votre Profil</h4>
-                  <hr>
-                </div>
+    <section id="contact">
+      <div class="section-content">
+        <h2 class="section-header">N'hésitez plus
+          <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Contactez-nous !</span>
+        </h2>
+        <h4>Un de nos amoureux de la sneaker vous répondra rapidement.</h4>
+      </div>
+      <div class="contact-section">
+        <div class="container">
+          <form>
+            <div class="col-md-6 form-line">
+              <div class="form-group">
+                <label for="exampleInputUsername">Votre nom</label>
+                <input type="text" class="form-control" id="" placeholder="Martin Dupont">
               </div>
-              <div class="row">
-                <div class="col-md-12 ">
-                  <form class="profil-form">
-
-                    <div class="form-group row">
-                      <label for="name" class="col-4 col-form-label">Prénom</label>
-                      <div class="col-8">
-                        <input id="name" name="name" placeholder="Votre prénom" class="form-control here" type="text">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="lastname" class="col-4 col-form-label">Nom</label>
-                      <div class="col-8">
-                        <input id="lastname" name="lastname" placeholder="Votre nom" class="form-control here" type="text">
-                      </div>
-                    </div>
-
-
-                    <div class="form-group row">
-                      <label for="email" class="col-4 col-form-label">Email*</label>
-                      <div class="col-8">
-                        <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text">
-                      </div>
-                    </div>
-
-                    <div class="form-group row">
-                      <label for="lastname" class="col-4 col-form-label">Adresse</label>
-                      <div class="col-8">
-                        <input id="lastname" name="lastname" placeholder="Votre adresse" class="form-control here" type="text">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="lastname" class="col-4 col-form-label">Code Postale</label>
-                      <div class="col-8">
-                        <input id="lastname" name="lastname" placeholder="ex : 75000" class="form-control here" type="text">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="lastname" class="col-4 col-form-label">Ville</label>
-                      <div class="col-8">
-                        <input id="lastname" name="lastname" placeholder="ex : Paris" class="form-control here" type="text">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="lastname" class="col-4 col-form-label">Pays</label>
-                      <div class="col-8">
-                        <input id="lastname" name="lastname" placeholder="ex : France" class="form-control here" type="text">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="newpass" class="col-4 col-form-label">Nouveau mot de passe</label>
-                      <div class="col-8">
-                        <input id="newpass" name="newpass" placeholder="Nouveau mot de passe" class="form-control here" type="text">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="offset-4 col-8">
-                        <button name="submit" type="submit" class="btn btn-primary">Enregister les modifications</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
+              <div class="form-group">
+                <label for="exampleInputEmail">Votre adresse e-mail</label>
+                <input type="email" class="form-control" id="exampleInputEmail" placeholder="dupont.martin@gmail.com">
+              </div>
+              <div class="form-group">
+                <label for="telephone">Numéro de tel</label>
+                <input type="tel" class="form-control" id="telephone" placeholder="06 12 34 56 78">
               </div>
             </div>
-          </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="description">Message</label>
+                <textarea class="form-control" id="description" placeholder="Bonjour !"></textarea>
+              </div>
+              <div>
+                <button type="submit" class="btn btn-default submit">
+                  <i class="fa fa-paper-plane" aria-hidden="true"></i>Envoyer</button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
-    </div>
+
+    </section>
   </main>
 
   <footer class="section footer-classic context-dark bg-image">
@@ -187,7 +162,7 @@
         <div class="col-md-4 col-xl-5">
           <div class="pr-xl-4">
             <h4>
-              <a class="brand" href="index.html">
+              <a class="brand" href="index.php">
                 <img class="brand-logo-light" src="img/logo.png" alt="" width="auto" height="37">
               </a>
             </h4>
@@ -255,6 +230,7 @@
   <script src="js/holder.min.js"></script>
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <script src="js/ie10-viewport-bug-workaround.js"></script>
+  <script src="js/tools.js"></script>
 </body>
 
 </html>

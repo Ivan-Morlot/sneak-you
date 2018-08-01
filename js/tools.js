@@ -67,43 +67,24 @@ $(document).ready(function () {
         }
     });
 
-    $(".btn").click(function() {
-        if($(this).hasClass("active")) {
-            if($(this).hasClass("fil-cat")) {
+    $(".btn:not(#dropdownMenu2)").click(function() {
+        $(".btn").each(function() {
+            if($(this).hasClass("active")) {
                 $(this).removeClass("active");
-                $(".btn.fil-cat").first().addClass("active");
-            } else if($(this).hasClass("fil-tmp")) {
-                $(this).removeClass("active");
-            } else if($(this).hasClass("fil-brd")) {
-                $(this).removeClass("active");
-                $("#dropdownMenu2").removeClass("active");
             }
-        } else {
-            if($(this).hasClass("fil-cat")) {
-                $(".btn.fil-cat").each(function() {
-                    if($(this).hasClass("active")) {
-                        $(this).removeClass("active");
-                    }
-                });
-                $(this).addClass("active");
-            } else if($(this).hasClass("fil-tmp")) {
-                $(".btn.fil-tmp").each(function() {
-                    if($(this).hasClass("active")) {
-                        $(this).removeClass("active");
-                    }
-                });
-                $(this).addClass("active");
-            } else if($(this).hasClass("fil-brd")) {
-                $(".btn.fil-brd").each(function() {
-                    if($(this).hasClass("active")) {
-                        $(this).removeClass("active");
-                    }
-                });
-                if($("#dropdownMenu2").hasClass("active") === false) {
-                    $("#dropdownMenu2").addClass("active");
-                }
-                $(this).addClass("active");
+        });
+        if($(this).hasClass("btn-all")) {
+            $(this).addClass("active");
+        } else if($(this).hasClass("btn-cat")) {
+            $(this).addClass("active");
+        } else if($(this).hasClass("btn-tmp")) {
+            $(this).addClass("active");
+        } else if($(this).hasClass("btn-brd")) {
+            if($("#dropdownMenu2").hasClass("active") === false) {
+                $("#dropdownMenu2").addClass("active");
             }
+            $(this).addClass("active");
         }
     });
+
 });

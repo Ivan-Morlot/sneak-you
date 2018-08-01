@@ -40,7 +40,7 @@
 				</form>
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="../index.html" target="_blank">Site public</a>
+						<a href="../index.php" target="_blank">Site public</a>
 					</li>
 					<li class="dropdown ">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -75,9 +75,6 @@
 				</li>
 				<li>
 					<a href="product.php">Gérer les produits</a>
-				</li>
-				<li>
-					<a href="stock.php">Gérer les stocks</a>
 				</li>
 				<li>
 					<a href="user.php">Gérer les utilisateurs</a>

@@ -67,7 +67,7 @@
             return "Non";
         } else if(isset($bool) && $bool == '1') {
             return "Oui";
-        } else if(!isset($bool)){
+        } else {
             return "N/A";
         }
     }

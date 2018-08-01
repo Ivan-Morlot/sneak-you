@@ -42,18 +42,18 @@
                 <tr>
                     <td>Disponible</td>
                     <td>
-                        <input type="radio" name="is-available" id="avb-true" value="1">
+                        <input type="radio" name="is-available" id="avb-true" value="1" required>
                         <label for="avb-true">Oui</label>
-                        <input type="radio" name="is-available" id="avb-false" value="0">
+                        <input type="radio" name="is-available" id="avb-false" value="0" required>
                         <label for="avb-false">Non</label>
                     </td>
                 </tr>
                 <tr>
                     <td>En promotion</td>
                     <td>
-                        <input type="radio" name="is-on-promo" class="prm-switch" id="prm-true" value="1">
+                        <input type="radio" name="is-on-promo" class="prm-switch" id="prm-true" value="1" required>
                         <label for="prm-true">Oui</label>
-                        <input type="radio" name="is-on-promo" class="prm-switch" id="prm-false" value="0">
+                        <input type="radio" name="is-on-promo" class="prm-switch" id="prm-false" value="0" required>
                         <label for="prm-false">Non</label>
                     </td>
                 </tr>
@@ -68,9 +68,9 @@
                 <tr>
                     <td>En sélection</td>
                     <td>
-                        <input type="radio" name="is-in-selection" id="sel-true" value="1">
+                        <input type="radio" name="is-in-selection" id="sel-true" value="1" required>
                         <label for="sel-true">Oui</label>
-                        <input type="radio" name="is-in-selection" id="sel-false" value="0">
+                        <input type="radio" name="is-in-selection" id="sel-false" value="0" required>
                         <label for="sel-false">Non</label>
                     </td>
                 </tr>
@@ -454,18 +454,18 @@
                         <tr>
                             <td>Disponible</td>
                             <td>
-                                <input type="radio" name="is-available" id="avb-true" value="1" '.dispPrdBoolCheckbox($prd['is_available'], '1').'>
+                                <input type="radio" name="is-available" id="avb-true" value="1" '.dispPrdBoolCheckbox($prd['is_available'], '1').' required>
                                 <label for="avb-true">Oui</label>
-                                <input type="radio" name="is-available" id="avb-false" value="0" '.dispPrdBoolCheckbox($prd['is_available'], '0').'>
+                                <input type="radio" name="is-available" id="avb-false" value="0" '.dispPrdBoolCheckbox($prd['is_available'], '0').' required>
                                 <label for="avb-false">Non</label>
                             </td>
                         </tr>
                         <tr>
                             <td>En promotion</td>
                             <td>
-                                <input type="radio" name="is-on-promo" class="prm-switch" id="prm-true" value="1" '.dispPrdBoolCheckbox($prd['is_on_promo'], '1').'>
+                                <input type="radio" name="is-on-promo" class="prm-switch" id="prm-true" value="1" '.dispPrdBoolCheckbox($prd['is_on_promo'], '1').' required>
                                 <label for="prm-true">Oui</label>
-                                <input type="radio" name="is-on-promo" class="prm-switch" id="prm-false" value="0" '.dispPrdBoolCheckbox($prd['is_on_promo'], '0').'>
+                                <input type="radio" name="is-on-promo" class="prm-switch" id="prm-false" value="0" '.dispPrdBoolCheckbox($prd['is_on_promo'], '0').' required>
                                 <label for="prm-false">Non</label>
                             </td>
                         </tr>
@@ -480,9 +480,9 @@
                         <tr>
                             <td>En sélection</td>
                             <td>
-                                <input type="radio" name="is-in-selection" id="sel-true" value="1" '.dispPrdBoolCheckbox($prd['is_in_selection'], '1').'>
+                                <input type="radio" name="is-in-selection" id="sel-true" value="1" '.dispPrdBoolCheckbox($prd['is_in_selection'], '1').' required>
                                 <label for="sel-true">Oui</label>
-                                <input type="radio" name="is-in-selection" id="sel-false" value="0" '.dispPrdBoolCheckbox($prd['is_in_selection'], '0').'>
+                                <input type="radio" name="is-in-selection" id="sel-false" value="0" '.dispPrdBoolCheckbox($prd['is_in_selection'], '0').' required>
                                 <label for="sel-false">Non</label>
                             </td>
                         </tr>
