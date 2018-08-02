@@ -16,8 +16,10 @@
   <link rel="icon" href="../../favicon.ico">
   <title>sne*k you - Contact</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
   <link href="css/conctact.css" rel="stylesheet">
+  <link rel="stylesheet" href="//cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
   <link href="css/style.css" rel="stylesheet">
 </head>
 
@@ -217,9 +219,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
   <script src="js/bootstrap.min.js"></script>
-  <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-  <script src="js/holder.min.js"></script>
-  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <script src="js/ie10-viewport-bug-workaround.js"></script>
   <script src="js/tools.js"></script>
 </body>

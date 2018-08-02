@@ -62,6 +62,7 @@
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 	<link href="css/modal.css" rel="stylesheet">
+  <link rel="stylesheet" href="//cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
 	<link href="css/style.css" rel="stylesheet">
 </head>
 
@@ -310,76 +311,75 @@
 		</section>
 	</main>
 	<footer class="section footer-classic context-dark bg-image">
-		<div class="container">
-			<div class="row row-30">
-				<div class="col-md-4 col-xl-5">
-					<div class="pr-xl-4">
-						<h4>
-							<a class="brand" href="index.php">
-								<img class="brand-logo-light" src="img/logo.png" alt="" width="auto" height="37">
-							</a>
-						</h4>
-						<p>
-							<i>L'e-shop numéro 1 de vente de sneakers à travers le monde !</i>
-						</p>
-						<br>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<h4>Nous retrouver</h4>
-					<dl class="contact-list">
-						<dt>Adresse :</dt>
-						<dd>2 avenue du Général de Gaulle, 75000 Paris</dd>
-					</dl>
-					<dl class="contact-list">
-						<dt>E-mail :</dt>
-						<dd>
-							<a href="mailto:#">contact@sneakyou.com</a>
-						</dd>
-					</dl>
-					<dl class="contact-list">
-						<dt>Tél. :</dt>
-						<dd>
-							<a href="tel:#">+0146521548</a>
-							<span>/</span>
-							<a href="tel:#">+094582154</a>
-						</dd>
-					</dl>
-				</div>
-				<div class="col-md-4 col-xl-3">
-					<h4>Liens utiles</h4>
-					<ul class="nav-list">
-						<li class="partners">
-							<a href="#">Nos partenaires</a>
-						</li>
-						<li class="facebook">
-							<a href="#">Facebook</a>
-						</li>
-						<li class="twitter">
-							<a href="#">Twitter</a>
-						</li>
-						<li class="instagram">
-							<a href="#">Instagram</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<p class="rights pull-left">
-				<span>©  </span>
-				<span class="copyright-year">2018</span>
-				<span> </span>
-				<span>Sne*k you</span>
-			</p>
-			<p class="pull-right">
-				<a href="#">Retour en haut</a>
-			</p>
-		</div>
-	</footer>
+    <div class="container">
+      <div class="row row-30">
+        <div class="col-md-4 col-xl-5">
+          <div class="pr-xl-4">
+            <h4>
+              <a class="brand" href="index.php">
+                <img class="brand-logo-light" src="img/logo.png" alt="" width="auto" height="37">
+              </a>
+            </h4>
+            <p>
+              <i>L'e-shop numéro 1 de vente de sneakers à travers le monde !</i>
+            </p>
+            <br>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h4>Nous retrouver</h4>
+          <dl class="contact-list">
+            <dt>Adresse :</dt>
+            <dd>2 avenue du Général de Gaulle, 75000 Paris</dd>
+          </dl>
+          <dl class="contact-list">
+            <dt>E-mail :</dt>
+            <dd>
+              <a href="mailto:#">contact@sneakyou.com</a>
+            </dd>
+          </dl>
+          <dl class="contact-list">
+            <dt>Tél. :</dt>
+            <dd>
+              <a href="tel:#">+0146521548</a>
+              <span>/</span>
+              <a href="tel:#">+094582154</a>
+            </dd>
+          </dl>
+        </div>
+        <div class="col-md-4 col-xl-3">
+          <h4>Liens utiles</h4>
+          <ul class="nav-list">
+            <li class="partners">
+              <a href="#">Nos partenaires</a>
+            </li>
+            <li class="facebook">
+              <a href="#">Facebook</a>
+            </li>
+            <li class="twitter">
+              <a href="#">Twitter</a>
+            </li>
+            <li class="instagram">
+              <a href="#">Instagram</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p class="rights pull-left">
+        <span>©  </span>
+        <span class="copyright-year">2018</span>
+        <span> </span>
+        <span>Sne*k you</span>
+      </p>
+      <p class="pull-right">
+        <a href="#">Retour en haut</a>
+      </p>
+    </div>
+  </footer>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
 	<script src="js/bootstrap.min.js"></script>
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script src="js/ie10-viewport-bug-workaround.js"></script>
 	<script src="js/tools.js"></script>
 </body>

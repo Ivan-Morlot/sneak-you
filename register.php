@@ -193,9 +193,11 @@
   <link rel="icon" href="../../favicon.ico">
   <title>sne*k you - Inscription</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
   <link href="css/account.css" rel="stylesheet">
   <link href="css/carousel.css" rel="stylesheet">
+  <link rel="stylesheet" href="//cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
   <link href="css/style.css" rel="stylesheet">
 </head>
 
