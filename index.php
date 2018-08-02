@@ -178,25 +178,17 @@
           </div>
         </div>
         <div class="row">
+<?php
+  $reqSelection = $db->query("SELECT * FROM product WHERE is_in_selection = 1");
+  while($prdInSelection = $reqSelection->fetch(PDO::FETCH_ASSOC)) {
+    $imgName = $prdInSelection['picture_name'];
+?>
           <div class="col-6 col-md-4 ">
-            <a href="">
-              <img src="img/ad_zx500rm_gfw.png" style="width:100%;" alt="" />
+            <a href="product.php">
+              <img src="img/<?= $imgName ?>" style="width:100%;" alt="produit" />
             </a>
-
           </div>
-          <div class="col-6 col-md-4 ">
-            <a href="">
-              <img src="img/jo_fe23_rb.png" style="width:100%;" alt="" />
-            </a>
-
-          </div>
-          <div class="col-6 col-md-4 ">
-            <a href="">
-              <img src="img/nk_woutburst.png" style="width:100%;" alt="" />
-            </a>
-
-          </div>
-
+<?php } ?>
         </div>
         <div class="col-lg-12">
           <div class="row sells">
@@ -205,25 +197,17 @@
           </div>
         </div>
         <div class="row">
+<?php
+  $reqPromo = $db->query("SELECT * FROM product WHERE is_on_promo = 1");
+  while($prdOnPromo = $reqPromo->fetch(PDO::FETCH_ASSOC)) {
+    $imgName = $prdOnPromo['picture_name'];
+?>
           <div class="col-6 col-md-4 ">
-            <a href="">
-              <img src="img/nb_wl574esv_d.png" style="width:100%;" alt="" />
+            <a href="product.php">
+              <img src="img/<?= $imgName ?>" style="width:100%;" alt="produit" />
             </a>
-
           </div>
-          <div class="col-6 col-md-4 ">
-            <a href="">
-              <img src="img/re_ifogu_blablur.png" style="width:100%;" alt="" />
-            </a>
-
-          </div>
-          <div class="col-6 col-md-4 ">
-            <a href="">
-              <img src="img/jo_fe23_rb.png" style="width:100%;" alt="" />
-            </a>
-
-          </div>
-
+<?php } ?>
         </div>
         <div class="col-lg-12">
           <a id="tousnosproduits" href="product.php">
