@@ -57,7 +57,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="icon" href="../../favicon.ico">
-	<title>Mosaïque produit</title>
+	<title>sne*k you - E-shop</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -112,12 +112,16 @@
                   Mon panier
                 </a>
               </li>
-<?php if(isset($_SESSION['login'])) {?>
+<?php if(isset($_SESSION['login'])) {
+  $login = $_SESSION['login'];
+  $reqUser = $db->query("SELECT * FROM customer WHERE email = '$login'");
+  if($user = $reqUser->fetch(PDO::FETCH_ASSOC)) {
+    $userName = $user['firstname']." ".$user['lastname'];
+  }
+?>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  <span class="glyphicon glyphicon-asterisk"></span>
-                  Mon-compte
-                  <span class="caret"></span>
+                  <span class="glyphicon glyphicon-asterisk"></span> <?= $userName ?> <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
@@ -146,15 +150,15 @@
   </header>
 
 	<main>
-<?php if(isset($_POST['size'])) {
-	$orderedPrd = (string)$_POST['size'];
+<?php if(isset($_POST['ordered-prd'])) {
+	$orderedPrd = (string)$_POST['ordered-prd'];
 	if(!isset($_SESSION['cart'])) {
 		$_SESSION['cart'] = array();
 		$_SESSION['cart']['product'] = array();
-      	$_SESSION['cart']['product_qty'] = array();
-      	$_SESSION['cart']['locked'] = false;
+		$_SESSION['cart']['product_qty'] = array();
 	}
-	if (isset($_SESSION['cart']) && $_SESSION['cart']['locked'] !== true) {
+	
+	if (isset($_SESSION['cart'])) {
 		$productPos = array_search($orderedPrd, $_SESSION['cart']['product']);
 		if ($productPos !== false) {
 			$_SESSION['cart']['product_qty'][$productPos] += 1 ;
@@ -244,16 +248,20 @@
 													</p>
 													<h5 class="sizes">Taille à commander :</h5>
 													<form action="product.php" method="post">
-														<select name="size" required>
+														<select name="ordered-prd" required>
 															<option selected disabled value="">Sélectionnez une taille</option>
 <?php
-		$sizeIds = explode(",", $prdSizIds[$thisProductId]);
+		$prdSizeIds = explode(",", $prdSizIds[$thisProductId]);
 
-		foreach($sizeIds as $id) {
-			$reqSizeName = $db->query("SELECT size FROM size WHERE id = '$id'");
-			if($size = $reqSizeName->fetch(PDO::FETCH_ASSOC)) {
+		foreach($prdSizeIds as $prdSizeId) {
+			$reqPrdSize = $db->query("SELECT * FROM product_size WHERE id = '$prdSizeId'");
+			if($prdSize = $reqPrdSize->fetch(PDO::FETCH_ASSOC)) {
+				$sizeId = $prdSize['size_id'];
+			}
+			$reqSizeName = $db->query("SELECT size FROM size WHERE id = '$sizeId'");
+			if($sizeName = $reqSizeName->fetch(PDO::FETCH_ASSOC)) {
 ?>
-															<option value="<?= $id ?>"><?= $size['size'] ?></option>
+															<option value="<?= $prdSizeId ?>"><?= $sizeName['size'] ?></option>
 <?php 	
 			}
 		}

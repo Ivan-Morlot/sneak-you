@@ -1,5 +1,7 @@
 <?php
-  session_start(); 
+  session_start();
+  
+  require_once "utils/connection.php";
 ?>
 
 <!DOCTYPE html>
@@ -9,27 +11,12 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="icon" href="../../favicon.ico">
-
-  <title>Carousel Template for Bootstrap</title>
-
-  <!-- Bootstrap core CSS -->
+  <title>sne*k you - Contact</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-  <!-- Custom styles for this template -->
-
   <link href="css/conctact.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 </head>
@@ -81,12 +68,16 @@
                   Mon panier
                 </a>
               </li>
-<?php if(isset($_SESSION['login'])) {?>
+<?php if(isset($_SESSION['login'])) {
+  $login = $_SESSION['login'];
+  $reqUser = $db->query("SELECT * FROM customer WHERE email = '$login'");
+  if($user = $reqUser->fetch(PDO::FETCH_ASSOC)) {
+    $userName = $user['firstname']." ".$user['lastname'];
+  }
+?>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  <span class="glyphicon glyphicon-asterisk"></span>
-                  Mon-compte
-                  <span class="caret"></span>
+                  <span class="glyphicon glyphicon-asterisk"></span> <?= $userName ?> <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>

@@ -1,7 +1,184 @@
 <?php
   session_start();
-  if(isset($_SESSION['login']))
+
+  require_once "utils/connection.php";
+
+  $result = '
+    <form action="register.php?req=register" method="post" class="container2">
+      <div class="heading">
+        Formulaire d\'inscription
+      </div>
+      <hr>
+      <div class="row">
+            <div class="col-xs-4 ">
+              <label class="gender">Civilité<span class="rqd">*</span> :</label>
+            </div>
+            <div class="col-xs-4 male">
+              <input type="radio" name="gender" id="boy" value="M" required>
+              <label for="man">M.</label>
+            </div>
+            <div class="col-xs-4 female">
+              <input type="radio" name="gender" id="girl" value="F" required>
+              <label for="woman">Mme.</label>
+            </div>
+          </div>
+      </div>
+      <div class="row ">
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label class="firstname">Prénom<span class="rqd">*</span> :</label>
+            </div>
+            <div class="col-xs-8">
+              <input type="text" name="firstname" maxlength="30" required class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label class="lastname">Nom<span class="rqd">*</span> :</label>
+            </div>
+            <div class="col-xs-8">
+            <input type="text" name="lastname" maxlength="30" required class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label class="mail">E-mail<span class="rqd">*</span> :</label>
+            </div>
+            <div class="col-xs-8">
+              <input type="email" name="email" id="email" onblur="checkEmail(\'confirm-email\', \'email\')" required class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label class="mail">Confirmer l\'e-mail<span class="rqd">*</span> :</label>
+            </div>
+            <div class="col-xs-8">
+              <input type="email" name="confirm-email" maxlength="50" id="confirm-email" onblur="checkEmail(\'confirm-email\', \'email\')" required class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label class="pass">Mot de passe<span class="rqd">*</span> :</label>
+            </div>
+            <div class="col-xs-8">
+            <input type="password" name="password" id="password" onblur="checkPassword(\'confirm-password\', \'password\')" required class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label class="pass">Confirmer le mot de passe<span class="rqd">*</span> :</label>
+            </div>
+            <div class="col-xs-8">
+            <input type="password" name="confirm-password" id="confirm-password" onblur="checkPassword(\'confirm-password\', \'password\')" required class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label class="pass">Date de naissance :</label>
+            </div>
+            <div class="col-xs-8">
+              <input type="date" name="birthdate" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label class="pass">Tél. principal<span class="rqd">*</span> :</label>
+            </div>
+            <div class="col-xs-8">
+            <input type="text" name="main-phone" maxlength="10"  size="10" oninput="checkPhoneNumber(this)" required class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <label class="pass">Tél. secondaire :</label>
+            </div>
+            <div class="col-xs-8">
+            <input type="text" name="sec-phone" maxlength="10"  size="10" oninput="checkPhoneNumber(this)" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="row">
+            <div class="col-xs-4">
+              <p class="rqd">* champs requis</p>
+            </div>
+            <div class="col-xs-8">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="col-sm-12">
+            <button class="btn btn-warning" type="submit">S\'inscire</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  ';
+
+  if (!isset($_SESSION['login']) && isset($_GET['req']) && $_GET['req'] == 'register' &&
+    isset($_POST['gender']) &&
+    isset($_POST['firstname']) &&
+    isset($_POST['lastname']) &&
+    isset($_POST['email']) &&
+    isset($_POST['password']) &&
+    isset($_POST['main-phone'])) {
+    $email = $_POST['email'];
+    
+    $reqCheckEmail = $db->query("SELECT email FROM customer WHERE email = '$email'");
+    if($tempCheckEmail = $reqCheckEmail->fetch(PDO::FETCH_ASSOC)) {
+        $checkEmail = $tempCheckEmail['email'];
+    }
+
+    if (!isset($checkEmail) || $checkEmail === "") {
+        $authLevel = 0;
+        $gender = $_POST['gender'];
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $password = md5($_POST['password']);
+        $mainPhone = $_POST['main-phone'];
+        if(isset($_POST['birthdate']) && $_POST['birthdate'] != "") {$dispBirthdate = $_POST['birthdate']; $birthdate = "'".$dispBirthdate."'";} else {$birthdate = 'NULL';}
+        if(isset($_POST['sec-phone']) && $_POST['sec-phone'] != "") {$dispSecPhone = $_POST['sec-phone']; $secPhone = "'".$dispSecPhone."'";} else {$secPhone = 'NULL';}
+        $db->exec("INSERT INTO `customer` (`id`,`gender`, `firstname`, `lastname`, `email`, `password`, `auth_level`, `birthdate`, `main_phone_number`, `secondary_phone_number`, `delivery_address`, `del_postal_code`, `del_city`, `del_address_supp`, `del_building`, `del_staircase`, `del_floor`, `del_door`, `billing_address`, `bil_postal_code`, `bil_city`, `bil_address_supp`, `bil_building`, `bil_staircase`, `bil_floor`, `bil_door`, `credit_card_holder`, `credit_card_number`, `credit_card_expiration`) VALUES (NULL, '$gender', '$firstname', '$lastname', '$email', '$password', '$authLevel', $birthdate, '$mainPhone', $secPhone, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)");
+        $_SESSION['login'] = $email;
+        $_SESSION['auth_level'] = $authLevel;
+        $result = '
+            <div class="container2">
+              <div class="heading">
+                Inscription réussie
+              </div>
+              <p class="pass">Bienvenue !</p>
+            </div>
+          ';
+    } else {
+      $result = '
+        <div class="container2">
+          <div class="heading">
+            Inscription échouée
+          </div>
+          <p class="pass">Cet e-mail existe déjà.</p>
+        </div>
+      ';
+    }
+  } else if(isset($_SESSION['login'])) {
     header('location:index.php');
+  }
 ?>
 
 <!DOCTYPE html>
@@ -11,26 +188,12 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="icon" href="../../favicon.ico">
-
-  <title>Carousel Template for Bootstrap</title>
-
-  <!-- Bootstrap core CSS -->
+  <title>sne*k you - Inscription</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-  <!-- Custom styles for this template -->
   <link href="css/account.css" rel="stylesheet">
   <link href="css/carousel.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
@@ -83,12 +246,16 @@
                   Mon panier
                 </a>
               </li>
-<?php if(isset($_SESSION['login'])) {?>
+<?php if(isset($_SESSION['login'])) {
+  $login = $_SESSION['login'];
+  $reqUser = $db->query("SELECT * FROM customer WHERE email = '$login'");
+  if($user = $reqUser->fetch(PDO::FETCH_ASSOC)) {
+    $userName = $user['firstname']." ".$user['lastname'];
+  }
+?>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  <span class="glyphicon glyphicon-asterisk"></span>
-                  Mon-compte
-                  <span class="caret"></span>
+                  <span class="glyphicon glyphicon-asterisk"></span> <?= $userName ?> <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
@@ -117,112 +284,7 @@
   </header>
 
   <main>
-    <form action="index.php" method="post" class="container2">
-      <!---heading---->
-      <header class="heading">
-        Formulaire d'inscription
-      </header>
-      <hr>
-      <!---Form starting---->
-      <div class="row ">
-        <!--- For Name---->
-        <div class="col-sm-12">
-          <div class="row">
-            <div class="col-xs-4">
-              <label class="firstname">Prénom :</label>
-            </div>
-            <div class="col-xs-8">
-              <input type="text" name="fname" id="fname" placeholder="Enter your First Name" class="form-control ">
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="row">
-            <div class="col-xs-4">
-              <label class="lastname">Nom :</label>
-            </div>
-            <div class="col-xs-8">
-              <input type="text" name="lname" id="lname" placeholder="Enter your Last Name" class="form-control last">
-            </div>
-          </div>
-        </div>
-        <!--   date de naissance -->
-        <div class="col-sm-12">
-          <div class="row">
-            <div class="col-xs-4">
-              <label class="pass">Birth date :</label>
-            </div>
-            <div class="col-xs-8">
-              <input type="date" name="date" id="date" placeholder="20/02/1992" class="form-control">
-            </div>
-          </div>
-        </div>
-        <!-----For email---->
-        <div class="col-sm-12">
-          <div class="row">
-            <div class="col-xs-4">
-              <label class="mail">Email :</label>
-            </div>
-            <div class="col-xs-8">
-              <input type="email" name="email" id="email" placeholder="Enter your email" class="form-control">
-            </div>
-          </div>
-        </div>
-        <!-----For Password and confirm password---->
-        <div class="col-sm-12">
-          <div class="row">
-            <div class="col-xs-4">
-              <label class="pass">Mot de passe :</label>
-            </div>
-            <div class="col-xs-8">
-              <input type="password" name="password" id="password" placeholder="Enter your Password" class="form-control">
-            </div>
-          </div>
-        </div>
-        <!-----------For Phone number(mobile)-------->
-        <div class="col-sm-12">
-          <div class="row">
-            <div class="col-xs-4">
-              <label class="pass">Mobile :</label>
-            </div>
-            <div class="col-xs-8">
-              <input type="tel" name="tel" id="tel" placeholder="06 45 12 54 84" class="form-control">
-            </div>
-          </div>
-        </div>
-        <!-----------For Phone number (fixe)-------->
-        <div class="col-sm-12">
-          <div class="row">
-            <div class="col-xs-4">
-              <label class="pass">Fixe :</label>
-            </div>
-            <div class="col-xs-8">
-              <input type="tel" name="tel" id="tel" placeholder="+33" class="form-control">
-            </div>
-          </div>
-        </div>
-        <!--   gender     -->
-        <div class="col-sm-12">
-          <div class="row">
-            <div class="col-xs-4 ">
-              <label class="gender">Civilité:</label>
-            </div>
-            <div class="col-xs-4 male">
-              <input type="radio" name="gender" id="boy" value="M">
-              <label for="boy">M.</label>
-            </div>
-
-            <div class="col-xs-4 female">
-              <input type="radio" name="gender" id="girl" value="F">
-              <label for="girl">Mme.</label>
-            </div>
-          </div>
-          <div class="col-sm-12">
-            <button class="btn btn-warning" type="submit">S'inscire</button>
-          </div>
-        </div>
-      </div>
-    </form>
+    <?= $result ?>
   </main>
 
   <footer class="section footer-classic context-dark bg-image">
@@ -295,9 +357,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
   <script src="js/bootstrap.min.js"></script>
-  <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-  <script src="js/holder.min.js"></script>
-  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <script src="js/ie10-viewport-bug-workaround.js"></script>
   <script src="js/tools.js"></script>
 </body>

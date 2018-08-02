@@ -1,5 +1,26 @@
 <?php
-  session_start(); 
+  session_start();
+
+  require_once "utils/connection.php";
+
+  $result = '';
+
+  if (isset($_POST['login']) && isset($_POST['password'])) {
+    $login = $_POST['login'];
+    $password = md5($_POST['password']);
+    $req = $db->query("SELECT * FROM customer WHERE (email = '$login' AND password = '$password')");
+    if($user = $req->fetch(PDO::FETCH_ASSOC)) {
+      $_SESSION['login'] = $user['email'];
+      $_SESSION['auth_level'] = $user['auth_level'];
+      header("location:index.php");
+    } else {
+      $result = '
+        <div>
+            <p class="connect-error">L\'identifiant et/ou le mot de passe n\'existe(nt) pas.</p>
+        </div>
+      ';
+    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -67,12 +88,16 @@
                   Mon panier
                 </a>
               </li>
-<?php if(isset($_SESSION['login'])) {?>
+<?php if(isset($_SESSION['login'])) {
+  $login = $_SESSION['login'];
+  $reqUser = $db->query("SELECT * FROM customer WHERE email = '$login'");
+  if($user = $reqUser->fetch(PDO::FETCH_ASSOC)) {
+    $userName = $user['firstname']." ".$user['lastname'];
+  }
+?>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  <span class="glyphicon glyphicon-asterisk"></span>
-                  Mon-compte
-                  <span class="caret"></span>
+                  <span class="glyphicon glyphicon-asterisk"></span> <?= $userName ?> <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
@@ -101,9 +126,10 @@
   </header>
 
   <main>
-  <form action="index.php" method="post" class="container2">
+  <form action="connect.php" method="post" class="container2">
     <!---heading---->
     <div class="heading">Se connecter</div>
+    <?= $result ?>
     <hr>
     <!---Form starting---->
     <div class="row ">
@@ -114,7 +140,7 @@
             <label class="mail">Login :</label>
           </div>
           <div class="col-xs-8">
-            <input type="text" name="login" id="login" placeholder="Enter your login" class="form-control">
+            <input type="text" name="login" id="login" class="form-control">
           </div>
         </div>
       </div>
@@ -125,7 +151,7 @@
             <label class="pass">Mot de passe :</label>
           </div>
           <div class="col-xs-8">
-            <input type="password" name="password" id="password" placeholder="Enter your Password" class="form-control">
+            <input type="password" name="password" id="password" class="form-control">
           </div>
         </div>
       </div>

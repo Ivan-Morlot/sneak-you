@@ -11,34 +11,16 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="icon" href="../../favicon.ico">
-
   <title>sne*k you - Accueil</title>
-
-  <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
-
-  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
   <link rel="stylesheet" href="//cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
   <link href="css/style.css" rel="stylesheet">
-
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-  <!-- Custom styles for this template -->
-
-
 </head>
-<!-- NAVBAR
-================================================== -->
 
 <body>
   <header>
@@ -87,12 +69,16 @@
                   Mon panier
                 </a>
               </li>
-<?php if(isset($_SESSION['login'])) {?>
+<?php if(isset($_SESSION['login'])) {
+  $login = $_SESSION['login'];
+  $reqUser = $db->query("SELECT * FROM customer WHERE email = '$login'");
+  if($user = $reqUser->fetch(PDO::FETCH_ASSOC)) {
+    $userName = $user['firstname']." ".$user['lastname'];
+  }
+?>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  <span class="glyphicon glyphicon-asterisk"></span>
-                  Mon-compte
-                  <span class="caret"></span>
+                  <span class="glyphicon glyphicon-asterisk"></span> <?= $userName ?> <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
@@ -182,17 +168,8 @@
         <span class="sr-only">Suivant</span>
       </a>
     </div>
-    <!-- /.carousel -->
-
-
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
 
     <div class="container marketing">
-
-      <!-- Three columns of text below the carousel -->
-
       <div class="row">
         <div class="col-lg-12">
           <div class="row sells">
@@ -221,7 +198,6 @@
           </div>
 
         </div>
-        <!-- /.col-lg-4 -->
         <div class="col-lg-12">
           <div class="row sells">
             <img src="img/promotion.png" class="sells-img t2" alt="">
@@ -249,7 +225,6 @@
           </div>
 
         </div>
-        <!-- /.col-lg-4 -->
         <div class="col-lg-12">
           <a id="tousnosproduits" href="product.php">
             <h2 class="all-sells">Venez voir toutes nos sneakers !</h2>
@@ -257,12 +232,7 @@
           </a>
 
         </div>
-        <!-- /.col-lg-4 -->
       </div>
-      <!-- /.row -->
-
-
-      <!-- START THE FEATURETTES -->
 
       <hr class="featurette-divider">
 
@@ -325,7 +295,6 @@
           <img class="featurette-image img-responsive center-block" src="img/grid_voyage.jpg" alt="">
         </div>
       </div>
-      <!-- /END THE FEATURETTES -->
     </div>
   </main>
 
@@ -396,16 +365,10 @@
     </div>
   </footer>
 
-  <!-- Bootstrap core JavaScript
-    ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-  <script src="js/holder.min.js"></script>
-  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <script src="js/ie10-viewport-bug-workaround.js"></script>
   <script src="js/tools.js"></script>
 </body>

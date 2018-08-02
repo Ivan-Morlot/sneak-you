@@ -480,3 +480,11 @@ ul, ol {
   animation-name: fadeout;
   animation-duration: 2s;
 }
+
+.connect-error {
+  color: rgb(226, 59, 59);
+}
+
+.rqd {
+  color: #f96;
+}

@@ -1,7 +1,26 @@
 <?php
   session_start();
 
-  require_once "utils/connection.php";
+  require_once "utils/connection.php";  
+
+  $result = '';
+
+  if (isset($_POST['login']) && isset($_POST['password'])) {
+    $login = $_POST['login'];
+    $password = md5($_POST['password']);
+    $req = $db->query("SELECT * FROM customer WHERE (email = '$login' AND password = '$password')");
+    if($user = $req->fetch(PDO::FETCH_ASSOC)) {
+      $_SESSION['login'] = $user['email'];
+      $_SESSION['auth_level'] = $user['auth_level'];
+      header("location:cart.php");
+    } else {
+      $result = '
+        <div>
+            <p class="connect-error">L\'identifiant et/ou le mot de passe n\'existe(nt) pas.</p>
+        </div>
+      ';
+    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -27,287 +46,92 @@
     <script src="js/bootstrap-min.js"></script>
     <script src="js/bootstrap-formhelpers-min.js"></script>
     <script type="text/javascript" src="js/bootstrapValidator-min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#payment-form').bootstrapValidator({
-                message: 'This value is not valid',
-                feedbackIcons: {
-                    valid: 'glyphicon glyphicon-ok',
-                    invalid: 'glyphicon glyphicon-remove',
-                    validating: 'glyphicon glyphicon-refresh'
-                },
-                submitHandler: function (validator, form, submitButton) {
-                    // createToken returns immediately - the supplied callback submits the form if there are no errors
-                    Stripe.card.createToken({
-                        number: $('.card-number').val(),
-                        cvc: $('.card-cvc').val(),
-                        exp_month: $('.card-expiry-month').val(),
-                        exp_year: $('.card-expiry-year').val(),
-                        name: $('.card-holder-name').val(),
-                        address_line1: $('.address').val(),
-                        address_city: $('.city').val(),
-                        address_zip: $('.zip').val(),
-                        address_state: $('.state').val(),
-                        address_country: $('.country').val()
-                    }, stripeResponseHandler);
-                    return false; // submit from callback
-                },
-                fields: {
-                    street: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The street is required and cannot be empty'
-                            },
-                            stringLength: {
-                                min: 6,
-                                max: 96,
-                                message: 'The street must be more than 6 and less than 96 characters long'
-                            }
-                        }
-                    },
-                    city: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The city is required and cannot be empty'
-                            }
-                        }
-                    },
-                    zip: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The zip is required and cannot be empty'
-                            },
-                            stringLength: {
-                                min: 3,
-                                max: 9,
-                                message: 'The zip must be more than 3 and less than 9 characters long'
-                            }
-                        }
-                    },
-                    email: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The email address is required and can\'t be empty'
-                            },
-                            emailAddress: {
-                                message: 'The input is not a valid email address'
-                            },
-                            stringLength: {
-                                min: 6,
-                                max: 65,
-                                message: 'The email must be more than 6 and less than 65 characters long'
-                            }
-                        }
-                    },
-                    cardholdername: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The card holder name is required and can\'t be empty'
-                            },
-                            stringLength: {
-                                min: 6,
-                                max: 70,
-                                message: 'The card holder name must be more than 6 and less than 70 characters long'
-                            }
-                        }
-                    },
-                    cardnumber: {
-                        selector: '#cardnumber',
-                        validators: {
-                            notEmpty: {
-                                message: 'The credit card number is required and can\'t be empty'
-                            },
-                            creditCard: {
-                                message: 'The credit card number is invalid'
-                            },
-                        }
-                    },
-                    expMonth: {
-                        selector: '[data-stripe="exp-month"]',
-                        validators: {
-                            notEmpty: {
-                                message: 'The expiration month is required'
-                            },
-                            digits: {
-                                message: 'The expiration month can contain digits only'
-                            },
-                            callback: {
-                                message: 'Expired',
-                                callback: function (value, validator) {
-                                    value = parseInt(value, 10);
-                                    var year = validator.getFieldElements('expYear').val(),
-                                        currentMonth = new Date().getMonth() + 1,
-                                        currentYear = new Date().getFullYear();
-                                    if (value < 0 || value > 12) {
-                                        return false;
-                                    }
-                                    if (year == '') {
-                                        return true;
-                                    }
-                                    year = parseInt(year, 10);
-                                    if (year > currentYear || (year == currentYear && value > currentMonth)) {
-                                        validator.updateStatus('expYear', 'VALID');
-                                        return true;
-                                    } else {
-                                        return false;
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    expYear: {
-                        selector: '[data-stripe="exp-year"]',
-                        validators: {
-                            notEmpty: {
-                                message: 'The expiration year is required'
-                            },
-                            digits: {
-                                message: 'The expiration year can contain digits only'
-                            },
-                            callback: {
-                                message: 'Expired',
-                                callback: function (value, validator) {
-                                    value = parseInt(value, 10);
-                                    var month = validator.getFieldElements('expMonth').val(),
-                                        currentMonth = new Date().getMonth() + 1,
-                                        currentYear = new Date().getFullYear();
-                                    if (value < currentYear || value > currentYear + 100) {
-                                        return false;
-                                    }
-                                    if (month == '') {
-                                        return false;
-                                    }
-                                    month = parseInt(month, 10);
-                                    if (value > currentYear || (value == currentYear && month > currentMonth)) {
-                                        validator.updateStatus('expMonth', 'VALID');
-                                        return true;
-                                    } else {
-                                        return false;
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    cvv: {
-                        selector: '#cvv',
-                        validators: {
-                            notEmpty: {
-                                message: 'The cvv is required and can\'t be empty'
-                            },
-                            cvv: {
-                                message: 'The value is not a valid CVV',
-                                creditCardField: 'cardnumber'
-                            }
-                        }
-                    },
-                }
-            });
-        });
-    </script>
-    <script type="text/javascript">
-        // this identifies your website in the createToken call below
-        Stripe.setPublishableKey('<Stripe Publishable Key>');
-
-        function stripeResponseHandler(status, response) {
-            if (response.error) {
-                // re-enable the submit button
-                $('.submit-button').removeAttr("disabled");
-                // show hidden div
-                document.getElementById('a_x200').style.display = 'block';
-                // show the errors on the form
-                $(".payment-errors").php(response.error.message);
-            } else {
-                var form$ = $("#payment-form");
-                // token contains id, last4, and card type
-                var token = response['id'];
-                // insert the token into the form so it gets submitted to the server
-                form$.append("<input type='hidden' name='stripeToken' value='" + token + "' />");
-                // and submit
-                form$.get(0).submit();
-            }
-        }
-    </script>
+    <script type="text/javascript" src="js/cart-modal.js"></script>
 </head>
 
 <body>
-<header>
-    <div class="navbar-wrapper">
-      <nav class="navbar navbar-inverse navbar-static-top">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-              aria-controls="navbar">
-              <span class="sr-only">Menu</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.php">
-              <img src="img/logo.png" class="nav-logo" alt="logo">
-              <span>sne*k you</span>
-            </a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li>
-                <form class="form-inline ml-auto p-2 bd-highlight" style="margin-top: 0.8vh" action="product.php">
-                  <div class="form-search form-inline ml-auto p-2 bd-highlight">
-                    <input class="extended-searchbar form-control mr-sm-2" type="text" placeholder="Rechercher un modèle" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                      <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                  </div>
-                </form>
-              </li>
-              <li>
-                <a href="product.php">E-shop sneakers</a>
-              </li>
-              <li>
-                <a href="contact.php">Nous contacter</a>
-              </li>
-<?php if(!isset($_SESSION['login'])) {?>
-              <li>
-                <a href="register.php">S'inscrire</a>
-              </li>
-<?php } ?>
-              <li>
-                <a href="cart.php">
-                  <span class="glyphicon glyphicon-shopping-cart"></span>
-                  Mon panier
+    <header>
+      <div class="navbar-wrapper">
+        <nav class="navbar navbar-inverse navbar-static-top">
+            <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                aria-controls="navbar">
+                <span class="sr-only">Menu</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.php">
+                <img src="img/logo.png" class="nav-logo" alt="logo">
+                <span>sne*k you</span>
                 </a>
-              </li>
-<?php if(isset($_SESSION['login'])) {?>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  <span class="glyphicon glyphicon-asterisk"></span>
-                  Mon-compte
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a href="profil.php">Profil</a>
-                  </li>
-                  <li role="separator" class="divider"></li>
-                  <li class="dropdown-header">Compte</li>
-                  <li>
-                    <a href="connect.php">Utiliser un autre compte</a>
-                  </li>
-                  <li>
-                    <a href="utils\logout.php">Se déconnecter</a>
-                  </li>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                <li>
+                    <form class="form-inline ml-auto p-2 bd-highlight" style="margin-top: 0.8vh" action="product.php">
+                    <div class="form-search form-inline ml-auto p-2 bd-highlight">
+                        <input class="extended-searchbar form-control mr-sm-2" type="text" placeholder="Rechercher un modèle" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                        <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+                    </form>
+                </li>
+                <li>
+                    <a href="product.php">E-shop sneakers</a>
+                </li>
+                <li>
+                    <a href="contact.php">Nous contacter</a>
+                </li>
+    <?php if(!isset($_SESSION['login'])) {?>
+                <li>
+                    <a href="register.php">S'inscrire</a>
+                </li>
+    <?php } ?>
+                <li>
+                    <a href="cart.php">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                    Mon panier
+                    </a>
+                </li>
+    <?php if(isset($_SESSION['login'])) {
+    $login = $_SESSION['login'];
+    $reqUser = $db->query("SELECT * FROM customer WHERE email = '$login'");
+    if($user = $reqUser->fetch(PDO::FETCH_ASSOC)) {
+        $userName = $user['firstname']." ".$user['lastname'];
+    }
+    ?>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon-asterisk"></span> <?= $userName ?> <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                    <li>
+                        <a href="profil.php">Profil</a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li class="dropdown-header">Compte</li>
+                    <li>
+                        <a href="connect.php">Utiliser un autre compte</a>
+                    </li>
+                    <li>
+                        <a href="utils\logout.php">Se déconnecter</a>
+                    </li>
+                    </ul>
+                </li>
+    <?php } else { ?>
+                <li>
+                    <a href="connect.php">Se connecter</a>
+                </li>
+    <?php } ?>
                 </ul>
-              </li>
-<?php } else { ?>
-              <li>
-                <a href="connect.php">Se connecter</a>
-              </li>
-<?php } ?>
-            </ul>
-          </div>
+            </div>
+            </div>
+        </nav>
         </div>
-      </nav>
-    </div>
-  </header>
+    </header>
 
     <main>
         <div class="container">
@@ -325,7 +149,27 @@
                             </tr>
                         </thead>
                         <tbody>
-<?php if(isset($_SESSION['cart']) && count($_SESSION['cart']['product']) > 0) {
+<?php
+    if(isset($_SESSION['cart']) && isset($_GET['del'])) {
+        $temp = array();
+		$temp['product'] = array();
+		$temp['product_qty'] = array();
+
+        for($i = 0; $i < count($_SESSION['cart']['product']); $i++) {
+            if ($i != $_GET['del']) {
+                array_push($temp['product'], $_SESSION['cart']['product'][$i]);
+                array_push($temp['product_qty'], $_SESSION['cart']['product_qty'][$i]);
+            }
+        }
+
+        $_SESSION['cart'] = $temp;
+
+        unset($temp);
+    }
+
+    $cartTotalPrice = 0;
+
+    if(isset($_SESSION['cart']) && count($_SESSION['cart']['product']) > 0) {
         $nbPrd = count($_SESSION['cart']['product']);
         for($i = 0; $i < $nbPrd; $i++) {
             $prdSizeId = $_SESSION['cart']['product'][$i];
@@ -352,6 +196,8 @@
             }
 
             $prdTotalPrice = $prdPrice * (float)$prdQty;
+
+            $cartTotalPrice += $prdTotalPrice;
 ?>
                             <tr>
                                 <td class="col-sm-8 col-md-6 ">
@@ -377,7 +223,7 @@
                                     </div>
                                 </td>
                                 <td class="col-sm-1 col-md-1 " style="text-align: center ">
-                                    <input type="number" class="form-control" value="<?= $prdQty ?>">
+                                    <input type="number" class="form-control" value="<?= $prdQty ?>" disabled>
                                 </td>
                                 <td class="col-sm-1 col-md-1 text-center ">
                                     <strong><?= $prdPrice ?>€</strong>
@@ -386,9 +232,9 @@
                                     <strong><?= $prdTotalPrice ?>€</strong>
                                 </td>
                                 <td class="col-sm-1 col-md-1 ">
-                                    <button type="button " class="btn btn-danger " action="cart.php?del=<?= $i ?>">
-                                        <span class="glyphicon glyphicon-remove "></span> Annuler
-                                    </button>
+                                    <a class="btn btn-danger " href="cart.php?del=<?= $i ?>">
+                                        <span class="glyphicon glyphicon-remove "></span> Retirer
+                                    </a>
                                 </td>
                             </tr>
 <?php
@@ -406,37 +252,11 @@
                                 <td>   </td>
                                 <td>   </td>
                                 <td>
-                                    <h5>Total HT</h5>
-                                </td>
-                                <td class="text-right ">
-                                    <h5>
-                                        <strong>0 €</strong>
-                                    </h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>   </td>
-                                <td>   </td>
-                                <td>   </td>
-                                <td>
-                                    <h5>Frais de livraison</h5>
-                                </td>
-                                <td class="text-right ">
-                                    <h5>
-                                        <strong>0 €</strong>
-                                    </h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>   </td>
-                                <td>   </td>
-                                <td>   </td>
-                                <td>
                                     <h3>Total à payer</h3>
                                 </td>
                                 <td class="text-right ">
                                     <h3>
-                                        <strong>0 €</strong>
+                                        <strong><?= $cartTotalPrice ?> €</strong>
                                     </h3>
                                 </td>
                             </tr>
@@ -594,12 +414,12 @@
                                         </div>
                                         <td>
 <?php if(isset($_SESSION['login'])) { ?>
-                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#val-order-modal">
+                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#val-order-modal" <?php if(!isset($_SESSION['cart']) || count($_SESSION['cart']['product']) <= 0) { echo 'disabled'; } ?>>
                                                 Passer la commande
                                                 <span class="glyphicon glyphicon-play"></span>
                                             </button>
 <?php } else { ?>
-                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#connection-modal">
+                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#connection-modal" <?php if(!isset($_SESSION['cart']) || count($_SESSION['cart']['product']) <= 0) { echo 'disabled'; } ?>>
                                                 Se connecter et passer commande
                                                 <span class="glyphicon glyphicon-play"></span>
                                             </button>
@@ -692,19 +512,19 @@
                 <h4 id="exampleModalLabel" class="modal-title">Finalisez vos achats en vous connectant</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form method="post" action="cart.php">
                     <div class="form-group">
                         <label>Login :</label>
                         <br>
-                        <input type="email" class="form-control">
+                        <input type="email" name="login" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Mot de passe :</label>
                         <br>
-                        <input type="password" class="form-control">
+                        <input type="password" name="password" class="form-control">
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Signin" class="btn btn-primary">
+                        <button class="btn btn-primary" type="submit">Envoyer</button>
                     </div>
                 </form>
                 <span class="min-title">Pas encore de compte ?</span>

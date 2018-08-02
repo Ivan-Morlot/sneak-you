@@ -12,7 +12,9 @@ body{
 /*-----for border----*/
 .container2{
 	font-family:Roboto,sans-serif;
-  background-image:url(../img/dark-blue-blurred-background.jpg) ;
+  background-image:url(../img/dark-blue-blurred-background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   margin: 0 auto;
   text-align: center;
   opacity: 0.9;

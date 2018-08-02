@@ -133,27 +133,39 @@
         isset($_POST['sizes'])) {
         $id = $_POST['id'];
         $ref = $_POST['ref'];
-        $name = $_POST['name'];
-        $price = $_POST['price'];
-        $category = $_POST['category'];
-        $sizes = $_POST['sizes'];
-        $optional = array();
-        if(isset($_POST['description']) && $_POST['description'] != "") {$description = "'".$_POST['description']."'";} else {$description = 'NULL';}
-        if(isset($_POST['is-available']) && $_POST['is-available'] != "") {$isAvailable = "'".$_POST['is-available']."'";} else {$isAvailable = 'NULL';}
-        if(isset($_POST['is-on-promo']) && $_POST['is-on-promo'] != "") {$isOnPromo = "'".$_POST['is-on-promo']."'";} else {$isOnPromo = 'NULL';}
-        if(isset($_POST['reduction-percent']) && $_POST['reduction-percent'] != "") {$reductionPercent = "'".$_POST['reduction-percent']."'";} else {$reductionPercent = 'NULL';}
-        if(isset($_POST['promo-price']) && $_POST['promo-price'] != "") {$promoPrice = "'".$_POST['promo-price']."'";} else {$promoPrice = 'NULL';}
-        if(isset($_POST['is-in-selection']) && $_POST['is-in-selection'] != "") {$isInSelection = "'".$_POST['is-in-selection']."'";} else {$isInSelection = 'NULL';}
-        if(isset($_POST['brand']) && $_POST['brand'] != "") {$brand = "'".$_POST['brand']."'";} else {$brand = 'NULL';}
-        if(isset($_FILES['picture']) && $_FILES['picture']['name'] != "") {
-            $optional["picture_name"] = "'".$_FILES['picture']['name']."'";
+        
+        $reqCheckRef = $db->query("SELECT ref FROM product WHERE ref = '$ref' AND id <> '$id'");
+        if($tempCheckRef = $reqCheckRef->fetch(PDO::FETCH_ASSOC)) {
+            $checkRef = $tempCheckRef['ref'];
         }
-        updatePrd($db, $ref, $name, $description, $price, $isAvailable, $isOnPromo, $reductionPercent, $promoPrice, $isInSelection, $brand, $category, $id, $optional);
-        deletePrdAllSizes($db, $id);
-        insertPrdSizes($db, $id, $sizes);
-        $displayDiv .= '
-            <br><h4> Le produit "'.$name.'" a été édité avec succès.</h4>
-        ';
+
+        if (!isset($checkRef) || $checkRef === "") {
+            $name = $_POST['name'];
+            $price = $_POST['price'];
+            $category = $_POST['category'];
+            $sizes = $_POST['sizes'];
+            $optional = array();
+            if(isset($_POST['description']) && $_POST['description'] != "") {$description = "'".$_POST['description']."'";} else {$description = 'NULL';}
+            if(isset($_POST['is-available']) && $_POST['is-available'] != "") {$isAvailable = "'".$_POST['is-available']."'";} else {$isAvailable = 'NULL';}
+            if(isset($_POST['is-on-promo']) && $_POST['is-on-promo'] != "") {$isOnPromo = "'".$_POST['is-on-promo']."'";} else {$isOnPromo = 'NULL';}
+            if(isset($_POST['reduction-percent']) && $_POST['reduction-percent'] != "") {$reductionPercent = "'".$_POST['reduction-percent']."'";} else {$reductionPercent = 'NULL';}
+            if(isset($_POST['promo-price']) && $_POST['promo-price'] != "") {$promoPrice = "'".$_POST['promo-price']."'";} else {$promoPrice = 'NULL';}
+            if(isset($_POST['is-in-selection']) && $_POST['is-in-selection'] != "") {$isInSelection = "'".$_POST['is-in-selection']."'";} else {$isInSelection = 'NULL';}
+            if(isset($_POST['brand']) && $_POST['brand'] != "") {$brand = "'".$_POST['brand']."'";} else {$brand = 'NULL';}
+            if(isset($_FILES['picture']) && $_FILES['picture']['name'] != "") {
+                $optional["picture_name"] = "'".$_FILES['picture']['name']."'";
+            }
+            updatePrd($db, $ref, $name, $description, $price, $isAvailable, $isOnPromo, $reductionPercent, $promoPrice, $isInSelection, $brand, $category, $id, $optional);
+            deletePrdAllSizes($db, $id);
+            insertPrdSizes($db, $id, $sizes);
+            $displayDiv .= '
+                <br><h4> Le produit "'.$name.'" a été édité avec succès.</h4>
+            ';
+        } else {
+            $displayDiv .= '
+                <br><h4>Edition impossible : référence déjà existante.</h4>
+            ';
+        }
     }
 
     if(isset($_GET['req']) && $_GET['req'] == 'delete' && isset($_GET['id'])) {
@@ -169,146 +181,158 @@
         isset($_POST['category']) &&
         isset($_POST['sizes'])) {
         $ref = $_POST['ref'];
-        $name = $_POST['name'];
-        $price = $_POST['price'];
-        $category = $_POST['category'];
-        $sizes = $_POST['sizes'];
-        if(isset($_POST['description']) && $_POST['description'] != "") {$dispDescription = $_POST['description']; $description = "'".$dispDescription."'";} else {$description = 'NULL';}
-        if(isset($_FILES['picture']) && $_FILES['picture']['name'] != "") {$dispPictureName = $_FILES['picture']['name']; $pictureName = "'".$dispPictureName."'";} else {$pictureName = 'NULL';}
-        if(isset($_POST['is-available']) && $_POST['is-available'] != "") {$dispIsAvailable = $_POST['is-available']; $isAvailable = "'".$dispIsAvailable."'";} else {$isAvailable = 'NULL';}
-        if(isset($_POST['is-on-promo']) && $_POST['is-on-promo'] != "") {$dispIsOnPromo = $_POST['is-on-promo']; $isOnPromo = "'".$dispIsOnPromo."'";} else {$isOnPromo = 'NULL';}
-        if(isset($_POST['reduction-percent']) && $_POST['reduction-percent'] != "") {$dispReductionPercent = $_POST['reduction-percent']; $reductionPercent = "'".$dispReductionPercent."'";} else {$reductionPercent = 'NULL';}
-        if(isset($_POST['promo-price']) && $_POST['promo-price'] != "") {$dispPromoPrice = $_POST['promo-price']; $promoPrice = "'".$dispPromoPrice."'";} else {$promoPrice = 'NULL';}
-        if(isset($_POST['is-in-selection']) && $_POST['is-in-selection'] != "") {$dispIsInSelection = $_POST['is-in-selection']; $isInSelection = "'".$dispIsInSelection."'";} else {$isInSelection = 'NULL';}
-        if(isset($_POST['brand']) && $_POST['brand'] != "") {$dispBrand = $_POST['brand']; $brand = "'".$dispBrand."'";} else {$brand = 'NULL';}
-        insertPrd($db, $ref, $name, $description, $price, $pictureName, $isAvailable, $isOnPromo, $reductionPercent, $promoPrice, $isInSelection, $brand, $category);
-        $req = selectPrdByRef($db, $ref);
-        if($thisProduct = $req->fetch(PDO::FETCH_ASSOC)) {
-            $thisProductId = $thisProduct['id'];
-            insertPrdSizes($db, $thisProductId, $sizes);
+        
+        $reqCheckRef = $db->query("SELECT ref FROM product WHERE ref = '$ref'");
+        if($tempCheckRef = $reqCheckRef->fetch(PDO::FETCH_ASSOC)) {
+            $checkRef = $tempCheckRef['ref'];
         }
-        $createDiv .= '
-            <br><h4>Produit créé avec succès.</h4>
-            <p><b>Récapitulatif :</b></p>
-            <table class="post-table">
-                <tr>
-                    <td>Référence</td>
-                    <td>
-                        '.$ref.'
-                    </td>
-                </tr>
-                <tr>
-                    <td>Nom</td>
-                    <td>
-                        '.$name.'
-                    </td>
-                </tr>
-        ';
-        if($description != 'NULL') {
+
+        if (!isset($checkRef) || $checkRef === "") {
+            $name = $_POST['name'];
+            $price = $_POST['price'];
+            $category = $_POST['category'];
+            $sizes = $_POST['sizes'];
+            if(isset($_POST['description']) && $_POST['description'] != "") {$dispDescription = $_POST['description']; $description = "'".$dispDescription."'";} else {$description = 'NULL';}
+            if(isset($_FILES['picture']) && $_FILES['picture']['name'] != "") {$dispPictureName = $_FILES['picture']['name']; $pictureName = "'".$dispPictureName."'";} else {$pictureName = 'NULL';}
+            if(isset($_POST['is-available']) && $_POST['is-available'] != "") {$dispIsAvailable = $_POST['is-available']; $isAvailable = "'".$dispIsAvailable."'";} else {$isAvailable = 'NULL';}
+            if(isset($_POST['is-on-promo']) && $_POST['is-on-promo'] != "") {$dispIsOnPromo = $_POST['is-on-promo']; $isOnPromo = "'".$dispIsOnPromo."'";} else {$isOnPromo = 'NULL';}
+            if(isset($_POST['reduction-percent']) && $_POST['reduction-percent'] != "") {$dispReductionPercent = $_POST['reduction-percent']; $reductionPercent = "'".$dispReductionPercent."'";} else {$reductionPercent = 'NULL';}
+            if(isset($_POST['promo-price']) && $_POST['promo-price'] != "") {$dispPromoPrice = $_POST['promo-price']; $promoPrice = "'".$dispPromoPrice."'";} else {$promoPrice = 'NULL';}
+            if(isset($_POST['is-in-selection']) && $_POST['is-in-selection'] != "") {$dispIsInSelection = $_POST['is-in-selection']; $isInSelection = "'".$dispIsInSelection."'";} else {$isInSelection = 'NULL';}
+            if(isset($_POST['brand']) && $_POST['brand'] != "") {$dispBrand = $_POST['brand']; $brand = "'".$dispBrand."'";} else {$brand = 'NULL';}
+            insertPrd($db, $ref, $name, $description, $price, $pictureName, $isAvailable, $isOnPromo, $reductionPercent, $promoPrice, $isInSelection, $brand, $category);
+            $req = selectPrdByRef($db, $ref);
+            if($thisProduct = $req->fetch(PDO::FETCH_ASSOC)) {
+                $thisProductId = $thisProduct['id'];
+                insertPrdSizes($db, $thisProductId, $sizes);
+            }
             $createDiv .= '
-                <tr>
-                    <td>Description</td>
-                    <td>
-                        '.$dispDescription.'
-                    </td>
-                </tr>
+                <br><h4>Produit créé avec succès.</h4>
+                <p><b>Récapitulatif :</b></p>
+                <table class="post-table">
+                    <tr>
+                        <td>Référence</td>
+                        <td>
+                            '.$ref.'
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nom</td>
+                        <td>
+                            '.$name.'
+                        </td>
+                    </tr>
             ';
-        }
-        $createDiv .= '
-                <tr>
-                    <td>Prix</td>
-                    <td>
-                        '.$price.'€
-                    </td>
-                </tr>
-        ';
-        if($pictureName != 'NULL') {
-            $createDiv .= '
-                <tr>
-                    <td>Photo</td>
-                    <td>
-                        <img src="../img/'.$dispPictureName.'" alt="'.$dispPictureName.'" width="400px">
-                    </td>
-                </tr>
-            ';
-        }
-        $createDiv .= '
-                <tr>
-                    <td>Disponible</td>
-                    <td>
-                        '.dispPrdBoolVal($dispIsAvailable).'
-                    </td>
-                </tr>
-                <tr>
-                    <td>En promotion</td>
-                    <td>
-                        '.dispPrdBoolVal($dispIsOnPromo).'
-                    </td>
-                </tr>
-        ';
-        if(isset($dispIsOnPromo) && $dispIsOnPromo == '1' && $reductionPercent != 'NULL' && $promoPrice != 'NULL') {
-            $createDiv .= '
-                <tr>
-                    <td>Pourcent de réduction</td>
-                    <td>
-                        '.$dispReductionPercent.'%
-                    </td>
-                </tr>
-                <tr>
-                    <td>Prix après réduction</td>
-                    <td>
-                        '.$dispPromoPrice.'€
-                    </td>
-                </tr>
-            ';
-        }
-        $createDiv .= '
-                <tr>
-                    <td>En sélection</td>
-                    <td>
-                        '.dispPrdBoolVal($dispIsInSelection).'
-                    </td>
-                </tr>
-        ';
-        if($brand != 'NULL') {
-            $createDiv .= '
-                <tr>
-                    <td>Marque</td>
-                    <td>
-            ';
-            $reqBrd = selectBrdName($db, $brand);
-            if($brd = $reqBrd->fetch(PDO::FETCH_ASSOC)) {
-                $createDiv .=
-                        $brd['name'].'
-                    </td>
-                </tr>
+            if($description != 'NULL') {
+                $createDiv .= '
+                    <tr>
+                        <td>Description</td>
+                        <td>
+                            '.$dispDescription.'
+                        </td>
+                    </tr>
                 ';
             }
+            $createDiv .= '
+                    <tr>
+                        <td>Prix</td>
+                        <td>
+                            '.$price.'€
+                        </td>
+                    </tr>
+            ';
+            if($pictureName != 'NULL') {
+                $createDiv .= '
+                    <tr>
+                        <td>Photo</td>
+                        <td>
+                            <img src="../img/'.$dispPictureName.'" alt="'.$dispPictureName.'" width="400px">
+                        </td>
+                    </tr>
+                ';
+            }
+            $createDiv .= '
+                    <tr>
+                        <td>Disponible</td>
+                        <td>
+                            '.dispPrdBoolVal($dispIsAvailable).'
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>En promotion</td>
+                        <td>
+                            '.dispPrdBoolVal($dispIsOnPromo).'
+                        </td>
+                    </tr>
+            ';
+            if(isset($dispIsOnPromo) && $dispIsOnPromo == '1' && $reductionPercent != 'NULL' && $promoPrice != 'NULL') {
+                $createDiv .= '
+                    <tr>
+                        <td>Pourcent de réduction</td>
+                        <td>
+                            '.$dispReductionPercent.'%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Prix après réduction</td>
+                        <td>
+                            '.$dispPromoPrice.'€
+                        </td>
+                    </tr>
+                ';
+            }
+            $createDiv .= '
+                    <tr>
+                        <td>En sélection</td>
+                        <td>
+                            '.dispPrdBoolVal($dispIsInSelection).'
+                        </td>
+                    </tr>
+            ';
+            if($brand != 'NULL') {
+                $createDiv .= '
+                    <tr>
+                        <td>Marque</td>
+                        <td>
+                ';
+                $reqBrd = selectBrdName($db, $brand);
+                if($brd = $reqBrd->fetch(PDO::FETCH_ASSOC)) {
+                    $createDiv .=
+                            $brd['name'].'
+                        </td>
+                    </tr>
+                    ';
+                }
+            }
+            $createDiv .= '
+                    <tr>
+                        <td>Catégorie</td>
+                        <td>
+            ';
+            $reqCat = selectCatName($db, $category);
+            if($cat = $reqCat->fetch(PDO::FETCH_ASSOC))
+                $createDiv .= $cat['name'];
+            $createDiv .= '
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tailles disponibles</td>
+                        <td>
+            ';
+            $reqPrdSizes = selectPrdAllSizes($db, $thisProductId);
+            while($prdSize = $reqPrdSizes->fetch(PDO::FETCH_ASSOC)) {
+                $createDiv .= $prdSize['size'].'<br>';
+            }
+            $createDiv .= '
+                        </td>
+                    </tr>
+                </table>
+            ';
+        } else {
+            $createDiv .= '
+                <br><h4>Création impossible : référence déjà existante.</h4>
+            ';
         }
-        $createDiv .= '
-                <tr>
-                    <td>Catégorie</td>
-                    <td>
-        ';
-        $reqCat = selectCatName($db, $category);
-        if($cat = $reqCat->fetch(PDO::FETCH_ASSOC))
-            $createDiv .= $cat['name'];
-        $createDiv .= '
-                    </td>
-                </tr>
-                <tr>
-                    <td>Tailles disponibles</td>
-                    <td>
-        ';
-        $reqPrdSizes = selectPrdAllSizes($db, $thisProductId);
-        while($prdSize = $reqPrdSizes->fetch(PDO::FETCH_ASSOC)) {
-            $createDiv .= $prdSize['size'].'<br>';
-        }
-        $createDiv .= '
-                    </td>
-                </tr>
-            </table>
-        ';
     }
 
     if(isset($_GET['req']) && $_GET['req'] == 'edit' && isset($_GET['id'])) {

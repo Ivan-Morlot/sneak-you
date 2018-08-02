@@ -2,6 +2,8 @@
   session_start();
   if(!isset($_SESSION['login']))
     header('location:index.php');
+
+  require_once "utils/connection.php";  
 ?>
 
 <!DOCTYPE html>
@@ -11,26 +13,12 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="icon" href="../../favicon.ico">
-
-  <title>Carousel Template for Bootstrap</title>
-
-  <!-- Bootstrap core CSS -->
+  <title>sne*k you - Profil</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-  <!-- Custom styles for this template -->
   <link href="css/profil.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 </head>
@@ -82,12 +70,16 @@
                   Mon panier
                 </a>
               </li>
-<?php if(isset($_SESSION['login'])) {?>
+<?php if(isset($_SESSION['login'])) {
+  $login = $_SESSION['login'];
+  $reqUser = $db->query("SELECT * FROM customer WHERE email = '$login'");
+  if($user = $reqUser->fetch(PDO::FETCH_ASSOC)) {
+    $userName = $user['firstname']." ".$user['lastname'];
+  }
+?>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  <span class="glyphicon glyphicon-asterisk"></span>
-                  Mon-compte
-                  <span class="caret"></span>
+                  <span class="glyphicon glyphicon-asterisk"></span> <?= $userName ?> <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li>
@@ -135,32 +127,31 @@
                     <div class="form-group row">
                       <label for="name" class="col-4 col-form-label">Prénom</label>
                       <div class="col-8">
-                        <input id="name" name="name" placeholder="Votre prénom" class="form-control here" type="text">
+                        <input id="name" name="name" class="form-control here" type="text">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="lastname" class="col-4 col-form-label">Nom</label>
                       <div class="col-8">
-                        <input id="lastname" name="lastname" placeholder="Votre nom" class="form-control here" type="text">
+                        <input id="lastname" name="lastname" class="form-control here" type="text">
                       </div>
                     </div>
 
 
                     <div class="form-group row">
-                      <label for="email" class="col-4 col-form-label">Email*</label>
+                      <label for="email" class="col-4 col-form-label">E-mail</label>
                       <div class="col-8">
-                        <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text">
+                        <input id="email" name="email" class="form-control here" required="required" type="text">
                       </div>
                     </div>
-
                     <div class="form-group row">
-                      <label for="lastname" class="col-4 col-form-label">Adresse</label>
+                      <label for="lastname" class="col-4 col-form-label">Adresse de facturation</label>
                       <div class="col-8">
-                        <input id="lastname" name="lastname" placeholder="Votre adresse" class="form-control here" type="text">
+                        <input id="lastname" name="lastname" placeholder="ex : 2 avenue du Général de Gaulle" class="form-control here" type="text">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="lastname" class="col-4 col-form-label">Code Postale</label>
+                      <label for="lastname" class="col-4 col-form-label">Code postal</label>
                       <div class="col-8">
                         <input id="lastname" name="lastname" placeholder="ex : 75000" class="form-control here" type="text">
                       </div>
@@ -172,15 +163,15 @@
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="lastname" class="col-4 col-form-label">Pays</label>
+                      <label for="newpass" class="col-4 col-form-label">Nouveau mot de passe</label>
                       <div class="col-8">
-                        <input id="lastname" name="lastname" placeholder="ex : France" class="form-control here" type="text">
+                        <input id="newpass" name="newpass" class="form-control here" type="text">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="newpass" class="col-4 col-form-label">Nouveau mot de passe</label>
+                      <label for="newpass" class="col-4 col-form-label">Confirmer le mot de passe</label>
                       <div class="col-8">
-                        <input id="newpass" name="newpass" placeholder="Nouveau mot de passe" class="form-control here" type="text">
+                        <input id="confirm-newpass" name="confirm-newpass" class="form-control here" type="text">
                       </div>
                     </div>
                     <div class="form-group row">
