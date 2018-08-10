@@ -9,14 +9,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="robots" content="all,follow">
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
-	<!--<link rel="shortcut icon" href="img/favicon.ico">-->
 	<link rel="stylesheet" href="../css/admin.css">
 </head>
 
 <body>
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Menu</span>
@@ -28,7 +26,6 @@
 					sne*k you
 				</a>
 			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<form class="navbar-form navbar-left" method="GET" role="search">
 					<div class="form-group">
@@ -60,9 +57,7 @@
 					</li>
 				</ul>
 			</div>
-			<!-- /.navbar-collapse -->
 		</div>
-		<!-- /.container-fluid -->
 	</nav>
 	<div class="container-fluid main-container">
 		<div class="col-md-2 sidebar">
@@ -105,12 +100,9 @@
 		</div>
 	</div>
 
-	<!-- JavaScript files-->
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/jquery.cookie.js"> </script>
-
-	<!-- Main File-->
 	<script src="../js/front.js"></script>
 	<script src="../js/tools.js"></script>
 
