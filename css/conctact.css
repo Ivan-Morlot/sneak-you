@@ -32,6 +32,10 @@
     padding-top: 20px;
 }
 
+.contact-section i {
+    margin-right: 5px;
+}
+
 @media (min-width:992px) {
 
     .form-line {
