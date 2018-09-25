@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    require_once "../utils/adminCheck.php";    
+    require_once "../utils/adminCheck.php";
 
     require_once "../utils/connection.php";
 

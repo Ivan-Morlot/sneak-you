@@ -4,6 +4,7 @@
   require_once "utils/connection.php";  
 
   $result = '';
+  $showModal = false;
 
   if (isset($_POST['login']) && isset($_POST['password'])) {
     $login = $_POST['login'];
@@ -19,6 +20,7 @@
             <p class="connect-error">L\'identifiant et/ou le mot de passe n\'existe(nt) pas.</p>
         </div>
       ';
+      $showModal = true;
     }
   }
 ?>
@@ -524,8 +526,9 @@
                         <br>
                         <input type="password" name="password" class="form-control">
                     </div>
+                    <?= $result ?>
                     <div class="form-group">
-                        <button class="btn btn-primary" type="submit">Envoyer</button>
+                        <button class="btn btn-primary" type="submit">Se connecter</button>
                     </div>
                 </form>
                 <span class="min-title">Pas encore de compte ?</span>
@@ -538,5 +541,13 @@
     </div>
 </div>
 <!--fin modal-->
+
+<?php
+    if ($showModal == true) 
+        echo "<script>
+            $('#connection-modal').removeClass('fade');
+            $('#connection-modal').modal('show');
+        </script>";
+?>
 
 </html>

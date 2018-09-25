@@ -27,6 +27,3 @@
   }
 
   require "vues/connectionVue.php";
-
-
- 
