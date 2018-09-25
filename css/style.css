@@ -67,12 +67,17 @@ main {
   }
 }
 
+#navbar {
+  border: unset;
+  box-shadow: unset;
+}
+
 .navbar-inverse {
   border-color: #333;
 }
 
 #navbar .form-search {
-  margin-top: 1vh;
+  margin-top: 8px;
   margin-bottom: 8px;
 }
 
@@ -452,6 +457,9 @@ ul, ol {
   width: 180px;
   max-width: 40%;
   margin:0;
+}
+.sells-img {
+  height: auto;
 }
 .sells-img.t1 {
   padding: 2rem 2.2em;

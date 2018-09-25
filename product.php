@@ -87,7 +87,7 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li>
-                <form class="form-inline ml-auto p-2 bd-highlight" style="margin-top: 0.8vh" action="product.php">
+                <form class="form-inline ml-auto p-2 bd-highlight" action="product.php">
                   <div class="form-search form-inline ml-auto p-2 bd-highlight">
                     <input class="extended-searchbar form-control mr-sm-2" type="text" placeholder="Rechercher un modèle" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
