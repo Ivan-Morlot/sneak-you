@@ -443,7 +443,6 @@ ul, ol {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: center;
 }
 .sells h2 {
   font-style: italic;
@@ -454,17 +453,13 @@ ul, ol {
 }
 .container.marketing > .row .sells-img.t1,
 .container.marketing > .row .sells-img.t2 {
+  height: 180px;
   width: 180px;
+  max-height: 40%;
   max-width: 40%;
   margin:0;
 }
 .sells-img {
-  height: auto;
-}
-.sells-img.t1 {
-  padding: 2rem 2.2em;
-}
-.sells-img.t2 {
   padding:2rem;
 }
 .all-sells {

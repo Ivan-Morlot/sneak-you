@@ -18,14 +18,17 @@
 </head>
 
 <body>
-
-
   <section class="error_section">
     <p class="error_section_subtitle">Oups, cette page n'a pas l'air bien dans ses sneakers !</p>
     <h1 class="error_title">
       <p>Page introuvable</p>
       Page introuvable
     </h1>
+<?php if (isset($e)) { ?>
+    <p>
+      <?= $e->getMessage(); ?>
+    </p>
+<?php } ?>
     <a href="index.php" class="btn">Retour à l'accueil</a>
   </section>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -35,7 +38,6 @@
   <script src="js/ie10-viewport-bug-workaround.js"></script>
   <script src="js/tools.js"></script>
   <script src="js/404.js"></script>
-
 </body>
 
 </html>
